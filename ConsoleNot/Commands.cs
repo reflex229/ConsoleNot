@@ -1,10 +1,8 @@
 using System;
-using System.Runtime.InteropServices;
 using System.Threading;
 using System.Diagnostics;
+using Windows.Data.Xml.Dom;
 using Windows.UI.Notifications;
-using XmlDocument = Windows.Data.Xml.Dom.XmlDocument;
-using XmlNodeList = Windows.Data.Xml.Dom.XmlNodeList;
 
 namespace ConsoleNot
 {
@@ -32,37 +30,31 @@ namespace ConsoleNot
             _totalTime = (time[0] * 3600000) + (time[1] * 60000) + (time[2] * 1000);
         }
 
-        public static void Notification() //Метод вызова уведомления (в зависимости от ОС пользователя).
+        public static void WinNotification()
         {
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows)) //Если у пользователя ОС Windows.
+            for (int i = 0; i < _count; i++)
             {
-                for (int i = 0; i < _count; i++)
+                Thread.Sleep(_totalTime);
+                
+                XmlDocument toastXml = ToastNotificationManager.GetTemplateContent(ToastTemplateType.ToastImageAndText04);
+                XmlNodeList stringElements = toastXml.GetElementsByTagName("text");
+                for (int j = 0; j < 2; j++)
                 {
-                    Thread.Sleep(_totalTime);
-                    
-                    XmlDocument toastXml = ToastNotificationManager.GetTemplateContent(ToastTemplateType.ToastImageAndText04);
-                    XmlNodeList stringElements = toastXml.GetElementsByTagName("text");
-                    for (int j = 0; j < 2; j++)
-                    {
-                        stringElements[j].AppendChild(toastXml.CreateTextNode(_titleAnddesc[j]));
-                    }
-                    ToastNotification toast = new ToastNotification(toastXml);
-                    ToastNotificationManager.CreateToastNotifier("ConsoleNotifier").Show(toast);
+                    stringElements[j].AppendChild(toastXml.CreateTextNode(_titleAnddesc[j]));
                 }
+                ToastNotification toast = new ToastNotification(toastXml);
+                ToastNotificationManager.CreateToastNotifier("ConsoleNotifier").Show(toast);
             }
-            else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux)) //Если у пользователя ОС Linux.
+        }
+
+        public static void LinuxNotification()
+        {
+            Console.WriteLine($"Program has been successfully started. Total delay is {_totalTime/1000} seconds, " +
+                              $"iterations count is {_count}.");
+            for (int i = 0; i < _count; i++)
             {
-                Console.WriteLine($"Program has been successfully started. Total delay is {_totalTime/1000} seconds, " +
-                                  $"iterations count is {_count}.");
-                for (int i = 0; i < _count; i++)
-                {
-                    Thread.Sleep(_totalTime);
-                    Process.Start("notify-send", $"{_titleAnddesc[0]} {_titleAnddesc[1]}");
-                }
-            }
-            else //Если у пользователя не Linux и не Windows, то любезно его посылаем.
-            {
-                Console.WriteLine("Sorry, your operating system is not supported.");
+                Thread.Sleep(_totalTime);
+                Process.Start("notify-send", $"{_titleAnddesc[0]} {_titleAnddesc[1]}");
             }
         }
     }

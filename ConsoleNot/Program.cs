@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.InteropServices;
 
 namespace ConsoleNot
 {
@@ -6,7 +7,8 @@ namespace ConsoleNot
     {
         //TODO: Сделать один исполняемый файл при помощи ILMerge.
         private static string[] _arguments;
-        private const string Error = "Error, you should only enter numbers.";
+        private static bool _start = true;
+        private const string Error = "Error, you should only enter numbers (ex. -c 10).";
 
         static void Main(string[] args)
         {
@@ -41,6 +43,7 @@ namespace ConsoleNot
                         catch (FormatException)
                         {
                             Console.WriteLine(Error);
+                            _start = false;
                         }
                         break;
                     case "-t":
@@ -52,7 +55,11 @@ namespace ConsoleNot
                 }
             }
             Commands.CalculateTotalTime(Commands._time);
-            Commands.Notification();
+
+            if (!_start) return;
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows)) Commands.WinNotification();
+            else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux)) Commands.LinuxNotification();
+            else Console.WriteLine("Sorry, your operating system is not supported.");
         }
 
         private static void ConvertAndSet(int i, int timeNum)
@@ -64,6 +71,7 @@ namespace ConsoleNot
             catch (FormatException)
             {
                 Console.WriteLine(Error);
+                _start = false;
             }
         }
     }
