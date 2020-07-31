@@ -4,17 +4,14 @@ Console notifier with desktop notifications, written in C#.
 Example: the doctor prescribed you a course of treatment with pills (you need to take
 the pills 6 times a day).
 This program will remind you when it is the time to take the pills and send a
-desktop notification. Give the arguments "-h 2 -c 6 -t Take pills -d
-I remind you to take pills ", so the program will notify you
-with the title "Take pills" and the description "I remind you to take pills" every 2 hours,
+desktop notification. Give the arguments "-h 2 -c 6 -t -d", so the program will notify you every 2 hours,
 6 times.
 ## Русский:
 Консольная напоминалка с уведомлениями на рабочем столе, написанная на C#.
 Пример: доктор прописал вам курс лечения таблетками, принимать по 6 раз в день.
 Данная программа поможет вам вовремя вспомнить о принятии таблеток и вышлет
-уведомление на рабочий стол. Задаём аргументы "-h 2 -c 6 -t Прими таблетки -d
-Напоминаю принять таблетки", таким образом, программа будет выдавать вам уведомление
-с заголовком "Прими таблетки" и описанием "Напоминаю принять таблетки" раз в 2 часа,
+уведомление на рабочий стол. Задаём аргументы "-h 2 -c 6 -t -d",
+таким образом, программа будет выдавать вам уведомление раз в 2 часа,
 6 раз.
 
 ## English:
@@ -30,7 +27,7 @@ ConsoleNot.exe --help
 ```
 Example usage:
 ```cmd
-ConsoleNot.exe -s 10 -c 3 -t Title -d Description
+ConsoleNot.exe -s 10 -c 3 -t -d
 ```
 ## Linux
 ###### Dependencies:
@@ -51,7 +48,7 @@ cd ConsoleNot
 ```
 Example usage:
 ```cmd
-./ConsoleNot -s 10 -c 3 -t Title -d Description
+./ConsoleNot -s 10 -c 3 -t -d
 ```
 ## Русский:
 ## Windows
@@ -66,7 +63,7 @@ ConsoleNot.exe --help
 ```
 Пример использования:
 ```cmd
-ConsoleNot.exe -s 10 -c 3 -t Заголовок -d Описание
+ConsoleNot.exe -s 10 -c 3 -t -d
 ```
 ## Linux
 ###### Зависимости:
@@ -87,7 +84,7 @@ cd ConsoleNot
 ```
 Пример использования:
 ```cmd
-./ConsoleNot -s 10 -c 3 -t Заголовок -d Описание
+./ConsoleNot -s 10 -c 3 -t -d
 ```
 ## Русский:
 ## Windows
@@ -102,7 +99,7 @@ ConsoleNot.exe --help
 ```
 Пример использования:
 ```cmd
-ConsoleNot.exe -s 10 -c 3 -t Заголовок -d Описание
+ConsoleNot.exe -s 10 -c 3 -t -d
 ```
 ## Linux
 ###### Зависимости:
@@ -123,5 +120,5 @@ cd ConsoleNot
 ```
 Пример использования:
 ```cmd
-./ConsoleNot -s 10 -c 3 -t Заголовок -d Описание
+./ConsoleNot -s 10 -c 3 -t -d
 ```
