@@ -32,6 +32,8 @@ namespace ConsoleNot
 
         public static void WinNotification()
         {
+            Console.WriteLine($"Program has been successfully started. Total delay is {_totalTime/1000} seconds, " +
+                              $"iterations count is {_count}.");
             for (int i = 0; i < _count; i++)
             {
                 Thread.Sleep(_totalTime);
