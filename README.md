@@ -71,7 +71,7 @@ ConsoleNot.exe -s 10 -c 3 -t Заголовок -d Описание
 ## Linux
 ###### Зависимости:
 .NET Core 3.1; notify-send; git
-###### Usage:
+###### Использование:
 1. Используйте команду "git clone" для данного репозитория:
 ```bash
 git clone https://github.com/reflex229/ConsoleNot.git
