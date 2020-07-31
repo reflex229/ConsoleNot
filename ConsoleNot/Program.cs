@@ -5,7 +5,6 @@ namespace ConsoleNot
 {
     class Program //Основной класс.
     {
-        //TODO: Сделать один исполняемый файл при помощи ILMerge.
         private static string[] _arguments;
         private static bool _start = true;
         private const string Error = "Error, you should only enter numbers (ex. -c 10).";
@@ -47,10 +46,12 @@ namespace ConsoleNot
                         }
                         break;
                     case "-t":
-                        Commands._titleAnddesc[0] = args[i + 1];
+                        Console.WriteLine("Enter the title: ");
+                        Commands._titleAnddesc[0] = $"{Console.ReadLine()}";
                         break;
                     case "-d":
-                        Commands._titleAnddesc[1] = args[i + 1];
+                        Console.WriteLine("Enter the description: ");
+                        Commands._titleAnddesc[1] = $"{Console.ReadLine()}";
                         break;
                 }
             }
@@ -76,3 +77,10 @@ namespace ConsoleNot
         }
     }
 }
+
+//TODO: Сделать один исполняемый файл при помощи ILMerge.
+//TODO: Поддержка русского языка (будет активироваться при помощи аргумента -rus).
+/*TODO: Если программа закрывается (к примеру пользователь завершил процесс или же выключил компьютер), то при следующем
+запуске, программа восстановиться (используя локальное или серверное время) и выдаст уведомление. При создании
+уведомления, будет также создаваться файл, содержащий в себе переменные.
+*/
