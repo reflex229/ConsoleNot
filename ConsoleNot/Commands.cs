@@ -10,7 +10,7 @@ namespace ConsoleNot
     {
         public static int[] _time = {0, 0, 0}; //hours, minutes, seconds
         public static int _count = 1; //Кол-во итераций.
-        public static string[] _titleAnddesc = {"Notification", "Notification"}; //0 - заголовок, 1 - описание.
+        public static string[] _titleAnddesc; //0 - заголовок, 1 - описание.
         private static int _totalTime; /*Общее время в секундах.
         Требуется для задержки вывода уведомлений. Вычисляется при помощи массива "Time" в классе "Program". */
 

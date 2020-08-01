@@ -86,5 +86,11 @@ namespace ConsoleNot.Resource {
                 return ResourceManager.GetString("Success", resourceCulture);
             }
         }
+        
+        public static string Title {
+            get {
+                return ResourceManager.GetString("Title", resourceCulture);
+            }
+        }
     }
 }

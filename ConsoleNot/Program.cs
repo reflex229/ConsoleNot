@@ -88,8 +88,15 @@ namespace ConsoleNot
         private static void LangInit() //Языковые инициализации.
         {
             cultureInfo = CultureInfo.CurrentCulture;
+            //cultureInfo = new CultureInfo("ru-RU"); //Для тестов.
             a = Assembly.Load("ConsoleNot");
             resourceManager = new ResourceManager("ConsoleNot.Lang.langres", a);
+            
+            Commands._titleAnddesc = new[]
+                {
+                    resourceManager.GetString("Title", cultureInfo),
+                    resourceManager.GetString("Title", cultureInfo)
+                };
         }
     }
 }
