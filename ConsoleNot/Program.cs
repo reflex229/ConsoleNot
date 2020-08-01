@@ -1,23 +1,32 @@
 ﻿using System;
+using System.Globalization;
+using System.Reflection;
+using System.Resources;
 using System.Runtime.InteropServices;
+using ConsoleNot.Resource;
 
 namespace ConsoleNot
 {
     class Program //Основной класс.
     {
+        public static ResourceManager resourceManager;
+        private static Assembly a;
+        public static CultureInfo cultureInfo;
         private static string[] _arguments;
         private static bool _start = true;
-        private const string Error = "Error, you should only enter numbers (ex. -c 10).";
 
         static void Main(string[] args)
         {
+            LangInit();
+            
             _arguments = args;
+            
             if (args.Length < 1)
             {
-                Console.WriteLine("There is no arguments given." +
-                                  " Exiting the program. Please, enter an arguments (see --help) and try again.");
+                Console.WriteLine(resourceManager.GetString("There_is_no_", cultureInfo));
                 return;
             }
+            
             for (int i = 0; i < args.Length; i++)
             {
                 switch (args[i]) //Обработка команд и вызов соответствующего метода из класса "Commands".
@@ -41,16 +50,16 @@ namespace ConsoleNot
                         }
                         catch (FormatException)
                         {
-                            Console.WriteLine(Error);
+                            Console.WriteLine(resourceManager.GetString("Only_Numbers", cultureInfo));
                             _start = false;
                         }
                         break;
                     case "-t":
-                        Console.WriteLine("Enter the title: ");
+                        Console.WriteLine(resourceManager.GetString("Enter_Title", cultureInfo));
                         Commands._titleAnddesc[0] = $"{Console.ReadLine()}";
                         break;
                     case "-d":
-                        Console.WriteLine("Enter the description: ");
+                        Console.WriteLine(resourceManager.GetString("Enter_Description", cultureInfo));
                         Commands._titleAnddesc[1] = $"{Console.ReadLine()}";
                         break;
                 }
@@ -60,10 +69,10 @@ namespace ConsoleNot
             if (!_start) return;
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows)) Commands.WinNotification();
             else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux)) Commands.LinuxNotification();
-            else Console.WriteLine("Sorry, your operating system is not supported.");
+            else Console.WriteLine(resourceManager.GetString("Sorry_OS", cultureInfo));
         }
 
-        private static void ConvertAndSet(int i, int timeNum)
+        private static void ConvertAndSet(int i, int timeNum) //Получаем число из аргумента (с исключением).
         {
             try
             {
@@ -71,16 +80,16 @@ namespace ConsoleNot
             }
             catch (FormatException)
             {
-                Console.WriteLine(Error);
+                Console.WriteLine(resourceManager.GetString("Only_Numbers", cultureInfo));
                 _start = false;
             }
         }
+
+        private static void LangInit() //Языковые инициализации.
+        {
+            cultureInfo = CultureInfo.CurrentCulture;
+            a = Assembly.Load("ConsoleNot");
+            resourceManager = new ResourceManager("ConsoleNot.Lang.langres", a);
+        }
     }
 }
-
-//TODO: Сделать один исполняемый файл при помощи ILMerge.
-//TODO: Поддержка русского языка (будет активироваться при помощи аргумента -rus).
-/*TODO: Если программа закрывается (к примеру пользователь завершил процесс или же выключил компьютер), то при следующем
-запуске, программа восстановиться (используя локальное или серверное время) и выдаст уведомление. При создании
-уведомления, будет также создаваться файл, содержащий в себе переменные.
-*/
