@@ -87,7 +87,8 @@ namespace ConsoleNot
 
         private static void LangInit() //Языковые инициализации.
         {
-            Console.OutputEncoding = Encoding.UTF8;
+            Console.OutputEncoding = Encoding.Unicode;
+            Console.InputEncoding = Encoding.Unicode;
             cultureInfo = CultureInfo.CurrentCulture;
             //cultureInfo = new CultureInfo("ru-RU"); //Для тестов.
             a = Assembly.Load("ConsoleNot");

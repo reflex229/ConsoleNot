@@ -26,11 +26,11 @@ namespace ConsoleNot
 
         public static void WinNotification()
         {
-            Console.WriteLine(Program.resourceManager.GetString("Success", Program.cultureInfo), _totalTime/1000, _count);
+            Console.WriteLine(Program.resourceManager.
+                GetString("Success", Program.cultureInfo), _totalTime/1000, _count);
             for (int i = 0; i < _count; i++)
             {
                 Thread.Sleep(_totalTime);
-
                 XmlDocument toastXml =
                     ToastNotificationManager.GetTemplateContent(ToastTemplateType.ToastImageAndText04);
                 XmlNodeList stringElements = toastXml.GetElementsByTagName("text");
@@ -46,7 +46,8 @@ namespace ConsoleNot
 
         public static void LinuxNotification()
         {
-            Console.WriteLine(Program.resourceManager.GetString("Success", Program.cultureInfo), _totalTime/1000, _count);
+            Console.WriteLine(Program.resourceManager.GetString("Success",
+                Program.cultureInfo), _totalTime/1000, _count);
             for (int i = 0; i < _count; i++)
             {
                 Thread.Sleep(_totalTime);
