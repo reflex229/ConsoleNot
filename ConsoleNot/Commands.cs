@@ -6,37 +6,32 @@ using Windows.UI.Notifications;
 
 namespace ConsoleNot
 {
-    public static class Commands //Класс, содержащий методы, исполняющие все команды.
+    public static class Commands
     {
-        public static int[] _time = {0, 0, 0}; //hours, minutes, seconds
-        public static int _count = 1; //Кол-во итераций.
-        public static string[] _titleAnddesc; //0 - заголовок, 1 - описание.
-        private static int _totalTime; /*Общее время в секундах.
-        Требуется для задержки вывода уведомлений. Вычисляется при помощи массива "Time" в классе "Program". */
+        public static int[] Time = {0, 0, 0}; //hours, minutes, seconds
+        public static int Count = 1;
+            public static string[] TitleAnddesc = { Program. ResourceManager. GetString("Title", Program.CultureInfo),
+            Program.ResourceManager.GetString("Title", Program.CultureInfo)}; //0 - заголовок, 1 - описание.
+        private static int TotalTime => Time[0] * 3600000 + Time[1] * 60000 + Time[2] * 1000;
 
-        public static void Help() //Вывод команды --help
+        public static void Help()
         {
-            Console.WriteLine(Program.resourceManager.GetString("Commands_Help_", Program.cultureInfo));
-        }
-
-        public static void CalculateTotalTime(int[] time) //hours, minutes, seconds
-        {
-            _totalTime = (time[0] * 3600000) + (time[1] * 60000) + (time[2] * 1000);
+            Console.WriteLine(Program.ResourceManager.GetString("Commands_Help_", Program.CultureInfo));
         }
 
         public static void WinNotification()
         {
-            Console.WriteLine(Program.resourceManager.
-                GetString("Success", Program.cultureInfo), _totalTime/1000, _count);
-            for (int i = 0; i < _count; i++)
+            Console.WriteLine(Program.ResourceManager.
+                GetString("Success", Program.CultureInfo), TotalTime/1000, Count);
+            for (int i = 0; i < Count; i++)
             {
-                Thread.Sleep(_totalTime);
+                Thread.Sleep(TotalTime);
                 XmlDocument toastXml =
                     ToastNotificationManager.GetTemplateContent(ToastTemplateType.ToastImageAndText04);
                 XmlNodeList stringElements = toastXml.GetElementsByTagName("text");
                 for (int j = 0; j < 2; j++)
                 {
-                    stringElements[j].AppendChild(toastXml.CreateTextNode(_titleAnddesc[j]));
+                    stringElements[j].AppendChild(toastXml.CreateTextNode(TitleAnddesc[j]));
                 }
 
                 ToastNotification toast = new ToastNotification(toastXml);
@@ -46,12 +41,12 @@ namespace ConsoleNot
 
         public static void LinuxNotification()
         {
-            Console.WriteLine(Program.resourceManager.GetString("Success",
-                Program.cultureInfo), _totalTime/1000, _count);
-            for (int i = 0; i < _count; i++)
+            Console.WriteLine(Program.ResourceManager.GetString("Success",
+                Program.CultureInfo), TotalTime/1000, Count);
+            for (int i = 0; i < Count; i++)
             {
-                Thread.Sleep(_totalTime);
-                Process.Start("notify-send", $"\"{_titleAnddesc[0]}\" \"{_titleAnddesc[1]}\"");
+                Thread.Sleep(TotalTime);
+                Process.Start("notify-send", $"\"{TitleAnddesc[0]}\" \"{TitleAnddesc[1]}\"");
             }
         }
     }
