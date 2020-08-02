@@ -9,11 +9,6 @@ namespace ConsoleNot
 {
     static class Program
     {
-        public static ResourceManager ResourceManager => new ResourceManager("ConsoleNot.Lang.langres", A);
-        private static Assembly A => Assembly.Load("ConsoleNot");
-
-        public static CultureInfo CultureInfo => CultureInfo.CurrentCulture;
-
         private static string[] _arguments;
         private static bool _start = true;
 
@@ -25,7 +20,7 @@ namespace ConsoleNot
             
             if (args.Length < 1)
             {
-                Console.WriteLine(ResourceManager.GetString("There_is_no_", CultureInfo));
+                Console.WriteLine(Properties.ResourceManager.GetString("There_is_no_", Properties.CultureInfo));
                 return;
             }
             
@@ -48,40 +43,43 @@ namespace ConsoleNot
                     case "-c":
                         try
                         {
-                            Commands.Count = Convert.ToInt32(args[i + 1]);
+                            Properties.Count = Convert.ToInt32(args[i + 1]);
                         }
                         catch (FormatException)
                         {
-                            Console.WriteLine(ResourceManager.GetString("Only_Numbers", CultureInfo));
+                            Console.WriteLine(Properties.ResourceManager.GetString("Only_Numbers", Properties.CultureInfo));
                             _start = false;
                         }
                         break;
                     case "-t":
-                        Console.WriteLine(ResourceManager.GetString("Enter_Title", CultureInfo));
-                        Commands.TitleAndDesc[0] = Console.ReadLine();
+                        Console.WriteLine(Properties.ResourceManager.GetString("Enter_Title", Properties.CultureInfo));
+                        Properties.TitleAndDesc[0] = Console.ReadLine();
                         break;
                     case "-d":
-                        Console.WriteLine(ResourceManager.GetString("Enter_Description", CultureInfo));
-                        Commands.TitleAndDesc[1] = Console.ReadLine();
+                        Console.WriteLine(Properties.ResourceManager.GetString("Enter_Description", Properties.CultureInfo));
+                        Properties.TitleAndDesc[1] = Console.ReadLine();
                         break;
                 }
             }
 
             if (!_start) return;
+            
+            CfgReader.Check();
+            
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows)) Commands.WinNotification();
             else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux)) Commands.LinuxNotification();
-            else Console.WriteLine(ResourceManager.GetString("Sorry_OS", CultureInfo));
+            else Console.WriteLine(Properties.ResourceManager.GetString("Sorry_OS", Properties.CultureInfo));
         }
 
         private static void ConvertAndSet(int i, int timeNum) //Получаем число из аргумента (с исключением).
         {
             try
             {
-                Commands.Time[timeNum] = Convert.ToInt32(_arguments[i + 1]);
+                Properties.Time[timeNum] = Convert.ToInt32(_arguments[i + 1]);
             }
             catch (FormatException)
             {
-                Console.WriteLine(ResourceManager.GetString("Only_Numbers", CultureInfo));
+                Console.WriteLine(Properties.ResourceManager.GetString("Only_Numbers", Properties.CultureInfo));
                 _start = false;
             }
         }

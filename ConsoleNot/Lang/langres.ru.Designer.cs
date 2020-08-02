@@ -91,5 +91,11 @@ namespace ConsoleNot.Resource {
                 return ResourceManager.GetString("Title", resourceCulture);
             }
         }
+        
+        public static string Config_Error {
+            get {
+                return ResourceManager.GetString("Config_Error", resourceCulture);
+            }
+        }
     }
 }
