@@ -20,14 +20,22 @@ desktop notification. Give the arguments "-h 2 -c 6 -t -d", so the program will 
 .NET Core 3.1
 ###### Usage:
 1. Download this repository.
-2. Compile the program.
-3. Run the program. To show all commands use:
+2. Enter the repository's directory:
+3. Build the project.
+```cmd
+dotnet build
+```
+4. Run the program (in /ConsoleNot/bin/Debug/netcoreapp3.1/). To show all commands use:
 ```cmd
 ConsoleNot.exe --help
 ```
 Example usage:
 ```cmd
 ConsoleNot.exe -s 10 -c 3 -t -d
+```
+or dotnet
+```cmd
+dotnet ConsoleNot.dll
 ```
 ## Linux
 ###### Dependencies:
@@ -41,84 +49,70 @@ git clone https://github.com/reflex229/ConsoleNot.git
 ```bash
 cd ConsoleNot
 ```
-3. Compile the program.
-4. Run the program. To show all commands use:
+3. Build the project.
+```bash
+dotnet build
+```
+4. Run the program (in /ConsoleNot/bin/Debug/netcoreapp3.1/). To show all commands use:
 ```bash
 ./ConsoleNot --help
 ```
 Example usage:
-```cmd
+```bash
 ./ConsoleNot -s 10 -c 3 -t -d
+```
+or mono
+```bash
+mono ConsoleNot.dll
 ```
 ## Русский:
 ## Windows
 ###### Зависимости:
 .NET Core 3.1
-###### Использование:
-1. Скачайте данный репозиторий.
-2. Скомпилируйте программу.
-3. Запустите программу. Чтобы увидеть все доступные команды, напишите:
-```cmd
-ConsoleNot.exe --help
-```
-Пример использования:
-```cmd
-ConsoleNot.exe -s 10 -c 3 -t -d
-```
-## Linux
-###### Зависимости:
-.NET Core 3.1; notify-send; git
-###### Использование:
-1. Используйте команду "git clone" для данного репозитория:
-```bash
-git clone https://github.com/reflex229/ConsoleNot.git
-```
-2. Войдите в директорию программы:
-```bash
-cd ConsoleNot
-```
-3. Скомпилируйте программу.
-4. Запустите программу. Чтобы увидеть все доступные команды, напишите:
-```bash
-./ConsoleNot --help
-```
-Пример использования:
-```cmd
-./ConsoleNot -s 10 -c 3 -t -d
-```
-## Русский:
-## Windows
-###### Зависимости:
-.NET Core 3.1
-###### Использование:
-1. Скачайте данный репозиторий.
-2. Скомпилируйте программу.
-3. Запустите программу. Чтобы увидеть все доступные команды, напишите:
-```cmd
-ConsoleNot.exe --help
-```
-Пример использования:
-```cmd
-ConsoleNot.exe -s 10 -c 3 -t -d
-```
-## Linux
-###### Зависимости:
-.NET Core 3.1; notify-send; git
 ###### Usage:
-1. Используйте команду "git clone" для данного репозитория:
+1. Скачайте данный репозиторий.
+2. Войдите в директорию репозитория:
+3. Соберите проект.
+```cmd
+dotnet build
+```
+4. Запустите программу (в /ConsoleNot/bin/Debug/netcoreapp3.1/). Чтобы вывести все команды, введите:
+```cmd
+ConsoleNot.exe --help
+```
+Пример использования:
+```cmd
+ConsoleNot.exe -s 10 -c 3 -t -d
+```
+или dotnet
+```cmd
+dotnet ConsoleNot.dll
+```
+## Linux
+###### Зависимости:
+.NET Core 3.1; notify-send; git
+###### Использование:
+1. "git clone" для данного репозитория:
 ```bash
 git clone https://github.com/reflex229/ConsoleNot.git
 ```
-2. Войдите в директорию программы:
+2. Войдите в директорию репозитория:
 ```bash
 cd ConsoleNot
 ```
-3. Скомпилируйте программу.
-4. Запустите программу. Чтобы увидеть все доступные команды, напишите:
+3. Соберите проект.
+```bash
+dotnet build
+```
+4. Запустите программу (in /ConsoleNot/bin/Debug/netcoreapp3.1/). Чтобы увидеть все команды, введите:
 ```bash
 ./ConsoleNot --help
 ```
 Пример использования:
-```cmd
+```bash
 ./ConsoleNot -s 10 -c 3 -t -d
+```
+или mono
+```bash
+mono ConsoleNot.dll
 ```
