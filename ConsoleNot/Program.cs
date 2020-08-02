@@ -29,7 +29,7 @@ namespace ConsoleNot
                 return;
             }
             
-            for (int i = 0; i < args.Length; i++)
+            for (var i = 0; i < args.Length; i++)
             {
                 switch (args[i])
                 {
@@ -58,11 +58,11 @@ namespace ConsoleNot
                         break;
                     case "-t":
                         Console.WriteLine(ResourceManager.GetString("Enter_Title", CultureInfo));
-                        Commands.TitleAnddesc[0] = Console.ReadLine();
+                        Commands.TitleAndDesc[0] = Console.ReadLine();
                         break;
                     case "-d":
                         Console.WriteLine(ResourceManager.GetString("Enter_Description", CultureInfo));
-                        Commands.TitleAnddesc[1] = Console.ReadLine();
+                        Commands.TitleAndDesc[1] = Console.ReadLine();
                         break;
                 }
             }
