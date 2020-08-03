@@ -104,7 +104,7 @@ cd ConsoleNot
 ```bash
 dotnet build
 ```
-4. Запустите программу (in /ConsoleNot/bin/Debug/netcoreapp3.1/). Чтобы увидеть все команды, введите:
+4. Запустите программу (в /ConsoleNot/bin/Debug/netcoreapp3.1/). Чтобы увидеть все команды, введите:
 ```bash
 ./ConsoleNot --help
 ```
