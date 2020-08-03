@@ -2,45 +2,43 @@ using System;
 using System.Threading;
 using System.Diagnostics;
 using Windows.UI.Notifications;
+using static ConsoleNot.Properties;
 
 namespace ConsoleNot
 {
     public static class Commands
     {
-        public static void Help()
+        public static void Help() => Console.WriteLine(ResourceManager.GetString("Commands_Help_", CultureInfo));
+        
+        public static void WinNotification(int totalTime, int count)
         {
-            Console.WriteLine(Properties.ResourceManager.GetString("Commands_Help_", Properties.CultureInfo));
-        }
-
-        public static void WinNotification()
-        {
-            Console.WriteLine(Properties.ResourceManager.
-                GetString("Success", Properties.CultureInfo), Properties.TotalTime/1000, Properties.Count);
-            for (var i = 0; i < Properties.Count; i++)
+            Console.WriteLine(ResourceManager.GetString("Success", CultureInfo), totalTime/1000, count);
+            for (var i = 0; i < count; i++)
             {
-                Thread.Sleep(Properties.TotalTime);
+                Thread.Sleep(totalTime);
                 var toastXml =
                     ToastNotificationManager.GetTemplateContent(ToastTemplateType.ToastImageAndText04);
                 var stringElements = toastXml.GetElementsByTagName("text");
                 for (var j = 0; j < 2; j++)
                 {
-                    stringElements[j].AppendChild(toastXml.CreateTextNode(Properties.TitleAndDesc[j]));
+                    stringElements[j].AppendChild(toastXml.CreateTextNode(TitleAndDesc[j]));
                 }
 
-                ToastNotification toast = new ToastNotification(toastXml);
+                var toast = new ToastNotification(toastXml);
                 ToastNotificationManager.CreateToastNotifier("ConsoleNotifier").Show(toast);
             }
+            //CfgReader.Del();
         }
-
-        public static void LinuxNotification()
+        
+        public static void LinuxNotification(int totalTime, int count)
         {
-            Console.WriteLine(Properties.ResourceManager.GetString("Success",
-                Properties.CultureInfo), Properties.TotalTime/1000, Properties.Count);
-            for (var i = 0; i < Properties.Count; i++)
+            Console.WriteLine(ResourceManager.GetString("Success", CultureInfo), totalTime/1000, count);
+            for (var i = 0; i < count; i++)
             {
-                Thread.Sleep(Properties.TotalTime);
-                Process.Start("notify-send", $"\"{Properties.TitleAndDesc[0]}\" \"{Properties.TitleAndDesc[1]}\"");
+                Thread.Sleep(totalTime);
+                Process.Start("notify-send", $"\"{TitleAndDesc[0]}\" \"{TitleAndDesc[1]}\"");
             }
+            //CfgReader.Del();
         }
     }
 }

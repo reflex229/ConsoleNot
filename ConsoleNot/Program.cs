@@ -1,13 +1,11 @@
 ﻿using System;
-using System.Globalization;
-using System.Reflection;
-using System.Resources;
 using System.Runtime.InteropServices;
 using System.Text;
+using static ConsoleNot.Properties;
 
 namespace ConsoleNot
 {
-    static class Program
+    internal static class Program
     {
         private static string[] _arguments;
         private static bool _start = true;
@@ -15,12 +13,13 @@ namespace ConsoleNot
         private static void Main(string[] args)
         {
             EncodingFix();
-
             _arguments = args;
-            
+            //CfgCheck();
+            //CfgReader.Del();
+
             if (args.Length < 1)
             {
-                Console.WriteLine(Properties.ResourceManager.GetString("There_is_no_", Properties.CultureInfo));
+                Console.WriteLine(ResourceManager.GetString("There_is_no_", CultureInfo));
                 return;
             }
             
@@ -43,43 +42,56 @@ namespace ConsoleNot
                     case "-c":
                         try
                         {
-                            Properties.Count = Convert.ToInt32(args[i + 1]);
+                            Count = Convert.ToInt32(args[i + 1]);
                         }
                         catch (FormatException)
                         {
-                            Console.WriteLine(Properties.ResourceManager.GetString("Only_Numbers", Properties.CultureInfo));
+                            Console.WriteLine(ResourceManager.GetString("Only_Numbers", CultureInfo));
                             _start = false;
                         }
                         break;
                     case "-t":
-                        Console.WriteLine(Properties.ResourceManager.GetString("Enter_Title", Properties.CultureInfo));
-                        Properties.TitleAndDesc[0] = Console.ReadLine();
+                        Console.WriteLine(ResourceManager.GetString("Enter_Title", CultureInfo));
+                        TitleAndDesc[0] = Console.ReadLine();
                         break;
                     case "-d":
-                        Console.WriteLine(Properties.ResourceManager.GetString("Enter_Description", Properties.CultureInfo));
-                        Properties.TitleAndDesc[1] = Console.ReadLine();
+                        Console.WriteLine(ResourceManager.GetString("Enter_Description", CultureInfo));
+                        TitleAndDesc[1] = Console.ReadLine();
                         break;
                 }
             }
 
             if (!_start) return;
             
-            CfgReader.Check();
+            //CfgReader.Check();
             
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows)) Commands.WinNotification();
-            else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux)) Commands.LinuxNotification();
-            else Console.WriteLine(Properties.ResourceManager.GetString("Sorry_OS", Properties.CultureInfo));
+            if (HasCfg)
+            {
+                if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows)) Commands.WinNotification(
+                    CfgTotalTime, CfgCount);
+                else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux)) Commands.LinuxNotification(
+                    CfgTotalTime, CfgCount);
+                else Console.WriteLine(ResourceManager.GetString("Sorry_OS", CultureInfo));
+            }
+            else
+            {
+                if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows)) Commands.WinNotification(
+                    IterationTime, Count);
+                else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux)) Commands.LinuxNotification(
+                    IterationTime, Count);
+                else Console.WriteLine(ResourceManager.GetString("Sorry_OS", CultureInfo));
+            }
         }
 
         private static void ConvertAndSet(int i, int timeNum) //Получаем число из аргумента (с исключением).
         {
             try
             {
-                Properties.Time[timeNum] = Convert.ToInt32(_arguments[i + 1]);
+                Time[timeNum] = Convert.ToInt32(_arguments[i + 1]);
             }
             catch (FormatException)
             {
-                Console.WriteLine(Properties.ResourceManager.GetString("Only_Numbers", Properties.CultureInfo));
+                Console.WriteLine(ResourceManager.GetString("Only_Numbers", CultureInfo));
                 _start = false;
             }
         }
@@ -97,5 +109,7 @@ namespace ConsoleNot
                 Console.InputEncoding = Encoding.UTF8;
             }
         }
+
+        private static void CfgCheck() => HasCfg = NameValueCollection.Count != 0;
     }
 }

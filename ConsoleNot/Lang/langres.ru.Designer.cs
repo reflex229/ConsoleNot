@@ -56,6 +56,7 @@ namespace ConsoleNot.Resource {
                 return ResourceManager.GetString("There_is_no_", resourceCulture);
             }
         }
+        
         public static string Enter_Title {
             get {
                 return ResourceManager.GetString("Enter_Title", resourceCulture);

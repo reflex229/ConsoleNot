@@ -1,44 +1,12 @@
 using System;
-using System.Collections.Specialized;
 using System.Configuration;
+using static ConsoleNot.Properties;
 
 namespace ConsoleNot
 {
     public static class CfgReader
     {
-        private static NameValueCollection NameValueCollection => ConfigurationManager.AppSettings;
-
-        static CfgReader ()
-        {
-            if (NameValueCollection.Count != 0)
-            {
-                ReadSetting("NotificationTime");
-            }
-        }
-        
-        public static void ReadAllSettings()
-        {
-            try
-            {
-                if (NameValueCollection.Count == 0)
-                {
-                    Console.WriteLine("AppSettings is empty.");
-                }
-                else
-                {
-                    foreach (var key in NameValueCollection.AllKeys)
-                    {
-                        Console.WriteLine("Key: {0} Value: {1}", key, NameValueCollection[key]);
-                    }
-                }
-            }
-            catch (ConfigurationErrorsException)
-            {
-                Console.WriteLine(Properties.ResourceManager.GetString("Config_Error", Properties.CultureInfo));
-            }
-        }  
-  
-        public static string ReadSetting(string key)
+        private static string ReadSetting(string key)
         {
             try
             {
@@ -47,12 +15,12 @@ namespace ConsoleNot
             }  
             catch (ConfigurationErrorsException)
             {
-                Console.WriteLine(Properties.ResourceManager.GetString("Config_Error", Properties.CultureInfo));
+                Console.WriteLine(ResourceManager.GetString("Config_Error", CultureInfo));
                 return null;
             }
         }
-  
-        public static void AddUpdate(string key, string value)
+
+        private static void AddOrUpdate(string key, string value)
         {
             try
             {
@@ -72,33 +40,37 @@ namespace ConsoleNot
             }  
             catch (ConfigurationErrorsException)
             {
-                Console.WriteLine(Properties.ResourceManager.GetString("Config_Error", Properties.CultureInfo));
+                Console.WriteLine(ResourceManager.GetString("Config_Error", CultureInfo));
             }
         }
 
-        public static void Check()
+        public static void Check() //Запись необходимых переменных в файл.
         {
-            if (NameValueCollection.Count == 0)
+            if (!HasCfg)
             {
-                var dt = DateTime.Now.TimeOfDay.ToString();
-                AddUpdate("NotificationTime", dt);
-                AddUpdate("Count", Properties.Count.ToString());
+                Console.WriteLine("Cfg файла нет.");
+                AddOrUpdate("NotificationTime",((int) DateTime.Now.TimeOfDay.TotalSeconds).ToString());
+                AddOrUpdate("Title", TitleAndDesc[0]);
+                AddOrUpdate("Description", TitleAndDesc[1]);
+                AddOrUpdate("Count", Count.ToString());
+                AddOrUpdate("IterationTime", IterationTime.ToString());
             }
             else
             {
-                Properties.PreviousTime = DateTime.Parse(ReadSetting("NotificationTime")).TimeOfDay.ToString();
+                Console.WriteLine("Cfg файл есть.");
+                TitleAndDesc[0] = ReadSetting("Title");
+                TitleAndDesc[1] = ReadSetting("Description");
+                CfgTotalTime = Convert.ToInt32(ReadSetting("IterationTime"));
+                PreviousTime = Convert.ToInt32(ReadSetting("NotificationTime"));
+                CfgCount = Convert.ToInt32(ReadSetting("Count"));
+                Console.WriteLine(PreviousTime);
+                Console.WriteLine(TimeDifference);
             }
         }
 
-        public static void Del() //Удаление переменных из файла
+        public static void Del() //Удаление переменных из файла.
         {
-            
+            Settings.Clear();
         }
     }
 }
-
-//Сохранить время из файла в переменную, вычислить разницу между настоящим временем и временем в файле.
-//Записать задержку в файл.
-/*Запуск программы
- Если кол-во элементов в файле = 0, то сохранить
-*/
