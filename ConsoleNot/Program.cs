@@ -14,8 +14,6 @@ namespace ConsoleNot
         {
             EncodingFix();
             _arguments = args;
-            //CfgCheck();
-            //CfgReader.Del();
 
             if (args.Length < 1)
             {
@@ -63,24 +61,11 @@ namespace ConsoleNot
 
             if (!_start) return;
             
-            //CfgReader.Check();
-            
-            if (HasCfg)
-            {
-                if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows)) Commands.WinNotification(
-                    CfgTotalTime, CfgCount);
-                else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux)) Commands.LinuxNotification(
-                    CfgTotalTime, CfgCount);
-                else Console.WriteLine(ResourceManager.GetString("Sorry_OS", CultureInfo));
-            }
-            else
-            {
-                if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows)) Commands.WinNotification(
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows)) Commands.WinNotification(
                     IterationTime, Count);
                 else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux)) Commands.LinuxNotification(
                     IterationTime, Count);
                 else Console.WriteLine(ResourceManager.GetString("Sorry_OS", CultureInfo));
-            }
         }
 
         private static void ConvertAndSet(int i, int timeNum) //Получаем число из аргумента (с исключением).
@@ -100,16 +85,12 @@ namespace ConsoleNot
         {
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
-                Console.OutputEncoding = Encoding.Unicode;
-                Console.InputEncoding = Encoding.Unicode;
+                Console.OutputEncoding = Encoding.Unicode; Console.InputEncoding = Encoding.Unicode;
             }
             else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux)) 
             {
-                Console.OutputEncoding = Encoding.UTF8;
-                Console.InputEncoding = Encoding.UTF8;
+                Console.OutputEncoding = Encoding.UTF8; Console.InputEncoding = Encoding.UTF8;
             }
         }
-
-        private static void CfgCheck() => HasCfg = NameValueCollection.Count != 0;
     }
 }

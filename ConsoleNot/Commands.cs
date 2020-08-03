@@ -23,11 +23,10 @@ namespace ConsoleNot
                 {
                     stringElements[j].AppendChild(toastXml.CreateTextNode(TitleAndDesc[j]));
                 }
-
+                
                 var toast = new ToastNotification(toastXml);
                 ToastNotificationManager.CreateToastNotifier("ConsoleNotifier").Show(toast);
             }
-            //CfgReader.Del();
         }
         
         public static void LinuxNotification(int totalTime, int count)
@@ -38,7 +37,6 @@ namespace ConsoleNot
                 Thread.Sleep(totalTime);
                 Process.Start("notify-send", $"\"{TitleAndDesc[0]}\" \"{TitleAndDesc[1]}\"");
             }
-            //CfgReader.Del();
         }
     }
 }
