@@ -25,6 +25,7 @@
 -t Заголовок уведомления.
 -d Описание уведомления.
 -c Количество итераций (значение по умолчанию - 1).
+--client Включает режим клиента (вам придётся ввести IP и порт сервера).
 Вы всегда можете завершить работу программы нажав Ctrl+C.
         </value>
     </data>
@@ -51,5 +52,8 @@
     </data>
     <data name="Config_Error" xml:space="preserve">
         <value>Ошибка, возможно файл "ConsoleNot.dll.config" был повреждён.</value>
+    </data>
+    <data name="Server_Error" xml:space="preserve">
+        <value>Ошибка сервера. Цель недостижима. IP: {0}, порт:{1}.</value>
     </data>
 </root>

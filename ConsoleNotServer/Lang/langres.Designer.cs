@@ -7,28 +7,28 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ConsoleNot.Resource {
+namespace ConsoleNotServer.Lang {
     using System;
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class ru {
+    internal class langres {
         
         private static System.Resources.ResourceManager resourceMan;
         
         private static System.Globalization.CultureInfo resourceCulture;
         
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal ru() {
+        internal langres() {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static System.Resources.ResourceManager ResourceManager {
+        internal static System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.Equals(null, resourceMan)) {
-                    System.Resources.ResourceManager temp = new System.Resources.ResourceManager("ConsoleNot.Languages.ru", typeof(ru).Assembly);
+                    System.Resources.ResourceManager temp = new System.Resources.ResourceManager("ConsoleNotServer.Lang.langres", typeof(langres).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -36,7 +36,7 @@ namespace ConsoleNot.Resource {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static System.Globalization.CultureInfo Culture {
+        internal static System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -45,63 +45,39 @@ namespace ConsoleNot.Resource {
             }
         }
         
-        public static string Commands_Help_ {
+        internal static string Server_Started {
             get {
-                return ResourceManager.GetString("Commands_Help_", resourceCulture);
+                return ResourceManager.GetString("Server_Started", resourceCulture);
             }
         }
         
-        public static string There_is_no_ {
-            get {
-                return ResourceManager.GetString("There_is_no_", resourceCulture);
-            }
-        }
-        
-        public static string Enter_Title {
-            get {
-                return ResourceManager.GetString("Enter_Title", resourceCulture);
-            }
-        }
-        
-        public static string Enter_Description {
-            get {
-                return ResourceManager.GetString("Enter_Description", resourceCulture);
-            }
-        }
-        
-        public static string Sorry_OS {
-            get {
-                return ResourceManager.GetString("Sorry_OS", resourceCulture);
-            }
-        }
-        
-        public static string Only_Numbers {
-            get {
-                return ResourceManager.GetString("Only_Numbers", resourceCulture);
-            }
-        }
-        
-        public static string Success {
-            get {
-                return ResourceManager.GetString("Success", resourceCulture);
-            }
-        }
-        
-        public static string Title {
-            get {
-                return ResourceManager.GetString("Title", resourceCulture);
-            }
-        }
-        
-        public static string Config_Error {
-            get {
-                return ResourceManager.GetString("Config_Error", resourceCulture);
-            }
-        }
-        
-        public static string Server_Error {
+        internal static string Server_Error {
             get {
                 return ResourceManager.GetString("Server_Error", resourceCulture);
+            }
+        }
+        
+        internal static string Server_Wrong_IP {
+            get {
+                return ResourceManager.GetString("Server_Wrong_IP", resourceCulture);
+            }
+        }
+        
+        internal static string Program_No_Arguments {
+            get {
+                return ResourceManager.GetString("Program_No_Arguments", resourceCulture);
+            }
+        }
+        
+        internal static string Program_Help {
+            get {
+                return ResourceManager.GetString("Program_Help", resourceCulture);
+            }
+        }
+        
+        internal static string Program_Only_Numbers {
+            get {
+                return ResourceManager.GetString("Program_Only_Numbers", resourceCulture);
             }
         }
     }

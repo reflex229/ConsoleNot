@@ -27,6 +27,8 @@ namespace ConsoleNot
                 var toast = new ToastNotification(toastXml);
                 ToastNotificationManager.CreateToastNotifier("ConsoleNotifier").Show(toast);
             }
+
+            Console.Read();
         }
         
         public static void LinuxNotification(int totalTime, int count)

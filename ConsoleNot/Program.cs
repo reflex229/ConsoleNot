@@ -28,6 +28,13 @@ namespace ConsoleNot
                     case "--help":
                         Commands.Help();
                         return;
+                    case "--client":
+                        Console.WriteLine("Enter server's port: ");
+                        var port = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine("Enter server's IP address: ");
+                        var ip = Console.ReadLine();
+                        new Client(port, ip); //TODO: Request port and address to user
+                        break;
                     case "-h":
                         ConvertAndSet(i, 0);
                         break;
@@ -60,7 +67,7 @@ namespace ConsoleNot
             }
 
             if (!_start) return;
-            
+
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows)) Commands.WinNotification(
                     IterationTime, Count);
                 else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux)) Commands.LinuxNotification(

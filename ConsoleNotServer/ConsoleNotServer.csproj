@@ -6,31 +6,26 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="Microsoft.Toolkit.Uwp.Notifications" Version="6.1.0" />
-      <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.7.0" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <EmbeddedResource Update="Resource\ru.resx">
+      <EmbeddedResource Update="Lang\langres.resx">
         <Generator>ResXFileCodeGenerator</Generator>
-        <LastGenOutput>ru.Designer.cs</LastGenOutput>
+        <LastGenOutput>langres.Designer.cs</LastGenOutput>
       </EmbeddedResource>
-      <EmbeddedResource Update="Resource\en.resx">
+      <EmbeddedResource Update="Lang\langres.ru.resx">
         <Generator>ResXFileCodeGenerator</Generator>
-        <LastGenOutput>en.Designer.cs</LastGenOutput>
+        <LastGenOutput>langres.ru.Designer.cs</LastGenOutput>
       </EmbeddedResource>
     </ItemGroup>
 
     <ItemGroup>
-      <Compile Update="Resource\ru.Designer.cs">
+      <Compile Update="Lang\langres.Designer.cs">
         <DesignTime>True</DesignTime>
         <AutoGen>True</AutoGen>
-        <DependentUpon>ru.resx</DependentUpon>
+        <DependentUpon>langres.resx</DependentUpon>
       </Compile>
-      <Compile Update="Resource\en.Designer.cs">
+      <Compile Update="Lang\langres.ru.Designer.cs">
         <DesignTime>True</DesignTime>
         <AutoGen>True</AutoGen>
-        <DependentUpon>en.resx</DependentUpon>
+        <DependentUpon>langres.ru.resx</DependentUpon>
       </Compile>
     </ItemGroup>
 

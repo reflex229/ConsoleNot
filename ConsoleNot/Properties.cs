@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Globalization;
 using System.Reflection;
 using System.Resources;
@@ -17,5 +18,12 @@ namespace ConsoleNot
             ResourceManager.GetString("Title", CultureInfo)
         };
         public static int IterationTime => Time[0] * 3600000 + Time[1] * 60000 + Time[2] * 1000;
+        public static Dictionary<string, object> Values => new Dictionary<string, object>
+        {
+            {"Title", TitleAndDesc[0]},
+            {"Description", TitleAndDesc[1]},
+            {"IterationTime", IterationTime},
+            {"Count", Count}
+        };
     }
 }
