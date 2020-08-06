@@ -45,7 +45,7 @@ namespace ConsoleNot
             }
             catch (Exception e)
             {
-                Console.WriteLine(ResourceManager.GetString("Client_Exception", CultureInfo));
+                Console.WriteLine(ResourceManager.GetString("Client_Exception", CultureInfo), e.Message);
             }
         }
     }
