@@ -110,5 +110,17 @@ namespace ConsoleNot.Resource {
                 return ResourceManager.GetString("Client_Exception", resourceCulture);
             }
         }
+        
+        public static string Enter_Port {
+            get {
+                return ResourceManager.GetString("Enter_Port", resourceCulture);
+            }
+        }
+        
+        public static string Enter_IP {
+            get {
+                return ResourceManager.GetString("Enter_IP", resourceCulture);
+            }
+        }
     }
 }

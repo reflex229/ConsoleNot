@@ -59,4 +59,10 @@ You can always stop the program by pressing Ctrl+C.
     <data name="Client_Exception" xml:space="preserve">
         <value>Error. Exception message: {0}</value>
     </data>
+    <data name="Enter_Port" xml:space="preserve">
+        <value>Enter server's port: </value>
+    </data>
+    <data name="Enter_IP" xml:space="preserve">
+        <value>Enter server's IP address: </value>
+    </data>
 </root>

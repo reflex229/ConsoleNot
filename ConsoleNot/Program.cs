@@ -9,6 +9,7 @@ namespace ConsoleNot
     {
         private static string[] _arguments;
         private static bool _start = true;
+        private static int port;
 
         private static void Main(string[] args)
         {
@@ -29,9 +30,17 @@ namespace ConsoleNot
                         Commands.Help();
                         return;
                     case "--client":
-                        Console.WriteLine("Enter server's port: ");
-                        var port = Convert.ToInt32(Console.ReadLine());
-                        Console.WriteLine("Enter server's IP address: ");
+                        Console.WriteLine(ResourceManager.GetString("Enter_Port", CultureInfo));
+                        try
+                        {
+                            port = Convert.ToInt32(Console.ReadLine());
+                        }
+                        catch (Exception)
+                        {
+                            Console.WriteLine(ResourceManager.GetString("Only_Numbers", CultureInfo));
+                            return;
+                        }
+                        Console.WriteLine(ResourceManager.GetString("Enter_IP", CultureInfo));
                         var ip = Console.ReadLine();
                         new Client(port, ip);
                         break;
@@ -70,9 +79,9 @@ namespace ConsoleNot
 
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows)) Commands.WinNotification(
                     IterationTime, Count);
-                else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux)) Commands.LinuxNotification(
+            else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux)) Commands.LinuxNotification(
                     IterationTime, Count);
-                else Console.WriteLine(ResourceManager.GetString("Sorry_OS", CultureInfo));
+            else Console.WriteLine(ResourceManager.GetString("Sorry_OS", CultureInfo));
         }
 
         private static void ConvertAndSet(int i, int timeNum) //Получаем число из аргумента (с исключением).

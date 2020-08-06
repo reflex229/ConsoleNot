@@ -2,7 +2,6 @@ using System;
 using System.Text;
 using System.Net;
 using System.Net.Sockets;
-using ConsoleNot.Resource;
 using static ConsoleNot.Properties;
 using ConsoleNotLib;
 
@@ -34,6 +33,7 @@ namespace ConsoleNot
 
                     if (builder.ToString() == "close")
                     {
+                        Console.WriteLine("Exiting...");
                         Environment.Exit(0);
                     }
                     else

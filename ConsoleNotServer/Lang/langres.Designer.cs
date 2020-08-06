@@ -80,5 +80,11 @@ namespace ConsoleNotServer.Lang {
                 return ResourceManager.GetString("Program_Only_Numbers", resourceCulture);
             }
         }
+        
+        internal static string Error_Exception {
+            get {
+                return ResourceManager.GetString("Error_Exception", resourceCulture);
+            }
+        }
     }
 }

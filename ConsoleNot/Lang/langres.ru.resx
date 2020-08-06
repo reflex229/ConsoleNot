@@ -59,4 +59,10 @@
     <data name="Client_Exception" xml:space="preserve">
         <value>Ошибка. Сообщение исключения: {0}</value>
     </data>
+    <data name="Enter_Port" xml:space="preserve">
+        <value>Введите порт сервера: </value>
+    </data>
+    <data name="Enter_IP" xml:space="preserve">
+        <value>Введите IP адрес сервера: </value>
+    </data>
 </root>

@@ -31,8 +31,7 @@
         <value>Нет аргументов. Выход...</value>
     </data>
     <data name="Program_Help" xml:space="preserve">
-        <value>--ip IP адрес.
---port Порт.</value>
+        <value>--port Порт.</value>
     </data>
     <data name="Program_Only_Numbers" xml:space="preserve">
         <value>Ошибка. Вам следует вводить только числа.</value>

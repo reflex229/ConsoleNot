@@ -31,9 +31,12 @@
         <value>There is no arguments given. Exiting...</value>
     </data>
     <data name="Program_Help" xml:space="preserve">
-        <value>--ip IP Address.</value><!--port Port. -->
+        <value>--port Port.</value>
     </data>
     <data name="Program_Only_Numbers" xml:space="preserve">
         <value>Error. You should only enter numbers.</value>
+    </data>
+    <data name="Error_Exception" xml:space="preserve">
+        <value>Error. Exception: {0}</value>
     </data>
 </root>

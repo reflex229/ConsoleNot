@@ -10,6 +10,7 @@ namespace ConsoleNotServer
 {
     public class Server
     {
+        private ConsoleKeyInfo _cki;
         public Server(int _port)
         {
             var ipPoint = new IPEndPoint(IPAddress.Parse("127.0.0.1"), _port);
@@ -20,17 +21,20 @@ namespace ConsoleNotServer
                 listenSocket.Bind(ipPoint);
                 listenSocket.Listen(10);
                 
-                Console.WriteLine("Сервер запущен. Ожидание подключений...");
+                Console.WriteLine(ResourceManager.GetString("Server_Started", CultureInfo));
                 
                 while (true)
                 {
+                    if (Console.ReadKey().Key == ConsoleKey.X) Environment.Exit(0);
+                    
                     var handler = listenSocket.Accept();
-                    // получаем сообщение
+                    
                     var builder = new StringBuilder();
                     var data = new byte[256];
                     
                     do
                     {
+                        if (Console.ReadKey().Key != ConsoleKey.X) Environment.Exit(0);
                         var bytes = handler.Receive(data);
                         builder.Append(Encoding.Unicode.GetString(data, 0, bytes));
                     } while (handler.Available>0);
@@ -52,7 +56,7 @@ namespace ConsoleNotServer
             }
             catch(Exception e)
             {
-                Console.WriteLine($"Error. Exception: {e.Message}");
+                Console.WriteLine(ResourceManager.GetString("Error_Exception", CultureInfo), e.Message);
             }
         }
     }
