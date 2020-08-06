@@ -9,4 +9,8 @@
       <Folder Include="obj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <PackageReference Include="Microsoft.Windows.SDK.Contracts" Version="10.0.17763.1000" />
+    </ItemGroup>
+
 </Project>

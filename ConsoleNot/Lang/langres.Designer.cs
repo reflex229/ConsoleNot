@@ -104,5 +104,11 @@ namespace ConsoleNot.Resource {
                 return ResourceManager.GetString("Server_Error", resourceCulture);
             }
         }
+        
+        public static string Client_Exception {
+            get {
+                return ResourceManager.GetString("Client_Exception", resourceCulture);
+            }
+        }
     }
 }

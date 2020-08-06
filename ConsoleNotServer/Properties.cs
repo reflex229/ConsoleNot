@@ -10,6 +10,6 @@ namespace ConsoleNotServer
         public static ResourceManager ResourceManager => new ResourceManager("ConsoleNotServer.Lang.langres",
             Assembly.Load("ConsoleNotServer"));
         public static CultureInfo CultureInfo => CultureInfo.CurrentCulture;
-        public static Dictionary<string, object> Values { get; set; }
+        public static Dictionary<string, string> Values { get; set; }
     }
 }

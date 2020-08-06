@@ -56,4 +56,7 @@ You can always stop the program by pressing Ctrl+C.
     <data name="Server_Error" xml:space="preserve">
         <value>Server error. The destination point is unreachable. IP is: {0}, port is:{1}.</value>
     </data>
+    <data name="Client_Exception" xml:space="preserve">
+        <value>Error. Exception message: {0}</value>
+    </data>
 </root>

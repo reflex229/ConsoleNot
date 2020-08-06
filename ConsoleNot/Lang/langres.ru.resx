@@ -56,4 +56,7 @@
     <data name="Server_Error" xml:space="preserve">
         <value>Ошибка сервера. Цель недостижима. IP: {0}, порт:{1}.</value>
     </data>
+    <data name="Client_Exception" xml:space="preserve">
+        <value>Ошибка. Сообщение исключения: {0}</value>
+    </data>
 </root>

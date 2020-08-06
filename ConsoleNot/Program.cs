@@ -33,7 +33,7 @@ namespace ConsoleNot
                         var port = Convert.ToInt32(Console.ReadLine());
                         Console.WriteLine("Enter server's IP address: ");
                         var ip = Console.ReadLine();
-                        new Client(port, ip); //TODO: Request port and address to user
+                        new Client(port, ip);
                         break;
                     case "-h":
                         ConvertAndSet(i, 0);

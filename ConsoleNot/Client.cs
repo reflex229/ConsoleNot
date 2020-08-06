@@ -2,8 +2,9 @@ using System;
 using System.Text;
 using System.Net;
 using System.Net.Sockets;
+using ConsoleNot.Resource;
 using static ConsoleNot.Properties;
-using static ConsoleNotLib.JsonWork;
+using ConsoleNotLib;
 
 namespace ConsoleNot
 {
@@ -14,20 +15,20 @@ namespace ConsoleNot
             try
             {
                 var ipPoint = new IPEndPoint(IPAddress.Parse(_address), _port);
-
                 var socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-
                 socket.Connect(ipPoint);
-                var data = ToJson(Values);
+                
+                var data = JsonWork.ToJson(Values);
                 socket.Send(data);
+                
                 while (true)
                 {
                     data = new byte[256];
                     var builder = new StringBuilder();
-                    int bytes;
+                    
                     do
                     {
-                        bytes = socket.Receive(data, data.Length, 0);
+                        var bytes = socket.Receive(data, data.Length, 0);
                         builder.Append(Encoding.Unicode.GetString(data, 0, bytes));
                     } while (socket.Available > 0);
 
@@ -37,13 +38,14 @@ namespace ConsoleNot
                     }
                     else
                     {
-                        Console.WriteLine(builder.ToString());
+                        CallNot.CallNotification(TitleAndDesc,
+                            ResourceManager.GetString("Sorry_OS", CultureInfo));
                     }
                 }
             }
             catch (Exception e)
             {
-                Console.WriteLine($"Error. Exception: {e.Message}");
+                Console.WriteLine(ResourceManager.GetString("Client_Exception", CultureInfo));
             }
         }
     }

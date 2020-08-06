@@ -6,10 +6,10 @@ namespace ConsoleNotLib
 {
     public static class JsonWork
     {
-        public static byte[] ToJson(Dictionary<string, object> dictionary) => Encoding.Unicode.
+        public static byte[] ToJson(Dictionary<string, string> dictionary) => Encoding.Unicode.
             GetBytes(JsonSerializer.Serialize(dictionary));
 
-        public static Dictionary<string, object> FromJson(string jsonBytes) =>
-            JsonSerializer.Deserialize<Dictionary<string, object>>(jsonBytes);
+        public static Dictionary<string, string> FromJson(string json) =>
+            JsonSerializer.Deserialize<Dictionary<string, string>>(json);
     }
 }

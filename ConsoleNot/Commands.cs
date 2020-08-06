@@ -1,7 +1,6 @@
 using System;
 using System.Threading;
-using System.Diagnostics;
-using Windows.UI.Notifications;
+using ConsoleNotLib;
 using static ConsoleNot.Properties;
 
 namespace ConsoleNot
@@ -16,19 +15,8 @@ namespace ConsoleNot
             for (var i = 0; i < count; i++)
             {
                 Thread.Sleep(totalTime);
-                var toastXml =
-                    ToastNotificationManager.GetTemplateContent(ToastTemplateType.ToastImageAndText04);
-                var stringElements = toastXml.GetElementsByTagName("text");
-                for (var j = 0; j < 2; j++)
-                {
-                    stringElements[j].AppendChild(toastXml.CreateTextNode(TitleAndDesc[j]));
-                }
-                
-                var toast = new ToastNotification(toastXml);
-                ToastNotificationManager.CreateToastNotifier("ConsoleNotifier").Show(toast);
+                CallNot.CallNotification(TitleAndDesc,ResourceManager.GetString("Sorry_OS", CultureInfo));
             }
-
-            Console.Read();
         }
         
         public static void LinuxNotification(int totalTime, int count)
@@ -37,7 +25,7 @@ namespace ConsoleNot
             for (var i = 0; i < count; i++)
             {
                 Thread.Sleep(totalTime);
-                Process.Start("notify-send", $"\"{TitleAndDesc[0]}\" \"{TitleAndDesc[1]}\"");
+                CallNot.CallNotification(TitleAndDesc,ResourceManager.GetString("Sorry_OS", CultureInfo));
             }
         }
     }
