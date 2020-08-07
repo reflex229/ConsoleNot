@@ -20,10 +20,6 @@ namespace ConsoleNotServer
                     case "--help":
                         Console.WriteLine(ResourceManager.GetString("Program_Help", CultureInfo));
                         return;
-                    /*case "--ip":
-                       _ip = args[i + 1];
-                       break;
-                    */
                     case "--port":
                         try
                         {
