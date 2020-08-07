@@ -30,11 +30,15 @@ namespace ConsoleNot
                         var bytes = socket.Receive(data, data.Length, 0);
                         builder.Append(Encoding.Unicode.GetString(data, 0, bytes));
                     } while (socket.Available > 0);
-
+                    
                     if (builder.ToString() == "close")
                     {
-                        Console.WriteLine("Exiting...");
                         Environment.Exit(0);
+                    }
+                    else if (builder.ToString().Contains("{"))
+                    {
+                        TitleAndDesc[0] = JsonWork.FromJson(builder.ToString())["Title"];
+                        TitleAndDesc[1] = JsonWork.FromJson(builder.ToString())["Description"];
                     }
                     else
                     {
