@@ -122,5 +122,11 @@ namespace ConsoleNot.Resource {
                 return ResourceManager.GetString("Enter_IP", resourceCulture);
             }
         }
+        
+        public static string Notify_Ex {
+            get {
+                return ResourceManager.GetString("Notify_Ex", resourceCulture);
+            }
+        }
     }
 }

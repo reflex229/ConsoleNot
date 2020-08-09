@@ -65,4 +65,7 @@
     <data name="Enter_IP" xml:space="preserve">
         <value>Введите IP адрес сервера: </value>
     </data>
+    <data name="Notify_Ex" xml:space="preserve">
+        <value>Ошибка. Скорее всего, зависимость "notify-send" не установлена.</value>
+    </data>
 </root>

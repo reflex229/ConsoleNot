@@ -15,7 +15,8 @@ namespace ConsoleNot
             for (var i = 0; i < count; i++)
             {
                 Thread.Sleep(totalTime);
-                CallNot.CallNotification(TitleAndDesc,ResourceManager.GetString("Sorry_OS", CultureInfo));
+                CallNot.CallNotification(TitleAndDesc,ResourceManager.GetString("Sorry_OS", CultureInfo),
+                    ResourceManager.GetString("Notify_Ex", CultureInfo));
             }
         }
         
@@ -25,7 +26,8 @@ namespace ConsoleNot
             for (var i = 0; i < count; i++)
             {
                 Thread.Sleep(totalTime);
-                CallNot.CallNotification(TitleAndDesc,ResourceManager.GetString("Sorry_OS", CultureInfo));
+                CallNot.CallNotification(TitleAndDesc,ResourceManager.GetString("Sorry_OS", CultureInfo),
+                    ResourceManager.GetString("Notify_Ex", CultureInfo));
             }
         }
     }

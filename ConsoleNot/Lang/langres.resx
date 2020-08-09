@@ -65,4 +65,7 @@ You can always stop the program by pressing Ctrl+C.
     <data name="Enter_IP" xml:space="preserve">
         <value>Enter server's IP address: </value>
     </data>
+    <data name="Notify_Ex" xml:space="preserve">
+        <value>Error. Most likely you do not have the dependency "notify-send" installed.</value>
+    </data>
 </root>

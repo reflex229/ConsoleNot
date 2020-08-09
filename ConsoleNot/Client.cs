@@ -43,7 +43,8 @@ namespace ConsoleNot
                     else
                     {
                         CallNot.CallNotification(TitleAndDesc,
-                            ResourceManager.GetString("Sorry_OS", CultureInfo));
+                            ResourceManager.GetString("Sorry_OS", CultureInfo),
+                            ResourceManager.GetString("Notify_Ex", CultureInfo));
                     }
                 }
             }
