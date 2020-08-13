@@ -4,7 +4,6 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 using ConsoleNotLib;
-using static ConsoleNotServer.Properties;
 
 namespace ConsoleNotServer
 {
@@ -20,7 +19,8 @@ namespace ConsoleNotServer
                 listenSocket.Bind(ipPoint);
                 listenSocket.Listen(10);
 
-                Console.WriteLine(ResourceManager.GetString("Server_Started", CultureInfo));
+                Console.WriteLine(Properties.ResourceManager.GetString("Server_Started",
+                    Properties.CultureInfo));
 
                 while (true)
                 {
@@ -34,14 +34,14 @@ namespace ConsoleNotServer
                         builder.Append(Encoding.Unicode.GetString(data, 0, bytes));
                     } while (handler.Available > 0);
 
-                    Values = JsonWork.FromJson(builder.ToString());
+                    Properties.Values = JsonWork.FromJson(builder.ToString());
 
-                    handler.Send(JsonWork.ToJson(Values));
+                    handler.Send(JsonWork.ToJson(Properties.Values));
                     Thread.Sleep(100);
                     
-                    for (var i = 0; i < Convert.ToInt32(Values["Count"]); i++)
+                    for (var i = 0; i < Convert.ToInt32(Properties.Values["Count"]); i++)
                     {
-                        Thread.Sleep(Convert.ToInt32(Values["IterationTime"]));
+                        Thread.Sleep(Convert.ToInt32(Properties.Values["IterationTime"]));
                         handler.Send(Encoding.Unicode.GetBytes("call"));
                     }
 
@@ -54,7 +54,8 @@ namespace ConsoleNotServer
             }
             catch (Exception e)
             {
-                Console.WriteLine(ResourceManager.GetString("Error_Exception", CultureInfo), e);
+                Console.WriteLine(Properties.ResourceManager.GetString("Error_Exception",
+                    Properties.CultureInfo), e);
             }
         }
     }

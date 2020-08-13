@@ -1,24 +1,25 @@
 ﻿using System;
-using static ConsoleNotServer.Properties;
 
 namespace ConsoleNotServer
 {
-    internal static class Program
+    public class Program
     {
         private static int _port;
 
-        private static void Main(string[] args)
+        public static void Main (string[] args)
         {
             if (args.Length <= 1)
             {
-                Console.WriteLine(ResourceManager.GetString("Program_No_Arguments", CultureInfo));
+                Console.WriteLine(Properties.ResourceManager.GetString("Program_No_Arguments",
+                    Properties.CultureInfo));
                 return;
             }
             for (var i = 0; i < args.Length; i++)
                 switch (args[i])
                 {
                     case "--help":
-                        Console.WriteLine(ResourceManager.GetString("Program_Help", CultureInfo));
+                        Console.WriteLine(Properties.ResourceManager.GetString("Program_Help",
+                            Properties.CultureInfo));
                         return;
                     case "--port":
                         try
@@ -27,7 +28,8 @@ namespace ConsoleNotServer
                         }
                         catch (Exception)
                         {
-                            Console.WriteLine(ResourceManager.GetString("Program_Only_Numbers", CultureInfo));
+                            Console.WriteLine(Properties.ResourceManager.GetString("Program_Only_Numbers",
+                                Properties.CultureInfo));
                         }
                         break;
                 }
