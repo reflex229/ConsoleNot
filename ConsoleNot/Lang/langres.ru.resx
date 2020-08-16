@@ -30,7 +30,7 @@
         </value>
     </data>
     <data name="There_is_no_" xml:space="preserve">
-        <value>Не даны аргументы. Программа завершает свою работу. Пожалуйста, введите аргументы (смотрите --help) и попробуйте ещё раз.</value>
+        <value>Не задано никаких аргументов. Пожалуйста, введите аргументы (смотрите --help). Для выхода нажмите Enter.</value>
     </data>
     <data name="Enter_Title" xml:space="preserve">
         <value>Введите заголовок: </value>
@@ -54,7 +54,7 @@
         <value>Ошибка, возможно файл "ConsoleNot.dll.config" был повреждён.</value>
     </data>
     <data name="Server_Error" xml:space="preserve">
-        <value>Ошибка сервера. Цель недостижима. IP: {0}, порт:{1}.</value>
+        <value>Ошибка сервера. Цель недостижима. IP: {0}, порт: {1}.</value>
     </data>
     <data name="Client_Exception" xml:space="preserve">
         <value>Ошибка. Сообщение исключения: {0}</value>

@@ -19,7 +19,7 @@ namespace ConsoleNot
                 
                 var data = JsonWork.ToJson(Values);
                 socket.Send(data);
-                
+
                 while (true)
                 {
                     data = new byte[256];
@@ -55,3 +55,11 @@ namespace ConsoleNot
         }
     }
 }
+
+/*TODO:
+var client = new RestClient("https://localhost:5001/notContr?Id=123&Name=321");
+client.Timeout = -1;
+var request = new RestRequest(Method.POST);
+IRestResponse response = client.Execute(request);
+Console.WriteLine(response.Content);
+ */

@@ -12,6 +12,7 @@ namespace ConsoleNotServer
             {
                 Console.WriteLine(Properties.ResourceManager.GetString("Program_No_Arguments",
                     Properties.CultureInfo));
+                Console.ReadLine();
                 return;
             }
             for (var i = 0; i < args.Length; i++)

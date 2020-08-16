@@ -28,7 +28,7 @@
         <value>Неверный IP или порт.</value>
     </data>
     <data name="Program_No_Arguments" xml:space="preserve">
-        <value>Нет аргументов. Выход...</value>
+        <value>Не задано никаких аргументов. Пожалуйста, введите аргументы (смотрите --help). Для выхода нажмите Enter.</value>
     </data>
     <data name="Program_Help" xml:space="preserve">
         <value>--port Порт.</value>

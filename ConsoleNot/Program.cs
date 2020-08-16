@@ -19,6 +19,7 @@ namespace ConsoleNot
             if (args.Length < 1)
             {
                 Console.WriteLine(ResourceManager.GetString("There_is_no_", CultureInfo));
+                Console.ReadLine();
                 return;
             }
             

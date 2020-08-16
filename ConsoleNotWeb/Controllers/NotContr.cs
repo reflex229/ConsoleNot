@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using ConsoleNotServer;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -28,6 +30,14 @@ namespace ConsoleNotWeb
                 {"Count", "Count"}
             };
             return Properties.Values;
+        }
+
+        [HttpPost]
+        public string Post(FormCollection formCollection)
+        {
+            Console.WriteLine(formCollection["Id"]);
+            Console.WriteLine(formCollection["Name"]);
+            return "Okay!";
         }
     }
 }
