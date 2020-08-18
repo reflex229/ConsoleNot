@@ -40,7 +40,7 @@ You can always stop the program by pressing Ctrl+C.
     </data>
     <data name="Sorry_OS" xml:space="preserve">
         <value>Sorry, your operating system is not supported.</value>
-    </data>
+    </data> 
     <data name="Only_Numbers" xml:space="preserve">
         <value>Error, you should only enter numbers (ex. -c 10).</value>
     </data>

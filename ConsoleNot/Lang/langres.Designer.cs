@@ -14,7 +14,7 @@ namespace ConsoleNot.Resource {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class langres {
+    internal class langres {
         
         private static System.Resources.ResourceManager resourceMan;
         
@@ -25,7 +25,7 @@ namespace ConsoleNot.Resource {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static System.Resources.ResourceManager ResourceManager {
+        internal static System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.Equals(null, resourceMan)) {
                     System.Resources.ResourceManager temp = new System.Resources.ResourceManager("ConsoleNot.Lang.langres", typeof(langres).Assembly);
@@ -36,7 +36,7 @@ namespace ConsoleNot.Resource {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static System.Globalization.CultureInfo Culture {
+        internal static System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -45,85 +45,85 @@ namespace ConsoleNot.Resource {
             }
         }
         
-        public static string Commands_Help_ {
+        internal static string Commands_Help_ {
             get {
                 return ResourceManager.GetString("Commands_Help_", resourceCulture);
             }
         }
         
-        public static string There_is_no_ {
+        internal static string There_is_no_ {
             get {
                 return ResourceManager.GetString("There_is_no_", resourceCulture);
             }
         }
         
-        public static string Enter_Title {
+        internal static string Enter_Title {
             get {
                 return ResourceManager.GetString("Enter_Title", resourceCulture);
             }
         }
         
-        public static string Enter_Description {
+        internal static string Enter_Description {
             get {
                 return ResourceManager.GetString("Enter_Description", resourceCulture);
             }
         }
         
-        public static string Sorry_OS {
+        internal static string Sorry_OS {
             get {
                 return ResourceManager.GetString("Sorry_OS", resourceCulture);
             }
         }
         
-        public static string Only_Numbers {
+        internal static string Only_Numbers {
             get {
                 return ResourceManager.GetString("Only_Numbers", resourceCulture);
             }
         }
         
-        public static string Success {
+        internal static string Success {
             get {
                 return ResourceManager.GetString("Success", resourceCulture);
             }
         }
         
-        public static string Title {
+        internal static string Title {
             get {
                 return ResourceManager.GetString("Title", resourceCulture);
             }
         }
         
-        public static string Config_Error {
+        internal static string Config_Error {
             get {
                 return ResourceManager.GetString("Config_Error", resourceCulture);
             }
         }
         
-        public static string Server_Error {
+        internal static string Server_Error {
             get {
                 return ResourceManager.GetString("Server_Error", resourceCulture);
             }
         }
         
-        public static string Client_Exception {
+        internal static string Client_Exception {
             get {
                 return ResourceManager.GetString("Client_Exception", resourceCulture);
             }
         }
         
-        public static string Enter_Port {
+        internal static string Enter_Port {
             get {
                 return ResourceManager.GetString("Enter_Port", resourceCulture);
             }
         }
         
-        public static string Enter_IP {
+        internal static string Enter_IP {
             get {
                 return ResourceManager.GetString("Enter_IP", resourceCulture);
             }
         }
         
-        public static string Notify_Ex {
+        internal static string Notify_Ex {
             get {
                 return ResourceManager.GetString("Notify_Ex", resourceCulture);
             }
