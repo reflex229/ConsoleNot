@@ -9,11 +9,11 @@ namespace ConsoleNot
 {
     public class Client
     {
-        public Client(int _port, string _address)
+        public Client(int port, string address)
         {
             try
             {
-                var ipPoint = new IPEndPoint(IPAddress.Parse(_address), _port);
+                var ipPoint = new IPEndPoint(IPAddress.Parse(address), port);
                 var socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
                 socket.Connect(ipPoint);
                 

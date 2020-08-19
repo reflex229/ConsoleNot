@@ -1,7 +1,10 @@
 using System;
 using System.Diagnostics;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using Windows.UI.Notifications;
+
+[assembly:AssemblyKeyFile("rflxlib.snk")]
 
 namespace ConsoleNotLib
 {
