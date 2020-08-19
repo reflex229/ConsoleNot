@@ -5,3 +5,5 @@ riderModule.iml
 /_ReSharper.Caches/
 ConsoleNot.sln.DotSettings.user
 ConsoleNot/ConsoleNot.csproj.DotSettings.user
+ConsoleNot/rflx.snk
+ConsoleNotLib/rflxlib.snk

@@ -1,7 +1,10 @@
 ﻿using System;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
 using static ConsoleNot.Properties;
+
+[assembly:AssemblyKeyFile("rflx.snk")]
 
 namespace ConsoleNot
 {
@@ -9,7 +12,7 @@ namespace ConsoleNot
     {
         private static string[] _arguments;
         private static bool _start = true;
-        private static int port;
+        private static int _port;
 
         private static void Main(string[] args)
         {
@@ -34,7 +37,7 @@ namespace ConsoleNot
                         Console.WriteLine(ResourceManager.GetString("Enter_Port", CultureInfo));
                         try
                         {
-                            port = Convert.ToInt32(Console.ReadLine());
+                            _port = Convert.ToInt32(Console.ReadLine());
                         }
                         catch (Exception)
                         {
@@ -43,7 +46,7 @@ namespace ConsoleNot
                         }
                         Console.WriteLine(ResourceManager.GetString("Enter_IP", CultureInfo));
                         var ip = Console.ReadLine();
-                        new Client(port, ip);
+                        new Client(_port, ip);
                         break;
                     case "-h":
                         ConvertAndSet(i, 0);
