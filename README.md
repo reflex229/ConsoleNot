@@ -5,7 +5,7 @@ Unlimited amount of notifications.
 Web interface to manage all notifications.
 
 Socket will be changed to HTTP requests.
-## You can find instructions on the project's site for [Linux](http://consolenot.ru/About#linux) or [Windows](http://consolenot.ru/About#windows)
+## You can find instructions on the project's site for [Linux](http://consolenot.ru/Home/About#linux) or [Windows](http://consolenot.ru/Home/About#windows)
 ## English description
 Console notifier with desktop notifications, written in C#.
 Example: the doctor prescribed you a course of treatment with pills (you need to take
