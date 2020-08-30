@@ -8,4 +8,4 @@ rm /home/reflex/consolenot/README.txt
 touch /home/reflex/consolenot/README.txt
 echo "Execute (in console) 'ConsoleNot' file for Linux or 'ConsoleNot.exe' for Windows." >> /home/reflex/consolenot/README.txt
 zip -r /home/reflex/consolenot.zip /home/reflex/consolenot/ -j
-scp /home/reflex/consolenot.zip consolenot.ru:/home/reflex/ConsoleNotSite/ConsoleNotSite/wwwroot/
+scp /home/reflex/consolenot.zip 192.168.88.40:/home/reflex/ConsoleNotSite/ConsoleNotSite/wwwroot/
