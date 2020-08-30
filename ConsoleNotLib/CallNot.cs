@@ -4,8 +4,6 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using Windows.UI.Notifications;
 
-[assembly:AssemblyKeyFile("rflxlib.snk")]
-
 namespace ConsoleNotLib
 {
     public static class CallNot

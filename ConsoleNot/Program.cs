@@ -4,8 +4,6 @@ using System.Runtime.InteropServices;
 using System.Text;
 using static ConsoleNot.Properties;
 
-[assembly:AssemblyKeyFile("rflx.snk")]
-
 namespace ConsoleNot
 {
     internal static class Program
