@@ -1,6 +1,5 @@
 using System;
 using System.Diagnostics;
-using System.Reflection;
 using System.Runtime.InteropServices;
 using Windows.UI.Notifications;
 
@@ -18,18 +17,17 @@ namespace ConsoleNotLib
         private static void Windows(string[] titleAndDesc)
         {
             var toastXml =
-                    ToastNotificationManager.GetTemplateContent(ToastTemplateType.ToastImageAndText04);
-                var stringElements = toastXml.GetElementsByTagName("text");
+                ToastNotificationManager.GetTemplateContent(ToastTemplateType.ToastImageAndText04);
+            var stringElements = toastXml.GetElementsByTagName("text");
 
-                for (var j = 0; j < 2; j++)
-                {
-                    stringElements[j].AppendChild(toastXml.CreateTextNode(titleAndDesc[j]));
-                }
-
-                var toast = new ToastNotification(toastXml);
-                ToastNotificationManager.CreateToastNotifier("ConsoleNotifier").Show(toast);
-            
+            for (var j = 0; j < 2; j++)
+            {
+                stringElements[j].AppendChild(toastXml.CreateTextNode(titleAndDesc[j]));
             }
+
+            var toast = new ToastNotification(toastXml);
+            ToastNotificationManager.CreateToastNotifier("ConsoleNotifier").Show(toast);
+        }
 
         private static void Linux(string[] titleAndDesc, string errString)
         {

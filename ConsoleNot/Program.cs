@@ -1,7 +1,7 @@
 ﻿using System;
-using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
+using ConsoleNotLib;
 using static ConsoleNot.Properties;
 
 namespace ConsoleNot
@@ -23,7 +23,7 @@ namespace ConsoleNot
                 Console.ReadLine();
                 return;
             }
-            
+
             for (var i = 0; i < args.Length; i++)
             {
                 switch (args[i])
@@ -42,6 +42,7 @@ namespace ConsoleNot
                             Console.WriteLine(ResourceManager.GetString("Only_Numbers", CultureInfo));
                             return;
                         }
+
                         Console.WriteLine(ResourceManager.GetString("Enter_IP", CultureInfo));
                         var ip = Console.ReadLine();
                         new Client(_port, ip);
@@ -78,12 +79,8 @@ namespace ConsoleNot
             }
 
             if (!_start) return;
-
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows)) Commands.WinNotification(
-                    IterationTime, Count);
-            else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux)) Commands.LinuxNotification(
-                    IterationTime, Count);
-            else Console.WriteLine(ResourceManager.GetString("Sorry_OS", CultureInfo));
+            new Notification(TitleAndDesc[0], TitleAndDesc[1], IterationTime, Count);
+            Console.ReadLine();
         }
 
         private static void ConvertAndSet(int i, int timeNum) //Получаем число из аргумента (с исключением).
@@ -103,11 +100,13 @@ namespace ConsoleNot
         {
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
-                Console.OutputEncoding = Encoding.Unicode; Console.InputEncoding = Encoding.Unicode;
+                Console.OutputEncoding = Encoding.Unicode;
+                Console.InputEncoding = Encoding.Unicode;
             }
-            else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux)) 
+            else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
             {
-                Console.OutputEncoding = Encoding.UTF8; Console.InputEncoding = Encoding.UTF8;
+                Console.OutputEncoding = Encoding.UTF8;
+                Console.InputEncoding = Encoding.UTF8;
             }
         }
     }
