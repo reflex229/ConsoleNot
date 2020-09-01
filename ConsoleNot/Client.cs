@@ -4,6 +4,7 @@ using System.Net;
 using System.Net.Sockets;
 using static ConsoleNot.Properties;
 using ConsoleNotLib;
+// ReSharper disable ObjectCreationAsStatement
 
 namespace ConsoleNot
 {
@@ -42,15 +43,13 @@ namespace ConsoleNot
                     }
                     else
                     {
-                        CallNot.CallNotification(TitleAndDesc,
-                            ResourceManager.GetString("Sorry_OS", CultureInfo),
-                            ResourceManager.GetString("Notify_Ex", CultureInfo));
+                        new Notification();
                     }
                 }
             }
             catch (Exception e)
             {
-                Console.WriteLine(ResourceManager.GetString("Client_Exception", CultureInfo), e.Message);
+                Console.WriteLine(ResourceManagerProp.GetString("Client_Exception", CultureInfoProp), e.Message);
             }
         }
     }

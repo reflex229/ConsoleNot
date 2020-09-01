@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 using System.Text;
-using ConsoleNotLib;
 using static ConsoleNot.Properties;
+// ReSharper disable ObjectCreationAsStatement
 
 namespace ConsoleNot
 {
@@ -16,14 +16,14 @@ namespace ConsoleNot
         {
             EncodingFix();
             _arguments = args;
-
+            
             if (args.Length < 1)
             {
-                Console.WriteLine(ResourceManager.GetString("There_is_no_", CultureInfo));
+                Console.WriteLine(ResourceManagerProp.GetString("There_is_no_", CultureInfoProp));
                 Console.ReadLine();
                 return;
             }
-
+            
             for (var i = 0; i < args.Length; i++)
             {
                 switch (args[i])
@@ -32,18 +32,18 @@ namespace ConsoleNot
                         Commands.Help();
                         return;
                     case "--client":
-                        Console.WriteLine(ResourceManager.GetString("Enter_Port", CultureInfo));
+                        Console.WriteLine(ResourceManagerProp.GetString("Enter_Port", CultureInfoProp));
                         try
                         {
                             _port = Convert.ToInt32(Console.ReadLine());
                         }
                         catch (Exception)
                         {
-                            Console.WriteLine(ResourceManager.GetString("Only_Numbers", CultureInfo));
+                            Console.WriteLine(ResourceManagerProp.GetString("Only_Numbers", CultureInfoProp));
                             return;
                         }
 
-                        Console.WriteLine(ResourceManager.GetString("Enter_IP", CultureInfo));
+                        Console.WriteLine(ResourceManagerProp.GetString("Enter_IP", CultureInfoProp));
                         var ip = Console.ReadLine();
                         new Client(_port, ip);
                         break;
@@ -63,23 +63,23 @@ namespace ConsoleNot
                         }
                         catch (FormatException)
                         {
-                            Console.WriteLine(ResourceManager.GetString("Only_Numbers", CultureInfo));
+                            Console.WriteLine(ResourceManagerProp.GetString("Only_Numbers", CultureInfoProp));
                             _start = false;
                         }
                         break;
                     case "-t":
-                        Console.WriteLine(ResourceManager.GetString("Enter_Title", CultureInfo));
+                        Console.WriteLine(ResourceManagerProp.GetString("Enter_Title", CultureInfoProp));
                         TitleAndDesc[0] = Console.ReadLine();
                         break;
                     case "-d":
-                        Console.WriteLine(ResourceManager.GetString("Enter_Description", CultureInfo));
+                        Console.WriteLine(ResourceManagerProp.GetString("Enter_Description", CultureInfoProp));
                         TitleAndDesc[1] = Console.ReadLine();
                         break;
                 }
             }
 
             if (!_start) return;
-            new Notification(TitleAndDesc[0], TitleAndDesc[1], IterationTime, Count);
+            new Notification();
             Console.ReadLine();
         }
 
@@ -91,7 +91,7 @@ namespace ConsoleNot
             }
             catch (FormatException)
             {
-                Console.WriteLine(ResourceManager.GetString("Only_Numbers", CultureInfo));
+                Console.WriteLine(ResourceManagerProp.GetString("Only_Numbers", CultureInfoProp));
                 _start = false;
             }
         }
