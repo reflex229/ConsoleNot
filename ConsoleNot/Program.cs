@@ -79,6 +79,7 @@ namespace ConsoleNot
             }
 
             if (!_start) return;
+            NotificationsCount++;
             new Notification();
             Console.ReadLine();
         }

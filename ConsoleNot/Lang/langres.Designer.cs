@@ -128,5 +128,11 @@ namespace ConsoleNot.Resource {
                 return ResourceManager.GetString("Notify_Ex", resourceCulture);
             }
         }
+        
+        internal static string Notification_End {
+            get {
+                return ResourceManager.GetString("Notification_End", resourceCulture);
+            }
+        }
     }
 }

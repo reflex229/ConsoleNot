@@ -30,5 +30,7 @@ namespace ConsoleNot
                 {"IterationTime", IterationTime.ToString()},
                 {"Count", Count.ToString()}
             };
+
+        public static int NotificationsCount { get; set; } = 0;
     }
 }

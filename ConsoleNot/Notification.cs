@@ -12,6 +12,7 @@ namespace ConsoleNot
     public class Notification
     {
         private int _i;
+        private int _id;
         private Timer _timer;
         private string[] _titleAndDesc;
         private ResourceManager _resourceManager;
@@ -27,12 +28,17 @@ namespace ConsoleNot
             }
             else
             {
+                _id = NotificationsCount;
+                
                 _titleAndDesc = TitleAndDesc;
                 _resourceManager = ResourceManagerProp;
+                _cultureInfo = CultureInfoProp;
+                
                 _timer = new Timer(IterationTime);
                 _timer.Elapsed += OnTimedEvent;
                 _timer.AutoReset = true;
                 _timer.Enabled = true;
+                
                 Console.WriteLine(ResourceManagerProp.GetString("Success", CultureInfoProp), IterationTime / 1000, Count);
             }
         }
@@ -51,6 +57,7 @@ namespace ConsoleNot
             else
             {
                 _timer.Stop();
+                Console.WriteLine(ResourceManagerProp.GetString("Notification_End", CultureInfoProp), _id);
             }
         }
 

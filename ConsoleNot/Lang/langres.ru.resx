@@ -68,4 +68,7 @@
     <data name="Notify_Ex" xml:space="preserve">
         <value>Ошибка. Скорее всего, зависимость "notify-send" не установлена.</value>
     </data>
+    <data name="Notification_End" xml:space="preserve">
+        <value>Уведомление с ID {0} завершилось.</value>
+    </data>
 </root>

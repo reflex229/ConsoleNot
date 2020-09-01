@@ -68,4 +68,7 @@ You can always stop the program by pressing Ctrl+C.
     <data name="Notify_Ex" xml:space="preserve">
         <value>Error. Most likely you do not have the dependency "notify-send" installed.</value>
     </data>
+    <data name="Notification_End" xml:space="preserve">
+        <value>Notification with ID {0} ended.</value>
+    </data>
 </root>
