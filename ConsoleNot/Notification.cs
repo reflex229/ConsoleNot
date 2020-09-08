@@ -12,11 +12,12 @@ namespace ConsoleNot
     public class Notification
     {
         private int _i;
-        private int _id;
-        private Timer _timer;
-        private string[] _titleAndDesc;
-        private ResourceManager _resourceManager;
-        private CultureInfo _cultureInfo;
+        public int _id { get; set; }
+        public Timer _timer { get; set; }
+        public string[] _titleAndDesc { get; set; }
+        public ResourceManager _resourceManager { get; set; }
+        public CultureInfo _cultureInfo { get; set; }
+        //TODO: Add a WebInterface and add this |\ properties to DB.
 
         public Notification()
         {
@@ -29,7 +30,7 @@ namespace ConsoleNot
             else
             {
                 _id = NotificationsCount;
-                
+
                 _titleAndDesc = TitleAndDesc;
                 _resourceManager = ResourceManagerProp;
                 _cultureInfo = CultureInfoProp;

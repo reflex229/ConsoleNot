@@ -29,7 +29,7 @@ namespace ConsoleNot
                 switch (args[i])
                 {
                     case "--help":
-                        Commands.Help();
+                        Console.WriteLine(ResourceManagerProp.GetString("Commands_Help_", CultureInfoProp));
                         return;
                     case "--client":
                         Console.WriteLine(ResourceManagerProp.GetString("Enter_Port", CultureInfoProp));
