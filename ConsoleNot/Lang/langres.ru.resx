@@ -27,7 +27,7 @@
 -c Количество итераций (значение по умолчанию - 1).
 --client Включает режим клиента (вам придётся ввести IP и порт сервера).
 Вы всегда можете завершить работу программы нажав Ctrl+C.
-        </value>
+--auto-launch Устанавливает авто запуск программы.</value>
     </data>
     <data name="There_is_no_" xml:space="preserve">
         <value>Не задано никаких аргументов. Пожалуйста, введите аргументы (смотрите --help). Для выхода нажмите Enter.</value>
@@ -70,5 +70,8 @@
     </data>
     <data name="Notification_End" xml:space="preserve">
         <value>Уведомление с ID {0} завершилось.</value>
+    </data>
+    <data name="Program_auto_launch_linux" xml:space="preserve">
+        <value>Создаю авто запуск при помощи systemd. Будьте готовы дать root доступ.</value>
     </data>
 </root>

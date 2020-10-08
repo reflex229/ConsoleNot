@@ -134,5 +134,11 @@ namespace ConsoleNot.Resource {
                 return ResourceManager.GetString("Notification_End", resourceCulture);
             }
         }
+        
+        internal static string Program_auto_launch_linux {
+            get {
+                return ResourceManager.GetString("Program_auto_launch_linux", resourceCulture);
+            }
+        }
     }
 }

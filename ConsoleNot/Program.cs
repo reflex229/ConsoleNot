@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Text;
 using static ConsoleNot.Properties;
+
 // ReSharper disable ObjectCreationAsStatement
 
 namespace ConsoleNot
@@ -11,21 +13,21 @@ namespace ConsoleNot
         private static string[] _arguments;
         private static bool _start = true;
         private static int _port;
+        private static string output;
 
         private static void Main(string[] args)
         {
             EncodingFix();
             _arguments = args;
-            
+
             if (args.Length < 1)
             {
                 Console.WriteLine(ResourceManagerProp.GetString("There_is_no_", CultureInfoProp));
                 Console.ReadLine();
                 return;
             }
-            
+
             for (var i = 0; i < args.Length; i++)
-            {
                 switch (args[i])
                 {
                     case "--help":
@@ -66,6 +68,7 @@ namespace ConsoleNot
                             Console.WriteLine(ResourceManagerProp.GetString("Only_Numbers", CultureInfoProp));
                             _start = false;
                         }
+
                         break;
                     case "-t":
                         Console.WriteLine(ResourceManagerProp.GetString("Enter_Title", CultureInfoProp));
@@ -75,8 +78,10 @@ namespace ConsoleNot
                         Console.WriteLine(ResourceManagerProp.GetString("Enter_Description", CultureInfoProp));
                         TitleAndDesc[1] = Console.ReadLine();
                         break;
+                    case "--auto-launch":
+                        SetAutoLaunch();
+                        break;
                 }
-            }
 
             if (!_start) return;
             NotificationsCount++;
@@ -108,6 +113,51 @@ namespace ConsoleNot
             {
                 Console.OutputEncoding = Encoding.UTF8;
                 Console.InputEncoding = Encoding.UTF8;
+            }
+        }
+
+        private static void SetAutoLaunch()
+        {
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                //Windows implementation...
+            }
+            else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            {
+                /*
+                var whoami = new Process();
+                whoami.StartInfo.FileName = "whoami";
+                whoami.StartInfo.RedirectStandardInput = true;
+                whoami.StartInfo.RedirectStandardOutput = true;
+                whoami.Start();
+                var streamWriter = whoami.StandardInput;
+                streamWriter.WriteLine("whoami /logonid");
+                //whoami.BeginOutputReadLine();
+                //var reader = whoami.StandardOutput;
+                output = whoami.StandardOutput.ReadToEnd();
+                whoami.WaitForExit();
+                Console.WriteLine(output);
+                if (output == "root")
+                {
+                    Console.WriteLine(ResourceManagerProp.GetString("Program_auto_launch_linux", CultureInfoProp));
+                    Process.Start("wget",
+                        "-O /usr/lib/systemd/system/consolenot.service http://192.168.88.40/consolenot.service");
+                }
+                else
+                {
+                    Console.WriteLine("Error. Run the program as root.");
+                }
+                */
+                try
+                {
+                    Console.WriteLine(ResourceManagerProp.GetString("Program_auto_launch_linux", CultureInfoProp));
+                    Process.Start("wget",
+                        "-O /usr/lib/systemd/system/consolenot.service http://192.168.88.40/consolenot.service");
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("User is not root.");
+                }
             }
         }
     }

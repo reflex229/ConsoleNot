@@ -27,7 +27,7 @@
 -c The count of iterations (default value is 1).
 --client Enables client mode (you will have to enter a server's port and IP).
 You can always stop the program by pressing Ctrl+C.
-        </value>
+--auto-launch Sets up an auto launch.</value>
     </data>
     <data name="There_is_no_" xml:space="preserve">
         <value>There is no arguments given. Exiting the program. Please, enter an arguments (see --help) and try again.</value>
@@ -70,5 +70,8 @@ You can always stop the program by pressing Ctrl+C.
     </data>
     <data name="Notification_End" xml:space="preserve">
         <value>Notification with ID {0} ended.</value>
+    </data>
+    <data name="Program_auto_launch_linux" xml:space="preserve">
+        <value>Setting up an auto launch with systemd. Prepare to give a root access.</value>
     </data>
 </root>

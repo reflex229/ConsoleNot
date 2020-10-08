@@ -17,7 +17,7 @@ namespace ConsoleNot
         public string[] _titleAndDesc { get; set; }
         public ResourceManager _resourceManager { get; set; }
         public CultureInfo _cultureInfo { get; set; }
-        //TODO: Add a WebInterface and add this |\ properties to DB.
+        //TODO: Add a WebInterface and add this properties to DB.
 
         public Notification()
         {
