@@ -31,6 +31,6 @@ namespace ConsoleNot
                 {"Count", Count.ToString()}
             };
 
-        public static int NotificationsCount { get; set; } = 0;
+        public static int NotificationsCount { get; set; }
     }
 }

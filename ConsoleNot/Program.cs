@@ -13,7 +13,6 @@ namespace ConsoleNot
         private static string[] _arguments;
         private static bool _start = true;
         private static int _port;
-        private static string output;
 
         private static void Main(string[] args)
         {
@@ -79,6 +78,7 @@ namespace ConsoleNot
                         TitleAndDesc[1] = Console.ReadLine();
                         break;
                     case "--auto-launch":
+                        _start = false;
                         SetAutoLaunch();
                         break;
                 }
@@ -124,40 +124,7 @@ namespace ConsoleNot
             }
             else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
             {
-                /*
-                var whoami = new Process();
-                whoami.StartInfo.FileName = "whoami";
-                whoami.StartInfo.RedirectStandardInput = true;
-                whoami.StartInfo.RedirectStandardOutput = true;
-                whoami.Start();
-                var streamWriter = whoami.StandardInput;
-                streamWriter.WriteLine("whoami /logonid");
-                //whoami.BeginOutputReadLine();
-                //var reader = whoami.StandardOutput;
-                output = whoami.StandardOutput.ReadToEnd();
-                whoami.WaitForExit();
-                Console.WriteLine(output);
-                if (output == "root")
-                {
-                    Console.WriteLine(ResourceManagerProp.GetString("Program_auto_launch_linux", CultureInfoProp));
-                    Process.Start("wget",
-                        "-O /usr/lib/systemd/system/consolenot.service http://192.168.88.40/consolenot.service");
-                }
-                else
-                {
-                    Console.WriteLine("Error. Run the program as root.");
-                }
-                */
-                try
-                {
-                    Console.WriteLine(ResourceManagerProp.GetString("Program_auto_launch_linux", CultureInfoProp));
-                    Process.Start("wget",
-                        "-O /usr/lib/systemd/system/consolenot.service http://192.168.88.40/consolenot.service");
-                }
-                catch (Exception)
-                {
-                    Console.WriteLine("User is not root.");
-                }
+                Process.Start(""); //TODO: Execute the auto_launch.sh script.
             }
         }
     }

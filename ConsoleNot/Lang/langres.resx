@@ -72,6 +72,6 @@ You can always stop the program by pressing Ctrl+C.
         <value>Notification with ID {0} ended.</value>
     </data>
     <data name="Program_auto_launch_linux" xml:space="preserve">
-        <value>Setting up an auto launch with systemd. Prepare to give a root access.</value>
+        <value>Setting up an auto launch with systemd. IMPORTANT: Run the program as root.</value>
     </data>
 </root>

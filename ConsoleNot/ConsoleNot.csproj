@@ -69,5 +69,12 @@
       <None Remove="service_script.sh" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Remove="auto_launch.sh" />
+      <Content Include="auto_launch.sh">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+    </ItemGroup>
+
 </Project>
 

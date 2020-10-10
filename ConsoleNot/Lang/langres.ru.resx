@@ -72,6 +72,6 @@
         <value>Уведомление с ID {0} завершилось.</value>
     </data>
     <data name="Program_auto_launch_linux" xml:space="preserve">
-        <value>Создаю авто запуск при помощи systemd. Будьте готовы дать root доступ.</value>
+        <value>Создаю авто запуск при помощи systemd. ВАЖНО: Запустите программу с root доступом.</value>
     </data>
 </root>
