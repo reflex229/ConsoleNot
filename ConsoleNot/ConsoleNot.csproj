@@ -74,6 +74,14 @@
       <Content Include="auto_launch.sh">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
+      <None Remove="consolenot.service" />
+      <Content Include="consolenot.service">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <None Remove="consolenot_script.sh" />
+      <Content Include="consolenot_script.sh">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
     </ItemGroup>
 
 </Project>

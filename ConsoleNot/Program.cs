@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
+using System.IO;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
 using static ConsoleNot.Properties;
@@ -124,7 +126,8 @@ namespace ConsoleNot
             }
             else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
             {
-                Process.Start(""); //TODO: Execute the auto_launch.sh script.
+                var execPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+                Process.Start("/bin/bash",$@"{execPath}/auto_launch.sh {execPath}");
             }
         }
     }

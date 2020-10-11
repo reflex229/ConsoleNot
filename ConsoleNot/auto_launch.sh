@@ -1,9 +1,11 @@
 #!/bin/sh
 if [ "$EUID" -ne 0 ]
-  then 
+  then
     echo "Please, run the program as root. Пожалуйста, запустите программу от root."
-  else 
-    wget -O /usr/lib/systemd/system/consolenot.service http://192.168.88.40/consolenot.service #TODO: Try to copy these files not from the dedicated server.
-    wget -O /usr/lib/systemd/system/consolenot.service http://192.168.88.40/consolenot_script.sh
+  else
+    cp $1/consolenot.service /usr/lib/systemd/system/consolenot.service
+    cp $1/consolenot_script.sh /usr/lib/systemd/system/consolenot_script.sh
     systemctl start consolenot
+    systemctl enable consolenot
+    systemctl status consolenot
 fi
