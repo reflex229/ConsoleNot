@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"] - ConsoleNot</title>
+    <link type="text/css" rel="stylesheet" href="~/css/site8.css"/>
+</head>
+<body>
+<div class="header">
+    <a asp-area="" asp-controller="Home" asp-action="Index" class="logo">Console Notifier Admin</a>
+    <div class="header-right">
+        <a asp-area="" asp-controller="Home" asp-action="Blog">Blog</a>
+    </div>
+</div>
+<div>
+    <main role="main" class="white">
+        @RenderBody()
+    </main>
+</div>
+<div class="footer">
+    <a class="logo">Copyright &copy; Vladislav Kuzmin @DateTime.Now.Year All Rights Reserved</a>
+</div>
+<script type="text/javascript" src="~/js/site.js" asp-append-version="true"></script>
+@await RenderSectionAsync("Scripts", false)
+</body>
+</html>

@@ -1,0 +1,83 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <Version>1.2.2.2</Version>
+        <AssemblyVersion>1.2.2.2</AssemblyVersion>
+        <FileVersion>1.2.2.2</FileVersion>
+        <Authors>reflex229</Authors>
+        <PackageVersion>1.2.2.2</PackageVersion>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.Toolkit.Uwp.Notifications" Version="6.1.0" />
+        <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.7.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <EmbeddedResource Update="Lang\langres.resx">
+            <Generator>ResXFileCodeGenerator</Generator>
+            <LastGenOutput>langres.Designer.cs</LastGenOutput>
+        </EmbeddedResource>
+        <EmbeddedResource Update="Lang\langres.ru.resx">
+            <Generator>ResXFileCodeGenerator</Generator>
+        </EmbeddedResource>
+        <EmbeddedResource Update="Resource\ru.resx">
+            <Generator>ResXFileCodeGenerator</Generator>
+            <LastGenOutput>ru.Designer.cs</LastGenOutput>
+        </EmbeddedResource>
+        <EmbeddedResource Update="Resource\en.resx">
+            <Generator>ResXFileCodeGenerator</Generator>
+            <LastGenOutput>en.Designer.cs</LastGenOutput>
+        </EmbeddedResource>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Compile Update="Lang\langres.Designer.cs">
+            <DesignTime>True</DesignTime>
+            <AutoGen>True</AutoGen>
+            <DependentUpon>langres.resx</DependentUpon>
+        </Compile>
+        <Compile Update="Resource\ru.Designer.cs">
+            <DesignTime>True</DesignTime>
+            <AutoGen>True</AutoGen>
+            <DependentUpon>ru.resx</DependentUpon>
+        </Compile>
+        <Compile Update="Resource\en.Designer.cs">
+            <DesignTime>True</DesignTime>
+            <AutoGen>True</AutoGen>
+            <DependentUpon>en.resx</DependentUpon>
+        </Compile>
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="systemd_daemon.txt" />
+      <None Remove="service_script.sh" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="auto_launch.sh" />
+      <Content Include="auto_launch.sh">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <None Remove="consolenot.service" />
+      <Content Include="consolenot.service">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <None Remove="consolenot_script.sh" />
+      <Content Include="consolenot_script.sh">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <None Remove="auto_launch_remove.sh" />
+      <Content Include="auto_launch_remove.sh">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Lib\Lib.csproj" />
+    </ItemGroup>
+
+</Project>
+

@@ -1,0 +1,189 @@
+html {
+    font-family: "Roboto", sans-serif;
+    background: #1c1c1c;
+}
+
+.h_white{
+    color: white;
+}
+
+.header {
+    overflow: hidden;
+    border-radius: 10px;
+    background-color: #161616;
+    padding: 20px 10px;
+}
+
+.header a {
+    float: left;
+    color: #b2bfbd;
+    text-align: center;
+    padding: 12px;
+    text-decoration: none;
+    font-size: 18px;
+    line-height: 25px;
+    border-radius: 4px;
+}
+
+.header a.logo {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.header a:hover {
+    background-color: #10569c;
+}
+
+.header a.active {
+    background-color: #10569c;
+    color: white;
+}
+
+.header-right {
+    float: right;
+}
+
+@media screen and (max-width: 500px) {
+    .header a {
+        float: none;
+        display: block;
+        text-align: left;
+    }
+    .header-right {
+        float: none;
+    }
+}
+
+.white {
+    color: #b2bfbd;
+}
+
+.footer {
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #161616;
+    padding: 20px 10px;
+}
+
+.footer a {
+    float: left;
+    color: #b2bfbd;
+    text-align: center;
+    padding: 12px;
+    text-decoration: none;
+    font-size: 18px;
+    line-height: 25px;
+    border-radius: 50px;
+}
+
+#github_logo {
+    padding-left: 5px;
+}
+
+.link:link {
+    color: #ffffff;
+}
+.link:visited {
+    color: grey;
+}
+.link:hover {
+    color: grey;
+}
+
+.cmd {
+    font-family: Consolas,Monaco,'Andale Mono','Ubuntu Mono',monospace;
+    font-size: 18px;
+    color: #f8f8f2;
+    background: none;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+}
+
+.comment {
+    color: grey;
+}
+
+pre {
+    background: black;
+    width: max-content;
+    border-radius: 7px;
+    padding: 8px;
+}
+
+.first_wrd {
+    color: #66d9ef;
+}
+
+.center {
+    text-align: center;
+}
+
+.left {
+    text-align: left;
+}
+
+.content {
+    margin: 0 auto;
+    width: 900px;
+}
+
+@media screen and (max-width: 900px) {
+    .content {
+        width: 100%;
+    }
+    .footer a {
+        float: none;
+        display: block;
+        text-align: left;
+    }
+}
+
+.cmd_solo {
+    font-family: Consolas,Monaco,'Andale Mono','Ubuntu Mono',monospace;
+    font-size: 18px;
+    background-color: black;
+    color: #f8f8f2;
+    text-align: center;
+    border-radius: 2px;
+    padding: 1px;
+}
+
+.code {
+    overflow: auto;
+}
+
+input {
+    font-family: Consolas,Monaco,'Andale Mono','Ubuntu Mono',monospace;
+    font-size: 18px;
+    text-align: center;
+    margin-left: 10px;
+    border: #161616;
+    height: 30px;
+    color: #b2bfbd;
+    background-color: black;
+    border-radius: 5px;
+}
+
+textarea {
+    font-family: Consolas,Monaco,'Andale Mono','Ubuntu Mono',monospace;
+    font-size: 18px;
+    margin-left: 10px;
+    width: 1750px;
+    border: #161616;
+    height: 100px;
+    color: #b2bfbd;
+    background-color: black;
+    border-radius: 5px;
+}
+
+.input_btn {
+    background-color: #10569c;
+}
+
+.post {
+    border-bottom: 1px solid #b2bfbd;
+}

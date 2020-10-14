@@ -1,0 +1,45 @@
+@{
+    var post = DataAccess.LoadPosts("Slug", HomeController.PostTitle)[0];
+    ViewData["Title"] = post.Title;
+    
+    <form method="post" enctype="multipart/form-data" asp-controller="Home" asp-action="PostUpdate">
+        <table>
+            <tr>
+                <td>Title: </td>
+                <td>
+                    <textarea type="text" name="Title">@post.Title</textarea>
+                </td>
+            </tr>
+            <tr>
+                <td>Content: </td>
+                <td>
+                    <textarea type="text" name="Content">@post.Content</textarea>
+                </td>
+            </tr>
+            <tr>
+                <td>IsDraft: </td>
+                <td>
+                    <textarea type="text" name="IsDraft">@post.IsDraft.ToString()</textarea>
+                </td>
+            </tr>
+            <tr>
+                <td>Keywords: </td>
+                <td>
+                    <textarea type="text" name="Keywords">@post.Keywords</textarea>
+                </td>
+            </tr>
+            <tr>
+                <td>Category: </td>
+                <td>
+                    <textarea type="text" name="Category">@post.Category</textarea>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input class="input_btn" type="submit" value="Submit"/>
+                </td>
+            </tr>
+        </table>
+    </form>
+}
