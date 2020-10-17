@@ -26,40 +26,54 @@ namespace Web.Controllers
         }
 
         [HttpPost]
-        public IActionResult PostResult(string title, string description, string delay, string count)
+        public IActionResult PostResult(string title, string description, string delay, string iterations)
         {
-            DataAccess.SavePost(new NotificationModel
+            try
             {
-                Title = title,
-                Description = description,
-                Delay = StrToInt(delay),
-                Count = StrToInt(count),
-                Slug = title.Replace(" ", "-")
-            });
-            RemoteDbUpdate();
-            return Redirect("/Home/Notifications");
-        }
-
-        [HttpPost]
-        public IActionResult NotificationUpdate(string title, string description, string delay, string count)
-        {
-            DataAccess.EditNotification(new NotificationModel
+                DataAccess.SaveNotification(new NotificationModel
                 {
                     Title = title,
                     Description = description,
                     Delay = StrToInt(delay),
-                    Count = StrToInt(count),
+                    Iterations = StrToInt(iterations),
                     Slug = title.Replace(" ", "-")
-                },
-                NotificationTitle);
-            RemoteDbUpdate();
-            return Redirect("/Home/Notifications");
+                });
+                return Redirect("/Home/Notifications");
+            }
+            catch (NullReferenceException)
+            {
+                return Redirect("/Home/FieldsAreRequired");
+            }
+            //RemoteDbUpdate();
         }
 
-        [Route("/Notification/{title}")]
-        public IActionResult Notification([FromRoute] string title)
+        [HttpPost]
+        public IActionResult NotificationUpdate(string title, string description, string delay, string iterations)
         {
-            NotificationTitle = title;
+            try
+            {
+                DataAccess.EditNotification(new NotificationModel
+                    {
+                        Title = title,
+                        Description = description,
+                        Delay = StrToInt(delay),
+                        Iterations = StrToInt(iterations),
+                        Slug = title.Replace(" ", "-")
+                    },
+                    NotificationTitle);
+                return Redirect("/Home/Notifications");
+            }
+            catch (NullReferenceException)
+            {
+                return Redirect("/Home/FieldsAreRequired");
+            }
+            //RemoteDbUpdate();
+        }
+
+        [Route("/Notification/{slug}")]
+        public IActionResult Notification([FromRoute] string slug)
+        {
+            NotificationSlug = slug;
             return View();
         }
 
@@ -67,15 +81,21 @@ namespace Web.Controllers
         public IActionResult DeletePost([FromRoute] string slug)
         {
             DataAccess.DeleteNotification(slug);
-            RemoteDbUpdate();
-            return Redirect("/Home/Blog");
+            //RemoteDbUpdate();
+            return Redirect("/Home/Notifications");
         }
 
-        private static void RemoteDbUpdate() => Process.Start("scp",
+        public IActionResult Error()
+        {
+            return View();
+        }
+
+        /*private static void RemoteDbUpdate() => Process.Start("scp",
             "/home/reflex/Shit/C#/ConsoleNotSite/data/blog.db " +
-            "192.168.88.40:/home/reflex/data/blog.db"); //TODO: Add a windows implementation
+            "192.168.88.40:/home/reflex/data/blog.db");*/
 
         public static string NotificationTitle { get; private set; }
+        public static string NotificationSlug { get; private set; }
 
         private static int StrToInt(string str)
         {

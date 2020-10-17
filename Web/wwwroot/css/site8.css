@@ -157,7 +157,7 @@ pre {
 }
 
 input {
-    font-family: Consolas,Monaco,'Andale Mono','Ubuntu Mono',monospace;
+    font-family: "Roboto", sans-serif;
     font-size: 18px;
     text-align: center;
     margin-left: 10px;
@@ -169,7 +169,7 @@ input {
 }
 
 textarea {
-    font-family: Consolas,Monaco,'Andale Mono','Ubuntu Mono',monospace;
+    font-family: "Roboto", sans-serif;
     font-size: 18px;
     margin-left: 10px;
     width: 1750px;
@@ -182,6 +182,12 @@ textarea {
 
 .input_btn {
     background-color: #10569c;
+    border: none;
+    font-size: 20px;
+    display: inline-block;
+    text-decoration: none;
+    color: #b2bfbd;
+    border-radius: 5px;
 }
 
 .post {

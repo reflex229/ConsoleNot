@@ -4,6 +4,7 @@ using System.Data.SQLite;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using Dapper;
 
 namespace WebLib
@@ -11,9 +12,9 @@ namespace WebLib
     public static class DataAccess
     {
 
-        public static List<NotificationModel> LoadPosts()
+        public static List<NotificationModel> LoadNotifications()
         {
-            using var cnn = new SQLiteConnection(Connection);
+            using var cnn = Conn();
             try
             {
                 var output = cnn.Query<NotificationModel>("SELECT t.* FROM Notifications t ORDER BY Id DESC",
@@ -22,14 +23,14 @@ namespace WebLib
             }
             catch (Exception)
             {
-                CustomSql("CREATE TABLE \"Notifications\" (\"Id\" INTEGER NOT NULL UNIQUE,\"Title\" TEXT,\"Description\" TEXT,\"Delay\" INTEGER,\"Count\" INTEGER,\"Slug\" TEXT,PRIMARY KEY(\"Id\" AUTOINCREMENT));");
+                CustomSql("CREATE TABLE \"Notifications\" (\"Id\" INTEGER NOT NULL UNIQUE,\"Title\" TEXT,\"Description\" TEXT,\"Delay\" INTEGER,\"Iterations\" INTEGER,\"Slug\" TEXT,PRIMARY KEY(\"Id\" AUTOINCREMENT));");
                 return null;
             }
         }
 
         public static List<NotificationModel> LoadNotifications(string name, string value)
         {
-            using var cnn = new SQLiteConnection(Connection);
+            using var cnn = Conn();
             var output = cnn.Query<NotificationModel>($"select * from Notifications where {name} = \"{value}\"",
                 new DynamicParameters());
             return output.ToList();
@@ -37,41 +38,58 @@ namespace WebLib
 
         public static List<NotificationModel> CustomSql(string sql)
         {
-            using var cnn = new SQLiteConnection(Connection);
+            using var cnn = Conn();
             var output = cnn.Query<NotificationModel>(sql, new DynamicParameters());
             return output.ToList();
         }
 
-        public static void SavePost(NotificationModel post)
+        public static void SaveNotification(NotificationModel notification)
         {
-            using var cnn = new SQLiteConnection(Connection);
+            using var cnn = Conn();
             cnn.Execute(
-                "insert into Notifications (Title, Description, Delay, Count, Slug) values (@Title, @Description, @Delay, @Count, @Slug)",
-                post);
+                "insert into Notifications (Title, Description, Delay, Iterations, Slug) values (@Title, @Description, @Delay, @Iterations, @Slug)",
+                notification);
         }
 
         public static void DeleteNotification(string slug)
         {
-            using var cnn = new SQLiteConnection(Connection);
+            using var cnn = Conn();
             cnn.Execute(
                 $"delete from Notifications where Slug = '{slug}'");
         }
 
         public static void UpdateParam(string name, string value, string slug)
         {
-            using var cnn = new SQLiteConnection(Connection);
+            using var cnn = Conn();
             cnn.Execute(
                 $"update Notifications set {name} = '{value}' where Slug = '{slug}'");
         }
 
-        private static string Connection => $"Data Source={Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}" +
+        private static SQLiteConnection Conn()
+        {
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                return new SQLiteConnection($"Data Source={Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}" +
+                       @"\consolenot.db;Pooling=true;FailIfMissing=false;Version=3");
+            }
+            else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            {
+                return new SQLiteConnection($"Data Source={Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}" +
+                       "/consolenot.db;Pooling=true;FailIfMissing=false;Version=3");
+            }
+            else
+            {
+                throw new Exception("Your system is not supported :("); //TODO: Russian language.
+            }
+        }
+        private static string Connection1 => $"Data Source={Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}" +
                                             "/consolenot.db;Pooling=true;FailIfMissing=false;Version=3"; //TODO: Windows
 
         public static void EditNotification(NotificationModel notificationModel, string title)
         {
-            using var cnn = new SQLiteConnection(Connection);
+            using var cnn = Conn();
             cnn.Execute(
-                $"update Notifications set (Title, Description, Delay, Count) = (@Title, @Description, @Delay, @Count) where Title = '{title}';",
+                $"update Notifications set (Title, Description, Delay, Iterations) = (@Title, @Description, @Delay, @Iterations) where Title = '{title}';",
                 notificationModel);
         }
     }

@@ -1,11 +1,11 @@
 ﻿@{
     ViewData["Title"] = "New Notification";
-    var forms = new[]{"Title", "Description", "Delay", "Count"};
+    var forms = new[]{"Title", "Description", "Delay", "Iterations"};
 }
 
 <form method="post" enctype="multipart/form-data" asp-controller="Home" asp-action="PostResult">
     <table>
-        @foreach (var form in forms)
+        @foreach (var form in forms) //TODO: Use IDs instead of slugs.
         {
             if (form == "Content")
             {

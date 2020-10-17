@@ -1,5 +1,5 @@
-@{
-    var notificationModel = DataAccess.LoadNotifications("Slug", HomeController.NotificationTitle)[0];
+@{ //TODO: BUG: Delay and Iterations are not changing (check values with debugger).
+    var notificationModel = DataAccess.LoadNotifications("Slug", HomeController.NotificationSlug)[0];
     ViewData["Title"] = notificationModel.Title;
     
     <form method="post" enctype="multipart/form-data" asp-controller="Home" asp-action="NotificationUpdate">
@@ -13,19 +13,25 @@
             <tr>
                 <td>Description: </td>
                 <td>
-                    <textarea type="text" name="Content">@notificationModel.Description</textarea>
+                    <textarea type="text" name="Description">@notificationModel.Description</textarea>
                 </td>
             </tr>
             <tr>
                 <td>Delay: </td>
                 <td>
-                    <textarea type="text" name="IsDraft">@notificationModel.Delay.ToString()</textarea>
+                    <textarea type="text" name="Delay">@notificationModel.Delay.ToString()</textarea>
                 </td>
             </tr>
             <tr>
-                <td>Count: </td>
+                <td>Iterations: </td>
                 <td>
-                    <textarea type="text" name="Keywords">@notificationModel.Count</textarea>
+                    <textarea type="text" name="Iterations">@notificationModel.Iterations</textarea>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input class="input_btn" type="submit" value="Submit"/>
                 </td>
             </tr>
         </table>

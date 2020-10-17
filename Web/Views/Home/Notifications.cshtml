@@ -2,22 +2,21 @@
     ViewData["Title"] = "Notifications";
 }
 
-@if (DataAccess.LoadPosts() != null)
+@if (DataAccess.LoadNotifications() != null && DataAccess.LoadNotifications().Count > 0)
 {
-    @foreach (var notification in DataAccess.LoadPosts())
+    @foreach (var notification in DataAccess.LoadNotifications())
     {
         <div class="content post">
             <h1 class="h_white">@notification.Title</h1>
-            <p class="white">
-                <a>@notification.Description</a>
-                <a class="link" href="/Notification/@notification.Slug"> Edit</a>
-                <a class="link" href="/NotificationDelete/@notification.Slug"> Delete</a>
-            </p>
+            <a>@notification.Description</a>
+            <br><br>
+            <button class="input_btn" onclick="location.href='/Notification/@notification.Slug'" type="button">Edit</button>
+            <button class="input_btn" onclick="location.href='/NotificationDelete/@notification.Slug'" type="button">Delete</button>
         </div>
         <br>
     }
 }
 else
 {
-    <h1 class="h_white">You have not any notifications yet.</h1>
+    <h1 class="h_white">You have not any notifications yet. Create a <a class="link" asp-action="Index">new one</a>.</h1>
 }
