@@ -79,7 +79,7 @@ namespace WebLib
             }
             else
             {
-                throw new Exception("Your system is not supported :("); //TODO: Russian language.
+                throw new Exception("Your system is not supported :(");
             }
         }
         private static string Connection1 => $"Data Source={Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}" +

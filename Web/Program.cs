@@ -15,3 +15,4 @@ namespace Web
                 .ConfigureWebHostDefaults(webBuilder => { webBuilder.UseStartup<Startup>(); });
     }
 }
+//TODO: Translate the web interface on russian with linking Main.csproj as a dependency (and getting language resource files from it).
