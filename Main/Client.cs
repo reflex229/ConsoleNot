@@ -18,7 +18,7 @@ namespace Main
                 var socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
                 socket.Connect(ipPoint);
                 
-                var data = JsonWork.ToJson(Values);
+                var data = JsonWork.ToJson(NotificationValues);
                 socket.Send(data);
 
                 while (true)

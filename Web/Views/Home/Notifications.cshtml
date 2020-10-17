@@ -1,0 +1,23 @@
+@{
+    ViewData["Title"] = "Notifications";
+}
+
+@if (DataAccess.LoadPosts() != null)
+{
+    @foreach (var notification in DataAccess.LoadPosts())
+    {
+        <div class="content post">
+            <h1 class="h_white">@notification.Title</h1>
+            <p class="white">
+                <a>@notification.Description</a>
+                <a class="link" href="/Notification/@notification.Slug"> Edit</a>
+                <a class="link" href="/NotificationDelete/@notification.Slug"> Delete</a>
+            </p>
+        </div>
+        <br>
+    }
+}
+else
+{
+    <h1 class="h_white">You have not any notifications yet.</h1>
+}

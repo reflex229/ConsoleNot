@@ -11,7 +11,6 @@ namespace Web
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
-            DataAccess.Configuration = configuration;
         }
 
         public IConfiguration Configuration { get; }
@@ -25,6 +24,7 @@ namespace Web
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            Configuration["Data"] = "IT WORKS!"; //Data Source=/home/reflex/Shit/C#/consolenot/Web/consolenot.db;Pooling=true;FailIfMissing=false;Version=3
             app.UseDeveloperExceptionPage();
             
             app.UseStaticFiles();

@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using WebLib;
@@ -19,70 +20,73 @@ namespace Web.Controllers
             return View();
         }
 
-        public IActionResult Blog()
+        public IActionResult Notifications()
         {
             return View();
         }
 
         [HttpPost]
-        public IActionResult PostResult(string title, string content, string isDraft, string keywords, string category)
+        public IActionResult PostResult(string title, string description, string delay, string count)
         {
-            DataAccess.SavePost(new Post
+            DataAccess.SavePost(new NotificationModel
             {
-                Category = category,
-                Content = content,
-                IsDraft = bool.Parse(isDraft),
-                Keywords = keywords,
-                Slug = title.Replace(" ", "-"),
-                Title = title
+                Title = title,
+                Description = description,
+                Delay = StrToInt(delay),
+                Count = StrToInt(count),
+                Slug = title.Replace(" ", "-")
             });
             RemoteDbUpdate();
-            return Redirect("/Home/Blog");
+            return Redirect("/Home/Notifications");
         }
 
         [HttpPost]
-        public IActionResult PostUpdate(string title, string content, string isDraft, string keywords, string category)
+        public IActionResult NotificationUpdate(string title, string description, string delay, string count)
         {
-            DataAccess.EditPost(new Post
+            DataAccess.EditNotification(new NotificationModel
                 {
-                    Category = category,
-                    Content = content,
-                    IsDraft = bool.Parse(isDraft),
-                    Keywords = keywords,
-                    Slug = title.Replace(" ", "-"),
-                    Title = title
+                    Title = title,
+                    Description = description,
+                    Delay = StrToInt(delay),
+                    Count = StrToInt(count),
+                    Slug = title.Replace(" ", "-")
                 },
-                PostTitle);
+                NotificationTitle);
             RemoteDbUpdate();
-            return Redirect("/Home/Blog");
+            return Redirect("/Home/Notifications");
         }
 
-        [Route("/PostPreview/{postTitle}")]
-        public IActionResult PostPreview([FromRoute] string postTitle)
+        [Route("/Notification/{title}")]
+        public IActionResult Notification([FromRoute] string title)
         {
-            PostTitle = postTitle;
+            NotificationTitle = title;
             return View();
         }
 
-        [Route("/Post/{postTitle}")]
-        public IActionResult Post([FromRoute] string postTitle)
-        {
-            PostTitle = postTitle;
-            return View();
-        }
-
-        [Route("/PostDelete/{slug}")]
+        [Route("/NotificationDelete/{slug}")]
         public IActionResult DeletePost([FromRoute] string slug)
         {
-            DataAccess.DeletePost(slug);
+            DataAccess.DeleteNotification(slug);
             RemoteDbUpdate();
             return Redirect("/Home/Blog");
         }
 
         private static void RemoteDbUpdate() => Process.Start("scp",
             "/home/reflex/Shit/C#/ConsoleNotSite/data/blog.db " +
-            "192.168.88.40:/home/reflex/data/blog.db");
+            "192.168.88.40:/home/reflex/data/blog.db"); //TODO: Add a windows implementation
 
-        public static string PostTitle { get; private set; }
+        public static string NotificationTitle { get; private set; }
+
+        private static int StrToInt(string str)
+        {
+            try
+            {
+                return Convert.ToInt32(str);
+            }
+            catch (Exception)
+            {
+                return 0; //TODO: Call a notification with error message
+            }
+        }
     }
 }

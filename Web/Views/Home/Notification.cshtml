@@ -1,0 +1,33 @@
+@{
+    var notificationModel = DataAccess.LoadNotifications("Slug", HomeController.NotificationTitle)[0];
+    ViewData["Title"] = notificationModel.Title;
+    
+    <form method="post" enctype="multipart/form-data" asp-controller="Home" asp-action="NotificationUpdate">
+        <table>
+            <tr>
+                <td>Title: </td>
+                <td>
+                    <textarea type="text" name="Title">@notificationModel.Title</textarea>
+                </td>
+            </tr>
+            <tr>
+                <td>Description: </td>
+                <td>
+                    <textarea type="text" name="Content">@notificationModel.Description</textarea>
+                </td>
+            </tr>
+            <tr>
+                <td>Delay: </td>
+                <td>
+                    <textarea type="text" name="IsDraft">@notificationModel.Delay.ToString()</textarea>
+                </td>
+            </tr>
+            <tr>
+                <td>Count: </td>
+                <td>
+                    <textarea type="text" name="Keywords">@notificationModel.Count</textarea>
+                </td>
+            </tr>
+        </table>
+    </form>
+}

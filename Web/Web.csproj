@@ -8,4 +8,8 @@
       <ProjectReference Include="..\WebLib\WebLib.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Remove="consolenot.db" />
+    </ItemGroup>
+
 </Project>

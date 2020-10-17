@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewData["Title"] - ConsoleNot</title>
+    <title>@ViewData["Title"] - ConsoleNotifier</title>
     <link type="text/css" rel="stylesheet" href="~/css/site8.css"/>
 </head>
 <body>
 <div class="header">
-    <a asp-area="" asp-controller="Home" asp-action="Index" class="logo">Console Notifier Admin</a>
+    <a asp-area="" asp-controller="Home" asp-action="Index" class="logo">Console Notifier</a>
     <div class="header-right">
-        <a asp-area="" asp-controller="Home" asp-action="Blog">Blog</a>
+        <a asp-area="" asp-controller="Home" asp-action="Notifications">Notifications</a>
     </div>
 </div>
 <div>
@@ -19,7 +19,8 @@
     </main>
 </div>
 <div class="footer">
-    <a class="logo">Copyright &copy; Vladislav Kuzmin @DateTime.Now.Year All Rights Reserved</a>
+    <a class="logo link" href="https://github.com/reflex229/ConsoleNot">GitHub</a>
+    <a class="logo link" href="http://consolenot.ru">Web Site</a>
 </div>
 <script type="text/javascript" src="~/js/site.js" asp-append-version="true"></script>
 @await RenderSectionAsync("Scripts", false)
