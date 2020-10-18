@@ -85,11 +85,11 @@ namespace WebLib
         private static string Connection1 => $"Data Source={Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}" +
                                             "/consolenot.db;Pooling=true;FailIfMissing=false;Version=3"; //TODO: Windows
 
-        public static void EditNotification(NotificationModel notificationModel, string title)
+        public static void EditNotification(NotificationModel notificationModel, string slug)
         {
             using var cnn = Conn();
             cnn.Execute(
-                $"update Notifications set (Title, Description, Delay, Iterations) = (@Title, @Description, @Delay, @Iterations) where Title = '{title}';",
+                $"update Notifications set (Title, Description, Delay, Iterations, Slug) = (@Title, @Description, @Delay, @Iterations, @Slug) where Slug = '{slug}'",
                 notificationModel);
         }
     }

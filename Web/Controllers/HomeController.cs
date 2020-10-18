@@ -34,8 +34,8 @@ namespace Web.Controllers
                 {
                     Title = title,
                     Description = description,
-                    Delay = StrToInt(delay),
-                    Iterations = StrToInt(iterations),
+                    Delay = Convert.ToInt32(delay),
+                    Iterations = Convert.ToInt32(iterations),
                     Slug = title.Replace(" ", "-")
                 });
                 return Redirect("/Home/Notifications");
@@ -56,11 +56,11 @@ namespace Web.Controllers
                     {
                         Title = title,
                         Description = description,
-                        Delay = StrToInt(delay),
-                        Iterations = StrToInt(iterations),
+                        Delay = Convert.ToInt32(delay),
+                        Iterations = Convert.ToInt32(iterations),
                         Slug = title.Replace(" ", "-")
                     },
-                    NotificationTitle);
+                    NotificationSlug);
                 return Redirect("/Home/Notifications");
             }
             catch (NullReferenceException)
@@ -96,17 +96,5 @@ namespace Web.Controllers
 
         public static string NotificationTitle { get; private set; }
         public static string NotificationSlug { get; private set; }
-
-        private static int StrToInt(string str)
-        {
-            try
-            {
-                return Convert.ToInt32(str);
-            }
-            catch (Exception)
-            {
-                return 0; //TODO: Call a notification with error message
-            }
-        }
     }
 }
