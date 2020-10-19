@@ -137,12 +137,13 @@ namespace Main
         {
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
-                var reg = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\CurrentVesion\Run", true);
-                reg.SetValue("ConsoleNot", ExecPath);
+                var reg = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVesion\Run", true);
+                reg.SetValue("ConsoleNot", ExecPath+@"\");
+                reg.Close();
             }
             else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
             {
-                Process.Start("/bin/bash",$"{ExecPath}/auto_launch_remove.sh");
+                Process.Start("/bin/bash",$"{ExecPath}/auto_launch_remove.sh"); //TODO: Do something in the script.
             }
         }
     }
