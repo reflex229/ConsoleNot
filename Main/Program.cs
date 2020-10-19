@@ -137,7 +137,7 @@ namespace Main
         {
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
-                var reg = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVesion\Run", true);
+                var reg = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run", true);
                 reg.SetValue("ConsoleNot", ExecPath+@"\");
                 reg.Close();
             }
