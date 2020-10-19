@@ -27,7 +27,8 @@
 -c The count of iterations (default value is 1).
 --client Enables client mode (you will have to enter a server's port and IP).
 You can always stop the program by pressing Ctrl+C.
---auto-launch Sets up an auto launch.</value>
+--auto-launch Sets up an auto launch.
+--remove-auto-launch Turns off an auto launch.</value>
     </data>
     <data name="There_is_no_" xml:space="preserve">
         <value>There is no arguments given. Exiting the program. Please, enter an arguments (see --help) and try again.</value>
