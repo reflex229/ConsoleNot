@@ -82,8 +82,6 @@ namespace WebLib
                 throw new Exception("Your system is not supported :(");
             }
         }
-        private static string Connection1 => $"Data Source={Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}" +
-                                            "/consolenot.db;Pooling=true;FailIfMissing=false;Version=3"; //TODO: Windows
 
         public static void EditNotification(NotificationModel notificationModel, string slug)
         {

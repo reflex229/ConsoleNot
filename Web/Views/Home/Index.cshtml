@@ -1,11 +1,17 @@
 ﻿@{
-    ViewData["Title"] = "New Notification";
-    var forms = new[]{"Title", "Description", "Delay", "Iterations"};
+    ViewData["Title"] = ResourceManagerProp.GetString("NewNot", CultureInfoProp);
+    var forms = new[]
+    {
+        ResourceManagerProp.GetString("Index_Title", CultureInfoProp),
+        ResourceManagerProp.GetString("Index_Description", CultureInfoProp),
+        ResourceManagerProp.GetString("Index_Delay", CultureInfoProp),
+        ResourceManagerProp.GetString("Index_Iterations", CultureInfoProp)
+    };
 }
 
 <form method="post" enctype="multipart/form-data" asp-controller="Home" asp-action="PostResult">
     <table>
-        @foreach (var form in forms) //TODO: Use IDs instead of slugs.
+        @foreach (var form in forms)
         {
             if (form == "Content")
             {
@@ -28,7 +34,7 @@
         }
         <tr>
             <td></td>
-            <td><input class="input_btn" type="submit" value="Submit"/></td>
+            <td><input class="input_btn" type="submit" value="@ResourceManagerProp.GetString("Index_Submit", CultureInfoProp)"/></td>
         </tr>
     </table>
 </form>

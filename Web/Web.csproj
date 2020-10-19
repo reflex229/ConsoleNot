@@ -12,4 +12,28 @@
       <None Remove="consolenot.db" />
     </ItemGroup>
 
+    <ItemGroup>
+      <EmbeddedResource Update="Lang\langres.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>langres.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Lang\langres.ru.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>langres.ru.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="Lang\langres.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>langres.resx</DependentUpon>
+      </Compile>
+      <Compile Update="Lang\langres.ru.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>langres.ru.resx</DependentUpon>
+      </Compile>
+    </ItemGroup>
+
 </Project>

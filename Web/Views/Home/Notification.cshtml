@@ -1,29 +1,29 @@
-@{ //TODO: BUG: Delay and Iterations are not changing (check values with debugger).
+@{
     var notificationModel = DataAccess.LoadNotifications("Slug", HomeController.NotificationSlug)[0];
     ViewData["Title"] = notificationModel.Title;
     
     <form method="post" enctype="multipart/form-data" asp-controller="Home" asp-action="NotificationUpdate">
         <table>
             <tr>
-                <td>Title: </td>
+                <td>@ResourceManagerProp.GetString("Index_Title", CultureInfoProp): </td>
                 <td>
                     <textarea type="text" name="Title">@notificationModel.Title</textarea>
                 </td>
             </tr>
             <tr>
-                <td>Description: </td>
+                <td>@ResourceManagerProp.GetString("Index_Description", CultureInfoProp): </td>
                 <td>
                     <textarea type="text" name="Description">@notificationModel.Description</textarea>
                 </td>
             </tr>
             <tr>
-                <td>Delay: </td>
+                <td>@ResourceManagerProp.GetString("Index_Delay", CultureInfoProp): </td>
                 <td>
                     <textarea type="text" name="Delay">@notificationModel.Delay.ToString()</textarea>
                 </td>
             </tr>
             <tr>
-                <td>Iterations: </td>
+                <td>@ResourceManagerProp.GetString("Index_Iterations", CultureInfoProp): </td>
                 <td>
                     <textarea type="text" name="Iterations">@notificationModel.Iterations</textarea>
                 </td>

@@ -16,3 +16,4 @@ namespace Web
     }
 }
 //TODO: Translate the web interface on russian with linking Main.csproj as a dependency (and getting language resource files from it).
+//TODO: Properly working server and client (send notifications from server to client via http post request).

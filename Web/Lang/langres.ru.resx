@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+            
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <data name="ErrorMessage" xml:space="preserve">
+        <value>Ой. Вы допустили ошибку во время заполнения полей. Вводите только целые числа в поля, предназначенные для них. И заполните все пустые формы.</value>
+    </data>
+    <data name="Error" xml:space="preserve">
+        <value>Ошибка</value>
+    </data>
+    <data name="NewNot" xml:space="preserve">
+        <value>Новое Уведомление</value>
+    </data>
+    <data name="Index_Title" xml:space="preserve">
+        <value>Заголовок</value>
+    </data>
+    <data name="Index_Description" xml:space="preserve">
+        <value>Описание</value>
+    </data>
+    <data name="Index_Delay" xml:space="preserve">
+        <value>Задержка</value>
+    </data>
+    <data name="Index_Iterations" xml:space="preserve">
+        <value>Итерации</value>
+    </data>
+    <data name="Notifications_Notifications" xml:space="preserve">
+        <value>Уведомления</value>
+    </data>
+    <data name="Notifications_HaveNot" xml:space="preserve">
+        <value>У вас не имеется уведомлений. Вы можете </value>
+    </data>
+    <data name="_Layout_WebSite" xml:space="preserve">
+        <value>Сайт</value>
+    </data>
+    <data name="Language" xml:space="preserve">
+        <value>ru</value>
+    </data>
+    <data name="Notifications_Edit" xml:space="preserve">
+        <value>Редактировать</value>
+    </data>
+    <data name="Notifications_Delete" xml:space="preserve">
+        <value>Удалить</value>
+    </data>
+    <data name="Index_Submit" xml:space="preserve">
+        <value>Подтвердить</value>
+    </data>
+    <data name="Notifications_HaveNot1" xml:space="preserve">
+        <value>создать новое</value>
+    </data>
+</root>

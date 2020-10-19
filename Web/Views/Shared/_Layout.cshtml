@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="@ResourceManagerProp.GetString("Language", CultureInfoProp)">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,8 +10,8 @@
 <div class="header">
     <a asp-area="" asp-controller="Home" asp-action="Index" class="logo">Console Notifier</a>
     <div class="header-right">
-        <a asp-area="" asp-controller="Home" asp-action="Notifications">Notifications</a>
-        <a asp-area="" asp-controller="Home" asp-action="Index">New Notification</a>
+        <a asp-area="" asp-controller="Home" asp-action="Notifications">@ResourceManagerProp.GetString("Notifications_Notifications", CultureInfoProp)</a>
+        <a asp-area="" asp-controller="Home" asp-action="Index">@ResourceManagerProp.GetString("NewNot", CultureInfoProp)</a>
     </div>
 </div>
 <div>
@@ -21,7 +21,7 @@
 </div>
 <div class="footer">
     <a class="logo link" href="https://github.com/reflex229/ConsoleNot">GitHub</a>
-    <a class="logo link" href="http://consolenot.ru">Web Site</a>
+    <a class="logo link" href="http://consolenot.ru">@ResourceManagerProp.GetString("_Layout_WebSite", CultureInfoProp)</a>
 </div>
 <script type="text/javascript" src="~/js/site.js" asp-append-version="true"></script>
 @await RenderSectionAsync("Scripts", false)
