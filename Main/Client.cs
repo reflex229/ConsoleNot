@@ -1,62 +1,22 @@
-using System;
-using System.Text;
-using System.Net;
-using System.Net.Sockets;
-using static Main.Properties;
-using Lib;
-// ReSharper disable ObjectCreationAsStatement
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Hosting;
 
 namespace Main
 {
     public class Client
     {
-        public Client(int port, string address)
+        public static void Start(string[] args)
         {
-            try
-            {
-                var ipPoint = new IPEndPoint(IPAddress.Parse(address), port);
-                var socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-                socket.Connect(ipPoint);
-                
-                var data = JsonWork.ToJson(NotificationValues);
-                socket.Send(data);
-
-                while (true)
-                {
-                    data = new byte[256];
-                    var builder = new StringBuilder();
-                    
-                    do
-                    {
-                        var bytes = socket.Receive(data, data.Length, 0);
-                        builder.Append(Encoding.Unicode.GetString(data, 0, bytes));
-                    } while (socket.Available > 0);
-                    
-                    if (builder.ToString() == "close")
-                    {
-                        Environment.Exit(0);
-                    }
-                    else if (builder.ToString().Contains("{"))
-                    {
-                        TitleAndDesc[0] = JsonWork.FromJson(builder.ToString())["Title"];
-                        TitleAndDesc[1] = JsonWork.FromJson(builder.ToString())["Description"];
-                    }
-                    else
-                    {
-                        new Notification();
-                    }
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(ResourceManagerProp.GetString("Client_Exception", CultureInfoProp), e.Message);
-            }
+            CreateHostBuilder(args).Build().Run();
         }
+
+        public static IHostBuilder CreateHostBuilder(string[] args) =>
+            Host.CreateDefaultBuilder(args)
+                .ConfigureWebHostDefaults(webBuilder => { webBuilder.UseStartup<Startup>(); });
     }
 }
-
 /*TODO:
-var client = new RestClient("https://localhost:5001/notContr?Id=123&Name=321");
+var client = new RestClient("http://localhost:5001/Not/Title-Description-1-1");
 client.Timeout = -1;
 var request = new RestRequest(Method.POST);
 IRestResponse response = client.Execute(request);

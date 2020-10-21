@@ -1,7 +1,5 @@
 using System;
 using System.Diagnostics;
-using System.Globalization;
-using System.Resources;
 using System.Runtime.InteropServices;
 using System.Timers;
 using Windows.UI.Notifications;
@@ -12,11 +10,7 @@ namespace Main
     public class Notification
     {
         private int _i;
-        private int _id;
         private Timer _timer;
-        private string[] _titleAndDesc;
-        private ResourceManager _resourceManager;
-        private CultureInfo _cultureInfo;
 
         public Notification()
         {
@@ -28,18 +22,31 @@ namespace Main
             }
             else
             {
-                _id = NotificationsCount;
-
-                _titleAndDesc = TitleAndDesc;
-                _resourceManager = ResourceManagerProp;
-                _cultureInfo = CultureInfoProp;
-                
                 _timer = new Timer(IterationTime);
                 _timer.Elapsed += OnTimedEvent;
                 _timer.AutoReset = true;
                 _timer.Enabled = true;
                 
                 Console.WriteLine(ResourceManagerProp.GetString("Success", CultureInfoProp), IterationTime / 1000, Count);
+            }
+        }
+        
+        public Notification(int iterationTime)
+        {
+            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows) &&
+                !RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            {
+                Console.WriteLine(ResourceManagerProp.GetString("Sorry_OS", CultureInfoProp));
+                Environment.Exit(1);
+            }
+            else
+            {
+                _timer = new Timer(iterationTime);
+                _timer.Elapsed += OnTimedEvent;
+                _timer.AutoReset = true;
+                _timer.Enabled = true;
+                
+                Console.WriteLine(ResourceManagerProp.GetString("Success", CultureInfoProp), iterationTime / 1000, Count);
             }
         }
         
@@ -56,7 +63,7 @@ namespace Main
             else
             {
                 _timer.Stop();
-                Console.WriteLine(ResourceManagerProp.GetString("Notification_End", CultureInfoProp), _id);
+                Console.WriteLine(ResourceManagerProp.GetString("Notification_End", CultureInfoProp), NotificationsCount);
             }
         }
 
@@ -68,7 +75,7 @@ namespace Main
 
             for (var i = 0; i < 2; i++)
             {
-                stringElements[i].AppendChild(toastXml.CreateTextNode(_titleAndDesc[i]));
+                stringElements[i].AppendChild(toastXml.CreateTextNode(TitleAndDesc[i]));
             }
 
             var toast = new ToastNotification(toastXml);
@@ -79,11 +86,11 @@ namespace Main
         {
             try
             {
-                Process.Start("notify-send", $"\"{_titleAndDesc[0]}\" \"{_titleAndDesc[1]}\"");
+                Process.Start("notify-send", $"\"{TitleAndDesc[0]}\" \"{TitleAndDesc[1]}\"");
             }
             catch (Exception)
             {
-                Console.WriteLine(_resourceManager.GetString("Notify_Ex", _cultureInfo));
+                Console.WriteLine(ResourceManagerProp.GetString("Notify_Ex", CultureInfoProp));
             }
         }
     }

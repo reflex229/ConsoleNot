@@ -3,7 +3,6 @@ using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Text;
 using static Main.Properties;
-using Microsoft.Win32;
 
 // ReSharper disable ObjectCreationAsStatement
 
@@ -13,7 +12,6 @@ namespace Main
     {
         private static string[] _arguments;
         private static bool _start = true;
-        private static int _port;
 
         private static void Main(string[] args)
         {
@@ -34,20 +32,7 @@ namespace Main
                         Console.WriteLine(ResourceManagerProp.GetString("Commands_Help_", CultureInfoProp));
                         return;
                     case "--client":
-                        Console.WriteLine(ResourceManagerProp.GetString("Enter_Port", CultureInfoProp));
-                        try
-                        {
-                            _port = Convert.ToInt32(Console.ReadLine());
-                        }
-                        catch (Exception)
-                        {
-                            Console.WriteLine(ResourceManagerProp.GetString("Only_Numbers", CultureInfoProp));
-                            return;
-                        }
-
-                        Console.WriteLine(ResourceManagerProp.GetString("Enter_IP", CultureInfoProp));
-                        var ip = Console.ReadLine();
-                        new Client(_port, ip);
+                        Client.Start(new []{""});
                         break;
                     case "-h":
                         ConvertAndSet(i, 0);
@@ -125,7 +110,11 @@ namespace Main
         {
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
-                //TODO: Windows implementation...
+                /*
+                var reg = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run", true);
+                reg.SetValue("ConsoleNot", ExecPath+@"\");
+                reg.Close();
+                */
             }
             else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
             {
@@ -137,9 +126,6 @@ namespace Main
         {
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
-                var reg = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run", true);
-                reg.SetValue("ConsoleNot", ExecPath+@"\");
-                reg.Close();
             }
             else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
             {
