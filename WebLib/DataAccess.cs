@@ -15,7 +15,7 @@ namespace WebLib
         public static List<NotificationModel> LoadNotifications()
         {
             using var cnn = Conn();
-            try
+            try //TODO: Add checking to all of methods
             {
                 var output = cnn.Query<NotificationModel>("SELECT t.* FROM Notifications t ORDER BY Id DESC",
                     new DynamicParameters());

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using WebLib;
@@ -8,6 +9,7 @@ namespace Web.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private Dictionary<string, WebNotificationTimer> _notificationTimers = new Dictionary<string, WebNotificationTimer>();
 
         public HomeController(ILogger<HomeController> logger)
         {
@@ -37,6 +39,7 @@ namespace Web.Controllers
                     Iterations = Convert.ToInt32(iterations),
                     Slug = title.Replace(" ", "-")
                 });
+                _notificationTimers.Add(title.Replace(" ", "-"), new WebNotificationTimer(title, description, delay, iterations));
                 return Redirect("/Home/Notifications");
             }
             catch (NullReferenceException)
@@ -60,6 +63,7 @@ namespace Web.Controllers
                         Slug = title.Replace(" ", "-")
                     },
                     NotificationSlug);
+                _notificationTimers.Add(title.Replace(" ", "-"), new WebNotificationTimer(title, description, delay, iterations));
                 return Redirect("/Home/Notifications");
             }
             catch (NullReferenceException)
@@ -80,6 +84,7 @@ namespace Web.Controllers
         public IActionResult DeletePost([FromRoute] string slug)
         {
             DataAccess.DeleteNotification(slug);
+            _notificationTimers[slug].Stop();
             //RemoteDbUpdate();
             return Redirect("/Home/Notifications");
         }
@@ -88,12 +93,7 @@ namespace Web.Controllers
         {
             return View();
         }
-
-        /*private static void RemoteDbUpdate() => Process.Start("scp",
-            "/home/reflex/Shit/C#/ConsoleNotSite/data/blog.db " +
-            "192.168.88.40:/home/reflex/data/blog.db");*/
-
-        public static string NotificationTitle { get; private set; }
+        
         public static string NotificationSlug { get; private set; }
     }
 }
