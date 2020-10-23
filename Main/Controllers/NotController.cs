@@ -14,13 +14,12 @@ namespace Main.Controllers
             _logger = logger;
         }
 
-        [Route("Not/{title}-{description}-{delay}-{iterations}")]
+        [Route("Not/{title}-{description}")]
         [HttpPost]
-        public IActionResult Post([FromRoute] string title, string description, int delay, int iterations)
+        public IActionResult Post([FromRoute] string title,[FromRoute] string description)
         {
             TitleAndDesc[0] = title; TitleAndDesc[1] = description;
-            NotificationsCount = iterations;
-            new Notification(delay);
+            new Notification(true);
             return Ok();
         }
     }

@@ -6,6 +6,7 @@ using WebLib;
 
 namespace Web.Controllers
 {
+    //TODO: Delay in hours, minutes and seconds.
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -39,16 +40,15 @@ namespace Web.Controllers
                     Iterations = Convert.ToInt32(iterations),
                     Slug = title.Replace(" ", "-")
                 });
-                _notificationTimers.Add(title.Replace(" ", "-"), new WebNotificationTimer(title, description, delay, iterations));
+                _notificationTimers.Add(title.Replace(" ", "-"), new WebNotificationTimer(title, description, delay, iterations, title.Replace(" ", "-")));
                 return Redirect("/Home/Notifications");
             }
-            catch (NullReferenceException)
+            catch (Exception)
             {
-                return Redirect("/Home/FieldsAreRequired");
+                return Redirect("/Home/Error");
             }
-            //RemoteDbUpdate();
         }
-
+        
         [HttpPost]
         public IActionResult NotificationUpdate(string title, string description, string delay, string iterations)
         {
@@ -63,14 +63,13 @@ namespace Web.Controllers
                         Slug = title.Replace(" ", "-")
                     },
                     NotificationSlug);
-                _notificationTimers.Add(title.Replace(" ", "-"), new WebNotificationTimer(title, description, delay, iterations));
+                _notificationTimers.Add(title.Replace(" ", "-"), new WebNotificationTimer(title, description, delay, iterations, title.Replace(" ", "-")));
                 return Redirect("/Home/Notifications");
             }
-            catch (NullReferenceException)
+            catch (Exception)
             {
-                return Redirect("/Home/FieldsAreRequired");
+                return Redirect("/Home/Error");
             }
-            //RemoteDbUpdate();
         }
 
         [Route("/Notification/{slug}")]
@@ -84,8 +83,7 @@ namespace Web.Controllers
         public IActionResult DeletePost([FromRoute] string slug)
         {
             DataAccess.DeleteNotification(slug);
-            _notificationTimers[slug].Stop();
-            //RemoteDbUpdate();
+            _notificationTimers[slug].Stop(); //TODO: Fix this shit!
             return Redirect("/Home/Notifications");
         }
 

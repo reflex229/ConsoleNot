@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Text;
+using Microsoft.Win32;
 using static Main.Properties;
 
 // ReSharper disable ObjectCreationAsStatement
@@ -110,11 +111,9 @@ namespace Main
         {
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
-                /*
                 var reg = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run", true);
                 reg.SetValue("ConsoleNot", ExecPath+@"\");
                 reg.Close();
-                */
             }
             else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
             {

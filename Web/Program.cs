@@ -15,4 +15,3 @@ namespace Web
                 .ConfigureWebHostDefaults(webBuilder => { webBuilder.UseStartup<Startup>(); });
     }
 }
-//TODO: Properly working server and client (send notifications from server to client via http post request).

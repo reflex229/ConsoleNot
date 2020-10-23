@@ -11,21 +11,26 @@ namespace WebLib
 {
     public static class DataAccess
     {
-
-        public static List<NotificationModel> LoadNotifications()
+        static DataAccess()
         {
             using var cnn = Conn();
-            try //TODO: Add checking to all of methods
+            try
             {
-                var output = cnn.Query<NotificationModel>("SELECT t.* FROM Notifications t ORDER BY Id DESC",
+                cnn.Query<NotificationModel>("SELECT t.* FROM Notifications t ORDER BY Id DESC", 
                     new DynamicParameters());
-                return output.ToList();
             }
             catch (Exception)
             {
                 CustomSql("CREATE TABLE \"Notifications\" (\"Id\" INTEGER NOT NULL UNIQUE,\"Title\" TEXT,\"Description\" TEXT,\"Delay\" INTEGER,\"Iterations\" INTEGER,\"Slug\" TEXT,PRIMARY KEY(\"Id\" AUTOINCREMENT));");
-                return null;
             }
+        }
+
+        public static List<NotificationModel> LoadNotifications()
+        {
+            using var cnn = Conn();
+            var output = cnn.Query<NotificationModel>("SELECT t.* FROM Notifications t ORDER BY Id DESC",
+                    new DynamicParameters());
+            return output.ToList();
         }
 
         public static List<NotificationModel> LoadNotifications(string name, string value)

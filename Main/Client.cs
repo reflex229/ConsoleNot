@@ -15,10 +15,3 @@ namespace Main
                 .ConfigureWebHostDefaults(webBuilder => { webBuilder.UseStartup<Startup>(); });
     }
 }
-/*TODO:
-var client = new RestClient("http://localhost:5001/Not/Title-Description-1-1");
-client.Timeout = -1;
-var request = new RestRequest(Method.POST);
-IRestResponse response = client.Execute(request);
-Console.WriteLine(response.Content);
-*/

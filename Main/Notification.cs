@@ -31,22 +31,16 @@ namespace Main
             }
         }
         
-        public Notification(int iterationTime)
+        public Notification(bool srv)
         {
-            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows) &&
-                !RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+                WinNotification();
+            else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+                LinuxNotification();
+            else
             {
                 Console.WriteLine(ResourceManagerProp.GetString("Sorry_OS", CultureInfoProp));
                 Environment.Exit(1);
-            }
-            else
-            {
-                _timer = new Timer(iterationTime);
-                _timer.Elapsed += OnTimedEvent;
-                _timer.AutoReset = true;
-                _timer.Enabled = true;
-                
-                Console.WriteLine(ResourceManagerProp.GetString("Success", CultureInfoProp), iterationTime / 1000, Count);
             }
         }
         
