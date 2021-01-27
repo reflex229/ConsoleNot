@@ -1,4 +1,4 @@
-@{
+@{ //TODO: Save hours, minutes and seconds in database and convert them to milliseconds.
     var notificationModel = DataAccess.LoadNotifications("Slug", HomeController.NotificationSlug)[0];
     ViewData["Title"] = notificationModel.Title;
     
@@ -17,9 +17,21 @@
                 </td>
             </tr>
             <tr>
-                <td>@ResourceManagerProp.GetString("Index_Delay", CultureInfoProp): </td>
+                <td>@ResourceManagerProp.GetString("Hours", CultureInfoProp): </td>
                 <td>
-                    <textarea type="text" name="Delay">@notificationModel.Delay.ToString()</textarea>
+                    <textarea type="text" name="Delay">@notificationModel.Hours</textarea>
+                </td>
+            </tr>
+            <tr>
+                <td>@ResourceManagerProp.GetString("Minutes", CultureInfoProp): </td>
+                <td>
+                    <textarea type="text" name="Delay">@notificationModel.Minutes</textarea>
+                </td>
+            </tr>
+            <tr>
+                <td>@ResourceManagerProp.GetString("Seconds", CultureInfoProp): </td>
+                <td>
+                    <textarea type="text" name="Delay">@notificationModel.Seconds</textarea>
                 </td>
             </tr>
             <tr>

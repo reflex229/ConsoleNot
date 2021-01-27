@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using WebLib;
+using Lib;
 
 namespace Web.Controllers
 {
-    //TODO: Delay in hours, minutes and seconds.
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private Dictionary<string, WebNotificationTimer> _notificationTimers = new Dictionary<string, WebNotificationTimer>();
+        private Dictionary<string, WebNotificationTimer> _notificationTimers
+            = new Dictionary<string, WebNotificationTimer>();
 
         public HomeController(ILogger<HomeController> logger)
         {
@@ -28,19 +28,24 @@ namespace Web.Controllers
         }
 
         [HttpPost]
-        public IActionResult PostResult(string title, string description, string delay, string iterations)
+        public IActionResult PostResult(
+            string title, string description, string hours, string minutes, string seconds, string iterations)
         {
             try
             {
+                var delay = new[] {Convert.ToInt32(hours), Convert.ToInt32(minutes), Convert.ToInt32(seconds)};
                 DataAccess.SaveNotification(new NotificationModel
                 {
                     Title = title,
-                    Description = description,
-                    Delay = Convert.ToInt32(delay),
+                    Description = description, //TODO: Check exception here.
+                    Hours = delay[(int) Times.Hours],
+                    Minutes = delay[(int) Times.Minutes],
+                    Seconds = delay[(int) Times.Seconds],
                     Iterations = Convert.ToInt32(iterations),
                     Slug = title.Replace(" ", "-")
                 });
-                _notificationTimers.Add(title.Replace(" ", "-"), new WebNotificationTimer(title, description, delay, iterations, title.Replace(" ", "-")));
+                _notificationTimers.Add(title.Replace(" ", "-"), new WebNotificationTimer(title,
+                    description, delay, iterations, title.Replace(" ", "-")));
                 return Redirect("/Home/Notifications");
             }
             catch (Exception)
@@ -50,20 +55,25 @@ namespace Web.Controllers
         }
         
         [HttpPost]
-        public IActionResult NotificationUpdate(string title, string description, string delay, string iterations)
+        public IActionResult NotificationUpdate(
+            string title, string description, string hours, string minutes, string seconds, string iterations)
         {
             try
             {
+                var delay = new[] {Convert.ToInt32(hours), Convert.ToInt32(minutes), Convert.ToInt32(seconds)};
                 DataAccess.EditNotification(new NotificationModel
                     {
                         Title = title,
                         Description = description,
-                        Delay = Convert.ToInt32(delay),
+                        Hours = delay[(int) Times.Hours],
+                        Minutes = delay[(int) Times.Minutes],
+                        Seconds = delay[(int) Times.Seconds],
                         Iterations = Convert.ToInt32(iterations),
                         Slug = title.Replace(" ", "-")
                     },
                     NotificationSlug);
-                _notificationTimers.Add(title.Replace(" ", "-"), new WebNotificationTimer(title, description, delay, iterations, title.Replace(" ", "-")));
+                _notificationTimers.Add(title.Replace(" ", "-"), new WebNotificationTimer(title,
+                    description, delay, iterations, title.Replace(" ", "-")));
                 return Redirect("/Home/Notifications");
             }
             catch (Exception)

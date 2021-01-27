@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Text;
 using Microsoft.Win32;
+using static Lib.Times;
 using static Main.Properties;
 
 // ReSharper disable ObjectCreationAsStatement
@@ -36,13 +37,13 @@ namespace Main
                         Client.Start(new []{""});
                         break;
                     case "-h":
-                        ConvertAndSet(i, 0);
+                        ConvertAndSet(i, (int) Hours);
                         break;
                     case "-m":
-                        ConvertAndSet(i, 1);
+                        ConvertAndSet(i, (int) Minutes);
                         break;
                     case "-s":
-                        ConvertAndSet(i, 2);
+                        ConvertAndSet(i, (int) Seconds);
                         break;
                     case "-c":
                         try
@@ -63,14 +64,6 @@ namespace Main
                     case "-d":
                         Console.WriteLine(ResourceManagerProp.GetString("Enter_Description", CultureInfoProp));
                         TitleAndDesc[1] = Console.ReadLine();
-                        break;
-                    case "--auto-launch":
-                        _start = false;
-                        SetAutoLaunch();
-                        break;
-                    case "--remove-auto-launch":
-                        _start = false;
-                        RemoveAutoLaunch();
                         break;
                 }
 
@@ -104,31 +97,6 @@ namespace Main
             {
                 Console.OutputEncoding = Encoding.UTF8;
                 Console.InputEncoding = Encoding.UTF8;
-            }
-        }
-
-        private static void SetAutoLaunch()
-        {
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                var reg = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run", true);
-                reg.SetValue("ConsoleNot", ExecPath+@"\");
-                reg.Close();
-            }
-            else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
-            {
-                Process.Start("/bin/bash",$"{ExecPath}/auto_launch.sh {ExecPath}");
-            }
-        }
-
-        private static void RemoveAutoLaunch()
-        {
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-            }
-            else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
-            {
-                Process.Start("/bin/bash",$"{ExecPath}/auto_launch_remove.sh"); //TODO: Do something in the script.
             }
         }
     }

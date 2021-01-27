@@ -63,4 +63,13 @@
     <data name="Notifications_HaveNot1" xml:space="preserve">
         <value>создать новое</value>
     </data>
+    <data name="Hours" xml:space="preserve">
+        <value>Часы</value>
+    </data>
+    <data name="Minutes" xml:space="preserve">
+        <value>Минуты</value>
+    </data>
+    <data name="Seconds" xml:space="preserve">
+        <value>Секунды</value>
+    </data>
 </root>

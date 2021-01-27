@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Reflection;
@@ -20,14 +19,6 @@ namespace Main
             ResourceManagerProp.GetString("Title", CultureInfoProp)
         };
         public static int IterationTime => Time[0] * 3600000 + Time[1] * 60000 + Time[2] * 1000;
-        public static Dictionary<string, string> NotificationValues =>
-            new Dictionary<string, string>
-            {
-                {"Title", TitleAndDesc[0]},
-                {"Description", TitleAndDesc[1]},
-                {"IterationTime", IterationTime.ToString()},
-                {"Count", Count.ToString()}
-            };
         public static int NotificationsCount { get; set; }
         public static string ExecPath => Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
     }

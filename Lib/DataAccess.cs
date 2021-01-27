@@ -7,7 +7,7 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using Dapper;
 
-namespace WebLib
+namespace Lib
 {
     public static class DataAccess
     {
@@ -21,7 +21,7 @@ namespace WebLib
             }
             catch (Exception)
             {
-                CustomSql("CREATE TABLE \"Notifications\" (\"Id\" INTEGER NOT NULL UNIQUE,\"Title\" TEXT,\"Description\" TEXT,\"Delay\" INTEGER,\"Iterations\" INTEGER,\"Slug\" TEXT,PRIMARY KEY(\"Id\" AUTOINCREMENT));");
+                CustomSql("CREATE TABLE \"Notifications\" (\"Id\" INTEGER NOT NULL UNIQUE, \"Title\" TEXT,\"Description\" TEXT,\"Hours\" INTEGER,\"Minutes\" INTEGER,\"Seconds\" INTEGER,\"Iterations\" INTEGER,\"Slug\" TEXT,PRIMARY KEY(\"Id\" AUTOINCREMENT));");
             }
         }
 
@@ -52,7 +52,7 @@ namespace WebLib
         {
             using var cnn = Conn();
             cnn.Execute(
-                "insert into Notifications (Title, Description, Delay, Iterations, Slug) values (@Title, @Description, @Delay, @Iterations, @Slug)",
+                "insert into Notifications (Title, Description, Hours, Minutes, Seconds, Iterations, Slug) values (@Title, @Description, @Hours, @Minutes, @Seconds, @Iterations, @Slug)",
                 notification);
         }
 
@@ -92,7 +92,7 @@ namespace WebLib
         {
             using var cnn = Conn();
             cnn.Execute(
-                $"update Notifications set (Title, Description, Delay, Iterations, Slug) = (@Title, @Description, @Delay, @Iterations, @Slug) where Slug = '{slug}'",
+                $"update Notifications set (Title, Description, Hours, Minutes, Seconds, Iterations, Slug) = (@Title, @Description, @Hours, @Minutes, @Seconds, @Iterations, @Slug) where Slug = '{slug}'",
                 notificationModel);
         }
     }

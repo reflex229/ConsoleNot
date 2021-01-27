@@ -13,5 +13,6 @@ namespace Main
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder => { webBuilder.UseStartup<Startup>(); });
+        //TODO: Fix exception with exiting by Ctrl+C.
     }
 }

@@ -1,36 +1,38 @@
-﻿@{
+﻿@using System.Globalization
+@{
     ViewData["Title"] = ResourceManagerProp.GetString("NewNot", CultureInfoProp);
     var forms = new[]
     {
         ResourceManagerProp.GetString("Index_Title", CultureInfoProp),
         ResourceManagerProp.GetString("Index_Description", CultureInfoProp),
-        ResourceManagerProp.GetString("Index_Delay", CultureInfoProp),
-        ResourceManagerProp.GetString("Index_Iterations", CultureInfoProp)
+        ResourceManagerProp.GetString("Hours", CultureInfoProp),
+        ResourceManagerProp.GetString("Minutes", CultureInfoProp),
+        ResourceManagerProp.GetString("Seconds", CultureInfoProp),
+        ResourceManagerProp.GetString("Index_Iterations", CultureInfoProp) //TODO: Change Delay to hours, seconds and minutes
+    };
+    var formsEng = new[]
+    {
+        ResourceManagerProp.GetString("Index_Title", CultureInfo.CreateSpecificCulture("en-US")),
+        ResourceManagerProp.GetString("Index_Description", CultureInfo.CreateSpecificCulture("en-US")),
+        ResourceManagerProp.GetString("Hours", CultureInfo.CreateSpecificCulture("en-US")),
+        ResourceManagerProp.GetString("Minutes", CultureInfo.CreateSpecificCulture("en-US")),
+        ResourceManagerProp.GetString("Seconds", CultureInfo.CreateSpecificCulture("en-US")),
+        ResourceManagerProp.GetString("Index_Iterations", CultureInfo.CreateSpecificCulture("en-US")) //TODO: Change Delay to hours, seconds and minutes
     };
 }
 
 <form method="post" enctype="multipart/form-data" asp-controller="Home" asp-action="PostResult">
     <table>
-        @foreach (var form in forms)
+        @for (var i = 0; i < forms.Length; i++)
         {
-            if (form == "Content")
-            {
-                <tr>
-                    <td>@form: </td>
-                    <td>
-                        <textarea name="Content"></textarea>
-                    </td>
+            var form = forms[i];
+            var formEng = formsEng[i];
+            <tr>
+                <td>@form: </td>
+                <td>
+                    <textarea type="text" name="@formEng"></textarea>
+                </td>
                 </tr>
-            }
-            else
-            {
-                <tr>
-                    <td>@form: </td>
-                    <td>
-                        <input type="text" name="@form"/>
-                    </td>
-                </tr>
-            }
         }
         <tr>
             <td></td>

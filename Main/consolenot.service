@@ -1,8 +1,0 @@
-[Unit]
-Description=consolenot
-
-[Service]
-ExecStart=/usr/lib/systemd/system/consolenot_script.sh
-
-[Install]
-WantedBy=multi-user.target

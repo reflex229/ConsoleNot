@@ -134,5 +134,23 @@ namespace Web.Lang {
                 return ResourceManager.GetString("Notifications_HaveNot1", resourceCulture);
             }
         }
+        
+        internal static string Hours {
+            get {
+                return ResourceManager.GetString("Hours", resourceCulture);
+            }
+        }
+        
+        internal static string Minutes {
+            get {
+                return ResourceManager.GetString("Minutes", resourceCulture);
+            }
+        }
+        
+        internal static string Seconds {
+            get {
+                return ResourceManager.GetString("Seconds", resourceCulture);
+            }
+        }
     }
 }
