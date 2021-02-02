@@ -11,15 +11,13 @@ namespace Web
         private string _description;
         private int _iterations;
         private int _i;
-        private string _slug; //MB Useless
         private static readonly HttpClient Client = new HttpClient();
 
         private Timer _timer;
         
-        public WebNotificationTimer(string title, string description, int[] delay, string iterations, string slug)
+        public WebNotificationTimer(string title, string description, int[] delay, string iterations)
         {
             _title = title;
-            _slug = slug;
             _description = description;
             _iterations = Convert.ToInt32(iterations);
             
@@ -39,7 +37,7 @@ namespace Web
             else
             {
                 _timer.Stop();
-                DataAccess.DeleteNotification(_slug);
+                DataAccess.DeleteNotification(_title);
                 //TODO: Delete notification from dictionary
             }
         }

@@ -21,7 +21,7 @@ namespace Lib
             }
             catch (Exception)
             {
-                CustomSql("CREATE TABLE \"Notifications\" (\"Id\" INTEGER NOT NULL UNIQUE, \"Title\" TEXT,\"Description\" TEXT,\"Hours\" INTEGER,\"Minutes\" INTEGER,\"Seconds\" INTEGER,\"Iterations\" INTEGER,\"Slug\" TEXT,PRIMARY KEY(\"Id\" AUTOINCREMENT));");
+                CustomSql("CREATE TABLE \"Notifications\" (\"Id\" INTEGER NOT NULL UNIQUE, \"Title\" TEXT,\"Description\" TEXT,\"Hours\" INTEGER,\"Minutes\" INTEGER,\"Seconds\" INTEGER,\"Iterations\" INTEGER,PRIMARY KEY(\"Id\" AUTOINCREMENT));");
             }
         }
 
@@ -52,22 +52,22 @@ namespace Lib
         {
             using var cnn = Conn();
             cnn.Execute(
-                "insert into Notifications (Title, Description, Hours, Minutes, Seconds, Iterations, Slug) values (@Title, @Description, @Hours, @Minutes, @Seconds, @Iterations, @Slug)",
+                "insert into Notifications (Title, Description, Hours, Minutes, Seconds, Iterations) values (@Title, @Description, @Hours, @Minutes, @Seconds, @Iterations)",
                 notification);
         }
 
-        public static void DeleteNotification(string slug)
+        public static void DeleteNotification(string title)
         {
             using var cnn = Conn();
             cnn.Execute(
-                $"delete from Notifications where Slug = '{slug}'");
+                $"delete from Notifications where Title = '{title}'");
         }
 
-        public static void UpdateParam(string name, string value, string slug)
+        public static void UpdateParam(string name, string value, string title)
         {
             using var cnn = Conn();
             cnn.Execute(
-                $"update Notifications set {name} = '{value}' where Slug = '{slug}'");
+                $"update Notifications set {name} = '{value}' where Title = '{title}'");
         }
 
         private static SQLiteConnection Conn()
@@ -88,11 +88,11 @@ namespace Lib
             }
         }
 
-        public static void EditNotification(NotificationModel notificationModel, string slug)
+        public static void EditNotification(NotificationModel notificationModel, string title)
         {
             using var cnn = Conn();
             cnn.Execute(
-                $"update Notifications set (Title, Description, Hours, Minutes, Seconds, Iterations, Slug) = (@Title, @Description, @Hours, @Minutes, @Seconds, @Iterations, @Slug) where Slug = '{slug}'",
+                $"update Notifications set (Title, Description, Hours, Minutes, Seconds, Iterations) = (@Title, @Description, @Hours, @Minutes, @Seconds, @Iterations) where Title = '{title}'",
                 notificationModel);
         }
     }

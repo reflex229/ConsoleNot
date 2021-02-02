@@ -10,8 +10,8 @@
             <h1 class="h_white">@notification.Title</h1>
             <a>@notification.Description</a>
             <br><br>
-            <button class="input_btn" onclick="location.href='/Notification/@notification.Slug'" type="button">@ResourceManagerProp.GetString("Notifications_Edit", CultureInfoProp)</button>
-            <button class="input_btn" onclick="location.href='/NotificationDelete/@notification.Slug'" type="button">@ResourceManagerProp.GetString("Notifications_Delete", CultureInfoProp)</button>
+            <button class="input_btn" onclick="location.href='/Notification/@notification.Title'" type="button">@ResourceManagerProp.GetString("Notifications_Edit", CultureInfoProp)</button>
+            <button class="input_btn" onclick="location.href='/NotificationDelete/@notification.Title'" type="button">@ResourceManagerProp.GetString("Notifications_Delete", CultureInfoProp)</button>
         </div>
         <br>
     }

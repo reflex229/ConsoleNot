@@ -9,8 +9,10 @@ namespace Web.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private Dictionary<string, WebNotificationTimer> _notificationTimers
-            = new Dictionary<string, WebNotificationTimer>();
+
+        private Dictionary<string, WebNotificationTimer> NotificationTimers => notificationTimers;
+
+        private static Dictionary<string, WebNotificationTimer> notificationTimers = new Dictionary<string, WebNotificationTimer>();
 
         public HomeController(ILogger<HomeController> logger)
         {
@@ -42,11 +44,10 @@ namespace Web.Controllers
                     Minutes = delay[(int) Times.Minutes],
                     Seconds = delay[(int) Times.Seconds],
                     Iterations = Convert.ToInt32(iterations),
-                    Slug = title.Replace(" ", "-")
                 });
-                _notificationTimers.Add(title.Replace(" ", "-"), new WebNotificationTimer(title,
-                    description, delay, iterations, title.Replace(" ", "-")));
-                return Redirect("/Home/Notifications");
+                NotificationTimers.Add(title, new WebNotificationTimer(title,
+                    description, delay, iterations));
+                return Redirect("/Home/Notifications"); //TODO: Iterations count must be greater than zero.
             }
             catch (Exception)
             {
@@ -58,9 +59,7 @@ namespace Web.Controllers
         public IActionResult NotificationUpdate(
             string title, string description, string hours, string minutes, string seconds, string iterations)
         {
-            try
-            {
-                var delay = new[] {Convert.ToInt32(hours), Convert.ToInt32(minutes), Convert.ToInt32(seconds)};
+            var delay = new[] {Convert.ToInt32(hours), Convert.ToInt32(minutes), Convert.ToInt32(seconds)};
                 DataAccess.EditNotification(new NotificationModel
                     {
                         Title = title,
@@ -69,31 +68,25 @@ namespace Web.Controllers
                         Minutes = delay[(int) Times.Minutes],
                         Seconds = delay[(int) Times.Seconds],
                         Iterations = Convert.ToInt32(iterations),
-                        Slug = title.Replace(" ", "-")
                     },
-                    NotificationSlug);
-                _notificationTimers.Add(title.Replace(" ", "-"), new WebNotificationTimer(title,
-                    description, delay, iterations, title.Replace(" ", "-")));
+                    NotificationTitle);
+                NotificationTimers.Add(title, new WebNotificationTimer(title,
+                    description, delay, iterations));
                 return Redirect("/Home/Notifications");
-            }
-            catch (Exception)
-            {
-                return Redirect("/Home/Error");
-            }
         }
 
-        [Route("/Notification/{slug}")]
-        public IActionResult Notification([FromRoute] string slug)
+        [Route("/Notification/{title}")]
+        public IActionResult Notification([FromRoute] string title)
         {
-            NotificationSlug = slug;
+            NotificationTitle = title;
             return View();
         }
 
-        [Route("/NotificationDelete/{slug}")]
-        public IActionResult DeletePost([FromRoute] string slug)
+        [Route("/NotificationDelete/{title}")]
+        public IActionResult DeletePost([FromRoute] string title)
         {
-            DataAccess.DeleteNotification(slug);
-            _notificationTimers[slug].Stop(); //TODO: Fix this shit!
+            DataAccess.DeleteNotification(title);
+            NotificationTimers[title].Stop();
             return Redirect("/Home/Notifications");
         }
 
@@ -102,6 +95,6 @@ namespace Web.Controllers
             return View();
         }
         
-        public static string NotificationSlug { get; private set; }
+        public static string NotificationTitle { get; private set; }
     }
 }
