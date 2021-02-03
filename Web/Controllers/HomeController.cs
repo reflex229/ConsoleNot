@@ -47,7 +47,7 @@ namespace Web.Controllers
                 });
                 NotificationTimers.Add(title, new WebNotificationTimer(title,
                     description, delay, iterations));
-                return Redirect("/Home/Notifications"); //TODO: Iterations count must be greater than zero.
+                return Redirect("/Home/Notifications");
             }
             catch (Exception)
             {
@@ -91,6 +91,11 @@ namespace Web.Controllers
         }
 
         public IActionResult Error()
+        {
+            return View();
+        }
+
+        public IActionResult ErrorUsr()
         {
             return View();
         }

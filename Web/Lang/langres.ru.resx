@@ -72,4 +72,14 @@
     <data name="Seconds" xml:space="preserve">
         <value>Секунды</value>
     </data>
+    <data name="There_is_no_" xml:space="preserve">
+        <value>Не задано никаких аргументов. Пожалуйста, введите аргументы (смотрите --help). Для выхода нажмите Enter.</value>
+    </data>
+    <data name="Commands_Help_" xml:space="preserve">
+        <value>--ip Устанавливает ip клиента.
+--port Устанавливает порт клиента (оставьте пустым, если порт - 5947).</value>
+    </data>
+    <data name="ErrorMessage_Usr" xml:space="preserve">
+        <value>Ой. Что-то пошло не так. Возможно, вы сделали что-то не так или разработчик где-то облажался.</value>
+    </data>
 </root>

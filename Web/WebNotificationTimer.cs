@@ -2,6 +2,7 @@ using System;
 using System.Net.Http;
 using System.Timers;
 using Lib;
+using static Web.Program;
 
 namespace Web
 {
@@ -20,7 +21,7 @@ namespace Web
             _title = title;
             _description = description;
             _iterations = Convert.ToInt32(iterations);
-            
+
             _timer = new Timer(delay[0] * 3600000 + delay[1] * 60000 + delay[2] * 1000);
             _timer.Elapsed += OnTimedEvent;
             _timer.AutoReset = true;
@@ -32,13 +33,12 @@ namespace Web
             if (_i < _iterations)
             {
                 _i++;
-                Client.PostAsync($"http://localhost:5005/Not/{_title}-{_description}", null); //TODO: Request ip from user
+                Client.PostAsync($"http://{Ip}:{Port}/Not/{_title}-{_description}", null);
             }
             else
             {
                 _timer.Stop();
                 DataAccess.DeleteNotification(_title);
-                //TODO: Delete notification from dictionary
             }
         }
 

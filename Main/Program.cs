@@ -4,8 +4,6 @@ using System.Text;
 using static Lib.Times;
 using static Main.Properties;
 
-// ReSharper disable ObjectCreationAsStatement
-
 namespace Main
 {
     internal static class Program
@@ -71,7 +69,7 @@ namespace Main
             Console.ReadLine();
         }
 
-        private static void ConvertAndSet(int i, int timeNum) //Получаем число из аргумента (с исключением).
+        private static void ConvertAndSet(int i, int timeNum) //Receiving a integer from the argument (with the exception).
         {
             try
             {

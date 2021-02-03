@@ -3,7 +3,7 @@
     "Client": {
       "commandName": "Project",
       "launchBrowser": false,
-      "applicationUrl": "http://localhost:5005",
+      "applicationUrl": "http://localhost:5947",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Production"
       }

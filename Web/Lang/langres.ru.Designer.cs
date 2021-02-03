@@ -152,5 +152,23 @@ namespace Web.Lang {
                 return ResourceManager.GetString("Seconds", resourceCulture);
             }
         }
+        
+        internal static string There_is_no_ {
+            get {
+                return ResourceManager.GetString("There_is_no_", resourceCulture);
+            }
+        }
+        
+        internal static string Commands_Help_ {
+            get {
+                return ResourceManager.GetString("Commands_Help_", resourceCulture);
+            }
+        }
+        
+        internal static string ErrorMessage_Usr {
+            get {
+                return ResourceManager.GetString("ErrorMessage_Usr", resourceCulture);
+            }
+        }
     }
 }

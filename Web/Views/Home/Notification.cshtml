@@ -1,4 +1,4 @@
-@{ //TODO: Save hours, minutes and seconds in database and convert them to milliseconds.
+@{
     var notificationModel = DataAccess.LoadNotifications("Title", HomeController.NotificationTitle)[0];
     ViewData["Title"] = notificationModel.Title;
     
