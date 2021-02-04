@@ -70,6 +70,8 @@ namespace Web.Controllers
                         Iterations = Convert.ToInt32(iterations),
                     },
                     NotificationTitle);
+                NotificationTimers[NotificationTitle].Stop();
+                //NotificationTimers[title] = null;
                 NotificationTimers.Add(title, new WebNotificationTimer(title,
                     description, delay, iterations));
                 return Redirect("/Home/Notifications");

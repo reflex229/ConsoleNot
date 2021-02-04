@@ -5,14 +5,13 @@ namespace Main
 {
     public class Client
     {
-        public static void Start(string[] args)
+        public static void Start()
         {
-            CreateHostBuilder(args).Build().Run();
+            CreateHostBuilder().Build().Run();
         }
 
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
+        public static IHostBuilder CreateHostBuilder() =>
+            Host.CreateDefaultBuilder()
                 .ConfigureWebHostDefaults(webBuilder => { webBuilder.UseStartup<Startup>(); });
-        //TODO: Fix exception with exiting by Ctrl+C.
     }
 }

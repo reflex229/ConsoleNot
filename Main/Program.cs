@@ -30,8 +30,8 @@ namespace Main
                         Console.WriteLine(ResourceManagerProp.GetString("Commands_Help_", CultureInfoProp));
                         return;
                     case "--client":
-                        Client.Start(new []{""});
-                        break;
+                        Client.Start();
+                        return;
                     case "-h":
                         ConvertAndSet(i, (int) Hours);
                         break;
@@ -69,7 +69,7 @@ namespace Main
             Console.ReadLine();
         }
 
-        private static void ConvertAndSet(int i, int timeNum) //Receiving a integer from the argument (with the exception).
+        private static void ConvertAndSet(int i, int timeNum) //Receiving an integer from the argument (with the exception).
         {
             try
             {
