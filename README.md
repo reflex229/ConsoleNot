@@ -1,10 +1,4 @@
 # ConsoleNot
-## Plans for future updates
-Unlimited amount of notifications.
-
-Web interface to manage all notifications.
-
-Socket will be changed to HTTP requests.
 ## You can find instructions on the project's site for [Linux](http://consolenot.ru/Home/About#linux) or [Windows](http://consolenot.ru/Home/About#windows)
 ## English description
 Console notifier with desktop notifications, written in C#.
