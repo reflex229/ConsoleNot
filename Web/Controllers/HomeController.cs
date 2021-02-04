@@ -39,7 +39,7 @@ namespace Web.Controllers
                 DataAccess.SaveNotification(new NotificationModel
                 {
                     Title = title,
-                    Description = description, //TODO: Check exception here.
+                    Description = description,
                     Hours = delay[(int) Times.Hours],
                     Minutes = delay[(int) Times.Minutes],
                     Seconds = delay[(int) Times.Seconds],

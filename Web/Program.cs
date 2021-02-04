@@ -15,7 +15,7 @@ namespace Web
         public static void Main(string[] args)
         {   
             EncodingFix();
-            Port = "5947"; //TODO: Create another fields for hours, seconds and minutes in one line.
+            Port = "5947";
 
             if (args.Length < 1)
             {
