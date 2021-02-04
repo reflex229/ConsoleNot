@@ -71,9 +71,8 @@ namespace Web.Controllers
                     },
                     NotificationTitle);
                 NotificationTimers[NotificationTitle].Stop();
-                //NotificationTimers[title] = null;
-                NotificationTimers.Add(title, new WebNotificationTimer(title,
-                    description, delay, iterations));
+                NotificationTimers[title] = new WebNotificationTimer(title,
+                    description, delay, iterations);
                 return Redirect("/Home/Notifications");
         }
 

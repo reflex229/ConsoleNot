@@ -2,7 +2,11 @@ html {
     font-family: "Roboto", sans-serif;
     background: #1c1c1c;
     margin: 0 auto;
-    width: 80%;
+}
+
+.content {
+    margin: 0 auto;
+    width: 90%;
 }
 
 @media screen and (max-width: 900px) {
@@ -29,7 +33,7 @@ html {
 
 .header a {
     float: left;
-    color: #b2bfbd;
+    color: #e0e0e0;
     text-align: center;
     padding: 12px;
     text-decoration: none;
@@ -68,7 +72,7 @@ html {
 }
 
 .white {
-    color: #b2bfbd;
+    color: #e0e0e0;
 }
 
 .footer {
@@ -80,7 +84,7 @@ html {
 
 .footer a {
     float: left;
-    color: #b2bfbd;
+    color: #e0e0e0;
     text-align: center;
     padding: 12px;
     text-decoration: none;
@@ -94,49 +98,13 @@ html {
 }
 
 .link:link {
-    color: #5e5d5d;
+    color: #e0e0e0;
 }
 .link:visited {
-    color: #5e5d5d;
+    color: #e0e0e0;
 }
 .link:hover {
-    color: #5e5d5d;
-}
-
-.cmd {
-    font-family: Consolas,Monaco,'Andale Mono','Ubuntu Mono',monospace;
-    font-size: 18px;
-    color: #f8f8f2;
-    background: none;
-    text-align: left;
-    white-space: pre;
-    word-spacing: normal;
-    word-break: normal;
-    word-wrap: normal;
-    line-height: 1.5;
-}
-
-.comment {
-    color: grey;
-}
-
-pre {
-    background: black;
-    width: max-content;
-    border-radius: 7px;
-    padding: 8px;
-}
-
-.first_wrd {
-    color: #66d9ef;
-}
-
-.center {
-    text-align: center;
-}
-
-.left {
-    text-align: left;
+    color: #e0e0e0;
 }
 
 @media screen and (max-width: 900px) {
@@ -150,20 +118,6 @@ pre {
     }
 }
 
-.cmd_solo {
-    font-family: Consolas,Monaco,'Andale Mono','Ubuntu Mono',monospace;
-    font-size: 18px;
-    background-color: black;
-    color: #f8f8f2;
-    text-align: center;
-    border-radius: 2px;
-    padding: 1px;
-}
-
-.code {
-    overflow: auto;
-}
-
 input {
     font-family: "Roboto", sans-serif;
     font-size: 18px;
@@ -171,8 +125,8 @@ input {
     margin-left: 10px;
     border: #161616;
     height: 30px;
-    color: #b2bfbd;
-    background-color: black;
+    color: #e0e0e0;
+    background-color: #161616;
     border-radius: 5px;
 }
 
@@ -181,9 +135,34 @@ textarea {
     font-size: 18px;
     margin-left: 10px;
     border: #161616;
-    height: 50px;
-    color: #b2bfbd;
-    background-color: black;
+    height: 30px;
+    color: #e0e0e0;
+    background-color: #161616;
+    border-radius: 5px;
+}
+
+.time {
+    width: 40px;
+    height: 30px;
+    margin-left: 10px;
+    text-align: left;
+    color: #e0e0e0;
+}
+
+table {
+    width: 30%;
+}
+
+.iterations {
+    font-family: "Roboto", sans-serif;
+    font-size: 18px;
+    margin-left: 10px;
+    width: 215px;
+    text-align: left;
+    border: #161616;
+    height: 32px;
+    color: #e0e0e0;
+    background-color: #161616;
     border-radius: 5px;
 }
 
@@ -193,6 +172,6 @@ textarea {
     font-size: 20px;
     display: inline-block;
     text-decoration: none;
-    color: #b2bfbd;
+    color: #e0e0e0;
     border-radius: 5px;
 }

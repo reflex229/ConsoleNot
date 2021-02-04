@@ -1,39 +1,39 @@
-﻿@using System.Globalization
-@{
+﻿@{
     ViewData["Title"] = ResourceManagerProp.GetString("NewNot", CultureInfoProp);
-    var forms = new[]
-    {
-        ResourceManagerProp.GetString("Index_Title", CultureInfoProp),
-        ResourceManagerProp.GetString("Index_Description", CultureInfoProp),
-        ResourceManagerProp.GetString("Hours", CultureInfoProp),
-        ResourceManagerProp.GetString("Minutes", CultureInfoProp),
-        ResourceManagerProp.GetString("Seconds", CultureInfoProp),
-        ResourceManagerProp.GetString("Index_Iterations", CultureInfoProp)
-    };
-    var formsEng = new[]
-    {
-        ResourceManagerProp.GetString("Index_Title", CultureInfo.CreateSpecificCulture("en-US")),
-        ResourceManagerProp.GetString("Index_Description", CultureInfo.CreateSpecificCulture("en-US")),
-        ResourceManagerProp.GetString("Hours", CultureInfo.CreateSpecificCulture("en-US")),
-        ResourceManagerProp.GetString("Minutes", CultureInfo.CreateSpecificCulture("en-US")),
-        ResourceManagerProp.GetString("Seconds", CultureInfo.CreateSpecificCulture("en-US")),
-        ResourceManagerProp.GetString("Index_Iterations", CultureInfo.CreateSpecificCulture("en-US"))
-    };
 }
 
 <form method="post" enctype="multipart/form-data" asp-controller="Home" asp-action="PostResult">
     <table>
-        @for (var i = 0; i < forms.Length; i++)
-        {
-            var form = forms[i];
-            var formEng = formsEng[i];
-            <tr>
-                <td>@form: </td>
-                <td>
-                    <textarea type="text" name="@formEng"></textarea>
-                </td>
-                </tr>
-        }
+        <tr>
+            <td>@ResourceManagerProp.GetString("Index_Title", CultureInfoProp)</td>
+            <td>
+                <textarea type="text" name="Title"></textarea>
+            </td>
+            <td class="time-container">@ResourceManagerProp.GetString("Hours", CultureInfoProp)</td>
+            <td>
+                <input class="time" type="number" name="Hours" step="1" min="0" value="0"/>
+            </td>
+        </tr>
+        <tr>
+            <td>@ResourceManagerProp.GetString("Index_Description", CultureInfoProp)</td>
+            <td>
+                <textarea type="text" name="Description"></textarea>
+            </td>
+            <td>@ResourceManagerProp.GetString("Minutes", CultureInfoProp)</td>
+            <td>
+                <input class="time" type="number" name="Minutes" step="1" min="0" value="0"/>
+            </td>
+        </tr>
+        <tr>
+            <td>@ResourceManagerProp.GetString("Index_Iterations", CultureInfoProp)</td>
+            <td>
+                <input class="iterations" type="number" name="Iterations" step="1" min="1" value="1"/>
+            </td>
+            <td>@ResourceManagerProp.GetString("Seconds", CultureInfoProp)</td>
+            <td>
+                <input class="time" type="number" name="Seconds" step="1" min="0" value="0"/>
+            </td>
+        </tr>
         <tr>
             <td></td>
             <td><input class="input_btn" type="submit" value="@ResourceManagerProp.GetString("Index_Submit", CultureInfoProp)"/></td>

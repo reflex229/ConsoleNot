@@ -1,49 +1,43 @@
 @{
     var notificationModel = DataAccess.LoadNotifications("Title", HomeController.NotificationTitle)[0];
     ViewData["Title"] = notificationModel.Title;
-    
+
     <form method="post" enctype="multipart/form-data" asp-controller="Home" asp-action="NotificationUpdate">
         <table>
             <tr>
-                <td>@ResourceManagerProp.GetString("Index_Title", CultureInfoProp): </td>
+                <td>@ResourceManagerProp.GetString("Index_Title", CultureInfoProp)</td>
                 <td>
                     <textarea type="text" name="Title">@notificationModel.Title</textarea>
                 </td>
+                <td class="time-container">@ResourceManagerProp.GetString("Hours", CultureInfoProp)</td>
+                <td>
+                    <input class="time" type="number" name="Hours" step="1" min="0" value="@notificationModel.Hours"/>
+                </td>
             </tr>
             <tr>
-                <td>@ResourceManagerProp.GetString("Index_Description", CultureInfoProp): </td>
+                <td>@ResourceManagerProp.GetString("Index_Description", CultureInfoProp)</td>
                 <td>
                     <textarea type="text" name="Description">@notificationModel.Description</textarea>
                 </td>
-            </tr>
-            <tr>
-                <td>@ResourceManagerProp.GetString("Hours", CultureInfoProp): </td>
+                <td>@ResourceManagerProp.GetString("Minutes", CultureInfoProp)</td>
                 <td>
-                    <textarea type="text" name="Delay">@notificationModel.Hours</textarea>
+                    <input class="time" type="number" name="Minutes" step="1" min="0" value="@notificationModel.Minutes"/>
                 </td>
             </tr>
             <tr>
-                <td>@ResourceManagerProp.GetString("Minutes", CultureInfoProp): </td>
+                <td>@ResourceManagerProp.GetString("Index_Iterations", CultureInfoProp)</td>
                 <td>
-                    <textarea type="text" name="Delay">@notificationModel.Minutes</textarea>
+                    <input class="iterations" type="number" name="Iterations" step="1" min="1" value="@notificationModel.Iterations"/>
                 </td>
-            </tr>
-            <tr>
-                <td>@ResourceManagerProp.GetString("Seconds", CultureInfoProp): </td>
+                <td>@ResourceManagerProp.GetString("Seconds", CultureInfoProp)</td>
                 <td>
-                    <textarea type="text" name="Delay">@notificationModel.Seconds</textarea>
-                </td>
-            </tr>
-            <tr>
-                <td>@ResourceManagerProp.GetString("Index_Iterations", CultureInfoProp): </td>
-                <td>
-                    <textarea type="text" name="Iterations">@notificationModel.Iterations</textarea>
+                    <input class="time" type="number" name="Seconds" step="1" min="0" value="@notificationModel.Seconds"/>
                 </td>
             </tr>
             <tr>
                 <td></td>
                 <td>
-                    <input class="input_btn" type="submit" value="Submit"/>
+                    <input class="input_btn" type="submit" value="@ResourceManagerProp.GetString("Index_Submit", CultureInfoProp)"/>
                 </td>
             </tr>
         </table>
