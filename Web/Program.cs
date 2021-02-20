@@ -22,20 +22,27 @@ namespace Web
                 Console.WriteLine(ResourceManagerProp.GetString("There_is_no_", CultureInfoProp));
                 return;
             }
-            
-            for (var i = 0; i < args.Length; i++)
-                switch (args[i])
-                {
-                    case "--help":
-                        Console.WriteLine(ResourceManagerProp.GetString("Commands_Help_", CultureInfoProp));
-                        return;
-                    case "--ip":
-                        Ip = args[i + 1];
-                        break;
-                    case "--port":
-                        Port = args[i + 1];
-                        break;
-                }
+
+            try
+            {
+                for (var i = 0; i < args.Length; i++)
+                    switch (args[i])
+                    {
+                        case "--help":
+                            Console.WriteLine(ResourceManagerProp.GetString("Commands_Help_", CultureInfoProp));
+                            return;
+                        case "--ip":
+                            Ip = args[i + 1];
+                            break;
+                        case "--port":
+                            Port = args[i + 1];
+                            break;
+                    }
+            }
+            catch
+            {
+                Console.WriteLine(ResourceManagerProp.GetString("There_is_no_", CultureInfoProp));
+            }
 
             CreateHostBuilder(args).Build().Run();
         }

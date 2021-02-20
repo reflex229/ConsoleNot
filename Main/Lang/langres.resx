@@ -26,10 +26,12 @@
 -d The description of the notification
 -c The count of iterations (default value is 1).
 --client Enables client mode (you will have to enter a server's port and IP).
-You can always stop the program by pressing Ctrl+C.</value>
+You can always stop the program by pressing Ctrl+C.
+Example:
+-m 1 -s 1 -h 2 -t -d -c 5</value>
     </data>
     <data name="There_is_no_" xml:space="preserve">
-        <value>There is no arguments given. Exiting the program. Please, enter an arguments (see --help) and try again.</value>
+        <value>There is no arguments given or the arguments do not exist. Exiting the program. Please, enter existing arguments (see --help) and try again.</value>
     </data>
     <data name="Enter_Title" xml:space="preserve">
         <value>Enter a title: </value>
@@ -49,12 +51,6 @@ You can always stop the program by pressing Ctrl+C.</value>
     <data name="Title" xml:space="preserve">
         <value>The Notification</value>
     </data>
-    <data name="Config_Error" xml:space="preserve">
-        <value>Error, maybe the file "ConsoleNot.dll.config" is damaged.</value>
-    </data>
-    <data name="Server_Error" xml:space="preserve">
-        <value>Server error. The destination point is unreachable. IP is: {0}, port is:{1}.</value>
-    </data>
     <data name="Client_Exception" xml:space="preserve">
         <value>Error. Exception message: {0}</value>
     </data>
@@ -69,8 +65,5 @@ You can always stop the program by pressing Ctrl+C.</value>
     </data>
     <data name="Notification_End" xml:space="preserve">
         <value>Notification with ID {0} ended.</value>
-    </data>
-    <data name="Program_auto_launch_linux" xml:space="preserve">
-        <value>Setting up an auto launch with systemd. IMPORTANT: Run the program as root.</value>
     </data>
 </root>

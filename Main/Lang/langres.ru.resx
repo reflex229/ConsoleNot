@@ -28,10 +28,12 @@
 --client Включает режим клиента (вам придётся ввести IP и порт сервера).
 Вы всегда можете завершить работу программы нажав Ctrl+C.
 --auto-launch Устанавливает авто запуск программы.
---remove-auto-launch Отключает авто запуск.</value>
+--remove-auto-launch Отключает авто запуск.
+Пример:
+-m 1 -s 1 -h 2 -t -d -c 5</value>
     </data>
     <data name="There_is_no_" xml:space="preserve">
-        <value>Не задано никаких аргументов. Пожалуйста, введите аргументы (смотрите --help). Для выхода нажмите Enter.</value>
+        <value>Не задано никаких аргументов или аргументы не существуют. Пожалуйста, введите существующие аргументы (смотрите --help). Для выхода нажмите Enter.</value>
     </data>
     <data name="Enter_Title" xml:space="preserve">
         <value>Введите заголовок: </value>
@@ -51,12 +53,6 @@
     <data name="Title" xml:space="preserve">
         <value>Уведомление</value>
     </data>
-    <data name="Config_Error" xml:space="preserve">
-        <value>Ошибка, возможно файл "ConsoleNot.dll.config" был повреждён.</value>
-    </data>
-    <data name="Server_Error" xml:space="preserve">
-        <value>Ошибка сервера. Цель недостижима. IP: {0}, порт: {1}.</value>
-    </data>
     <data name="Client_Exception" xml:space="preserve">
         <value>Ошибка. Сообщение исключения: {0}</value>
     </data>
@@ -71,8 +67,5 @@
     </data>
     <data name="Notification_End" xml:space="preserve">
         <value>Уведомление с ID {0} завершилось.</value>
-    </data>
-    <data name="Program_auto_launch_linux" xml:space="preserve">
-        <value>Создаю авто запуск при помощи systemd. ВАЖНО: Запустите программу с root доступом.</value>
     </data>
 </root>

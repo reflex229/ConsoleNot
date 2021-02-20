@@ -20,6 +20,5 @@ namespace Main
         };
         public static int IterationTime => Time[0] * 3600000 + Time[1] * 60000 + Time[2] * 1000;
         public static int NotificationsCount { get; set; }
-        public static string ExecPath => Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
     }
 }

@@ -24,43 +24,51 @@ namespace Main
             }
 
             for (var i = 0; i < args.Length; i++)
-                switch (args[i])
+                try
                 {
-                    case "--help":
-                        Console.WriteLine(ResourceManagerProp.GetString("Commands_Help_", CultureInfoProp));
-                        return;
-                    case "--client":
-                        Client.Start();
-                        return;
-                    case "-h":
-                        ConvertAndSet(i, (int) Hours);
-                        break;
-                    case "-m":
-                        ConvertAndSet(i, (int) Minutes);
-                        break;
-                    case "-s":
-                        ConvertAndSet(i, (int) Seconds);
-                        break;
-                    case "-c":
-                        try
-                        {
-                            Count = Convert.ToInt32(args[i + 1]);
-                        }
-                        catch (FormatException)
-                        {
-                            Console.WriteLine(ResourceManagerProp.GetString("Only_Numbers", CultureInfoProp));
-                            _start = false;
-                        }
-
-                        break;
-                    case "-t":
-                        Console.WriteLine(ResourceManagerProp.GetString("Enter_Title", CultureInfoProp));
-                        TitleAndDesc[0] = Console.ReadLine();
-                        break;
-                    case "-d":
-                        Console.WriteLine(ResourceManagerProp.GetString("Enter_Description", CultureInfoProp));
-                        TitleAndDesc[1] = Console.ReadLine();
-                        break;
+                    switch (args[i])
+                    {
+                        case "--help":
+                            Console.WriteLine(ResourceManagerProp.GetString("Commands_Help_", CultureInfoProp));
+                            return;
+                        case "--client":
+                            Client.Start();
+                            return;
+                        case "-h":
+                            ConvertAndSet(i, (int) Hours);
+                            break;
+                        case "-m":
+                            ConvertAndSet(i, (int) Minutes);
+                            break;
+                        case "-s":
+                            ConvertAndSet(i, (int) Seconds);
+                            break;
+                        case "-c":
+                            try
+                            {
+                                Count = Convert.ToInt32(args[i + 1]);
+                            }
+                            catch (FormatException)
+                            {
+                                Console.WriteLine(ResourceManagerProp.GetString("Only_Numbers", CultureInfoProp));
+                                _start = false;
+                            }
+                            break;
+                        case "-t":
+                            Console.WriteLine(ResourceManagerProp.GetString("Enter_Title", CultureInfoProp));
+                            TitleAndDesc[0] = Console.ReadLine();
+                            break;
+                        case "-d":
+                            Console.WriteLine(ResourceManagerProp.GetString("Enter_Description", CultureInfoProp));
+                            TitleAndDesc[1] = Console.ReadLine();
+                            break;
+                    }
+                }
+                catch
+                {
+                    Console.WriteLine(ResourceManagerProp.GetString("There_is_no_", CultureInfoProp));
+                    Console.ReadLine();
+                    return;
                 }
 
             if (!_start) return;
@@ -68,8 +76,9 @@ namespace Main
             new Notification();
             Console.ReadLine();
         }
-
-        private static void ConvertAndSet(int i, int timeNum) //Receiving an integer from the argument (with the exception).
+        
+        //Receiving an integer from the argument (with an exception).
+        private static void ConvertAndSet(int i, int timeNum)
         {
             try
             {

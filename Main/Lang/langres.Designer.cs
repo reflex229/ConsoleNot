@@ -93,18 +93,6 @@ namespace Main.Resource {
             }
         }
         
-        internal static string Config_Error {
-            get {
-                return ResourceManager.GetString("Config_Error", resourceCulture);
-            }
-        }
-        
-        internal static string Server_Error {
-            get {
-                return ResourceManager.GetString("Server_Error", resourceCulture);
-            }
-        }
-        
         internal static string Client_Exception {
             get {
                 return ResourceManager.GetString("Client_Exception", resourceCulture);
@@ -132,12 +120,6 @@ namespace Main.Resource {
         internal static string Notification_End {
             get {
                 return ResourceManager.GetString("Notification_End", resourceCulture);
-            }
-        }
-        
-        internal static string Program_auto_launch_linux {
-            get {
-                return ResourceManager.GetString("Program_auto_launch_linux", resourceCulture);
             }
         }
     }

@@ -2,8 +2,8 @@ namespace Lib
 {
     public enum Times
     {
-        Hours,
-        Minutes,
-        Seconds
+        Hours = 0,
+        Minutes = 1,
+        Seconds = 2
     }
 }
