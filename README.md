@@ -1,6 +1,6 @@
 # ConsoleNot
 ## You can find instructions on the project's site for [Linux](http://consolenot.ru/Home/About#linux) or [Windows](http://consolenot.ru/Home/About#windows)
-## Description
+## The Description
 Console notifier with desktop notifications, written in C#.
 Example: the doctor prescribed you a course of treatment with pills (you need to take
 the pills 6 times a day).
