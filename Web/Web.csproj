@@ -41,7 +41,6 @@
         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         <PrivateAssets>all</PrivateAssets>
       </PackageReference>
-      <PackageReference Include="RestSharp" Version="106.11.7" />
     </ItemGroup>
 
 </Project>

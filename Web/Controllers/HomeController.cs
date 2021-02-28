@@ -11,9 +11,8 @@ namespace Web.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        private Dictionary<string, WebNotificationTimer> NotificationTimers => notificationTimers;
-
-        private static Dictionary<string, WebNotificationTimer> notificationTimers = new Dictionary<string, WebNotificationTimer>();
+        private static Dictionary<string, WebNotificationTimer> NotificationTimers =
+            new Dictionary<string, WebNotificationTimer>();
 
         public HomeController(ILogger<HomeController> logger)
         {
@@ -46,7 +45,7 @@ namespace Web.Controllers
                     Seconds = delay[(int) Times.Seconds],
                     Iterations = Convert.ToInt32(iterations),
                 });
-                NotificationTimers.Add(DataAccess.Unique(title), new WebNotificationTimer(title,
+                NotificationTimers.Add(title, new WebNotificationTimer(title,
                     description, delay, iterations));
                 return Redirect("/Home/Notifications");
             }
@@ -71,7 +70,7 @@ namespace Web.Controllers
                         Iterations = Convert.ToInt32(iterations),
                     });
                 NotificationTimers[NotificationTitle].Stop();
-                NotificationTimers[DataAccess.Unique(title)] = new WebNotificationTimer(DataAccess.Unique(title),
+                NotificationTimers[title] = new WebNotificationTimer(title,
                     description, delay, iterations);
                 return Redirect("/Home/Notifications");
         }

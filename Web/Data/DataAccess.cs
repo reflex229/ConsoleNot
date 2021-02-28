@@ -22,7 +22,6 @@ namespace Web.Data
         {
             using var db = new NotificationsContext();
             db.Notifications.Add(item);
-            item.Title = Unique(item.Title);
             db.SaveChanges();
         }
 
@@ -30,7 +29,6 @@ namespace Web.Data
         {
             using var db = new NotificationsContext();
             Remove(title);
-            newItem.Title = Unique(newItem.Title);
             Add(newItem);
         }
 
@@ -39,19 +37,6 @@ namespace Web.Data
             using var db = new NotificationsContext(); 
             db.Notifications.Remove(db.Notifications.Find(title));
             db.SaveChanges();
-        }
-
-        public static string Unique(string title)
-        {
-            using var db = new NotificationsContext();
-            var i = 0;
-            while (db.Notifications.Find(title) != null)
-            {
-                title = $"{title}-{i}";
-                i++;
-            }
-
-            return title;
         }
     }
 }
