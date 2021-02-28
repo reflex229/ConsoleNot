@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Lib;
+using Web.Data;
 
 namespace Web.Controllers
 {
@@ -36,7 +37,7 @@ namespace Web.Controllers
             try
             {
                 var delay = new[] {Convert.ToInt32(hours), Convert.ToInt32(minutes), Convert.ToInt32(seconds)};
-                DataAccess.SaveNotification(new NotificationModel
+                DataAccess.Add(new NotificationModel
                 {
                     Title = title,
                     Description = description,
@@ -45,7 +46,7 @@ namespace Web.Controllers
                     Seconds = delay[(int) Times.Seconds],
                     Iterations = Convert.ToInt32(iterations),
                 });
-                NotificationTimers.Add(title, new WebNotificationTimer(title,
+                NotificationTimers.Add(DataAccess.Unique(title), new WebNotificationTimer(title,
                     description, delay, iterations));
                 return Redirect("/Home/Notifications");
             }
@@ -60,7 +61,7 @@ namespace Web.Controllers
             string title, string description, string hours, string minutes, string seconds, string iterations)
         {
             var delay = new[] {Convert.ToInt32(hours), Convert.ToInt32(minutes), Convert.ToInt32(seconds)};
-                DataAccess.EditNotification(new NotificationModel
+                DataAccess.Edit(NotificationTitle,new NotificationModel
                     {
                         Title = title,
                         Description = description,
@@ -68,10 +69,9 @@ namespace Web.Controllers
                         Minutes = delay[(int) Times.Minutes],
                         Seconds = delay[(int) Times.Seconds],
                         Iterations = Convert.ToInt32(iterations),
-                    },
-                    NotificationTitle);
+                    });
                 NotificationTimers[NotificationTitle].Stop();
-                NotificationTimers[title] = new WebNotificationTimer(title,
+                NotificationTimers[DataAccess.Unique(title)] = new WebNotificationTimer(DataAccess.Unique(title),
                     description, delay, iterations);
                 return Redirect("/Home/Notifications");
         }
@@ -86,7 +86,7 @@ namespace Web.Controllers
         [Route("/NotificationDelete/{title}")]
         public IActionResult DeletePost([FromRoute] string title)
         {
-            DataAccess.DeleteNotification(title);
+            DataAccess.Remove(title);
             NotificationTimers[title].Stop();
             return Redirect("/Home/Notifications");
         }

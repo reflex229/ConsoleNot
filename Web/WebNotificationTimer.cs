@@ -1,7 +1,7 @@
 using System;
 using System.Net.Http;
 using System.Timers;
-using Lib;
+using Web.Data;
 using static Web.Program;
 
 namespace Web
@@ -38,7 +38,7 @@ namespace Web
             else
             {
                 _timer.Stop();
-                DataAccess.DeleteNotification(_title);
+                DataAccess.Remove(_title);
             }
         }
 

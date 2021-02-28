@@ -1,5 +1,5 @@
 @{
-    var notificationModel = DataAccess.LoadNotifications("Title", HomeController.NotificationTitle)[0];
+    var notificationModel = DataAccess.Load(HomeController.NotificationTitle);
     ViewData["Title"] = notificationModel.Title;
 
     <form method="post" enctype="multipart/form-data" asp-controller="Home" asp-action="NotificationUpdate">

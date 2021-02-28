@@ -2,9 +2,9 @@
     ViewData["Title"] = ResourceManagerProp.GetString("Notifications_Notifications", CultureInfoProp);
 }
 
-@if (DataAccess.LoadNotifications() != null && DataAccess.LoadNotifications().Count > 0)
+@if (DataAccess.Load() != null && DataAccess.Load().Any())
 {
-    @foreach (var notification in DataAccess.LoadNotifications())
+    @foreach (var notification in DataAccess.Load())
     {
         <div class="content post">
             <h1 class="h_white">@notification.Title</h1>
