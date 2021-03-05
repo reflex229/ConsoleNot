@@ -72,17 +72,16 @@
     <data name="Seconds" xml:space="preserve">
         <value>Секунды</value>
     </data>
-    <data name="There_is_no_" xml:space="preserve">
-        <value>Не задано никаких аргументов или аргументы не существуют. Пожалуйста, введите существующие аргументы (смотрите --help). Для выхода нажмите Enter.</value>
-    </data>
     <data name="Commands_Help_" xml:space="preserve">
-        <value>--ip Устанавливает ip клиента.
---port Устанавливает порт клиента (не используйте, если порт - 5947).
+        <value>--port Устанавливает порт клиента (не используйте, если порт - 5947).
 Пример:
---ip 192.168.4.2 --port 5379
+--port 5379
 Подробная инструкция доступна на http://consolenot.ru</value>
     </data>
     <data name="ErrorMessage_Usr" xml:space="preserve">
         <value>Ой. Что-то пошло не так. Возможно, вы сделали что-то не так или разработчик где-то облажался.</value>
+    </data>
+    <data name="IP_added" xml:space="preserve">
+        <value>IP адрес {0} добавлен.</value>
     </data>
 </root>

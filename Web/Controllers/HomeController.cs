@@ -1,26 +1,35 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using Lib;
+using Microsoft.Extensions.Logging;
 using Web.Data;
+using static Web.LangInfo;
 
 namespace Web.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
-        private static Dictionary<string, WebNotificationTimer> NotificationTimers =
+        public static string NotificationTitle { get; private set; }
+        private static Dictionary<string, WebNotificationTimer> NotificationTimers { get; } = 
             new Dictionary<string, WebNotificationTimer>();
-
+        public static List<string> IpAddresses { get; } = new List<string>();
+        
+        private readonly ILogger<HomeController> _logger;
+        
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
         }
-
+        
         public IActionResult Index()
         {
+            var ip = HttpContext.Connection.RemoteIpAddress.ToString();
+            if (!IpAddresses.Contains(ip))
+            {
+                IpAddresses.Add(ip);
+                _logger.Log(LogLevel.Information, (ResourceManagerProp.GetString("IP_added", CultureInfoProp), ip).ToString());
+            }
             return View();
         }
 
@@ -99,7 +108,5 @@ namespace Web.Controllers
         {
             return View();
         }
-        
-        public static string NotificationTitle { get; private set; }
     }
 }

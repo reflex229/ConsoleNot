@@ -2,15 +2,16 @@ using System;
 using System.Net.Http;
 using System.Timers;
 using Web.Data;
+using static Web.Controllers.HomeController;
 using static Web.Program;
 
 namespace Web
 {
     public class WebNotificationTimer
     {
-        private string _title;
-        private string _description;
-        private int _iterations;
+        private readonly string _title;
+        private readonly string _description;
+        private readonly int _iterations;
         private int _i;
         private static readonly HttpClient Client = new HttpClient();
 
@@ -33,7 +34,10 @@ namespace Web
             if (_i < _iterations)
             {
                 _i++;
-                Client.PostAsync($"http://{Ip}:{Port}/Not/{_title}-{_description}", null);
+                foreach (var ip in IpAddresses)
+                {
+                    Client.PostAsync($"http://{ip}:{Port}/Not/{_title}-{_description}", null);
+                }
             }
             else
             {

@@ -153,12 +153,6 @@ namespace Web.Lang {
             }
         }
         
-        internal static string There_is_no_ {
-            get {
-                return ResourceManager.GetString("There_is_no_", resourceCulture);
-            }
-        }
-        
         internal static string Commands_Help_ {
             get {
                 return ResourceManager.GetString("Commands_Help_", resourceCulture);
@@ -168,6 +162,12 @@ namespace Web.Lang {
         internal static string ErrorMessage_Usr {
             get {
                 return ResourceManager.GetString("ErrorMessage_Usr", resourceCulture);
+            }
+        }
+        
+        internal static string IP_added {
+            get {
+                return ResourceManager.GetString("IP_added", resourceCulture);
             }
         }
     }

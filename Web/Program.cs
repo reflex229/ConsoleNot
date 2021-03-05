@@ -9,19 +9,12 @@ namespace Web
 {
     public static class Program
     {
-        public static string Ip { get; set; }
         public static string Port { get; set; }
 
         public static void Main(string[] args)
         {   
             EncodingFix();
             Port = "5947";
-
-            if (args.Length < 1)
-            {
-                Console.WriteLine(ResourceManagerProp.GetString("There_is_no_", CultureInfoProp));
-                return;
-            }
 
             try
             {
@@ -31,9 +24,6 @@ namespace Web
                         case "--help":
                             Console.WriteLine(ResourceManagerProp.GetString("Commands_Help_", CultureInfoProp));
                             return;
-                        case "--ip":
-                            Ip = args[i + 1];
-                            break;
                         case "--port":
                             Port = args[i + 1];
                             break;

@@ -72,17 +72,16 @@
     <data name="Seconds" xml:space="preserve">
         <value>Seconds</value>
     </data>
-    <data name="There_is_no_" xml:space="preserve">
-        <value>There is no arguments given or the arguments do not exist. Exiting the program. Please, enter existing arguments (see --help) and try again.</value>
-    </data>
     <data name="Commands_Help_" xml:space="preserve">
-        <value>--ip Sets an ip of the client.
---port Sets a port of the client (do not use it if the port is 5947).
+        <value>--port Sets a port of the client (do not use it if the port is 5947).
 Example:
---ip 192.168.4.2 --port 5379
+--port 5379
 More detailed instructions are available on http://consolenot.ru</value>
     </data>
     <data name="ErrorMessage_Usr" xml:space="preserve">
         <value>Oops. Something gone wrong. Maybe you did something wrong or the developer failed somewhere.</value>
+    </data>
+    <data name="IP_added" xml:space="preserve">
+        <value>IP address {0} added.</value>
     </data>
 </root>

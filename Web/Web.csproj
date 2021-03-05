@@ -6,6 +6,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Lib\Lib.csproj" />
+      <ProjectReference Include="..\Main\Main.csproj" />
     </ItemGroup>
 
     <ItemGroup>
