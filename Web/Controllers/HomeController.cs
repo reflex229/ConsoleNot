@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Mvc;
 using Lib;
 using Microsoft.Extensions.Logging;
 using Web.Data;
-using static Web.LangInfo;
 
 namespace Web.Controllers
 {
@@ -28,7 +27,7 @@ namespace Web.Controllers
             if (!IpAddresses.Contains(ip))
             {
                 IpAddresses.Add(ip);
-                _logger.Log(LogLevel.Information, (ResourceManagerProp.GetString("IP_added", CultureInfoProp), ip).ToString());
+                _logger.Log(LogLevel.Information, ip);
             }
             return View();
         }

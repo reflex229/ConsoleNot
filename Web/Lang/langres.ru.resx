@@ -81,7 +81,4 @@
     <data name="ErrorMessage_Usr" xml:space="preserve">
         <value>Ой. Что-то пошло не так. Возможно, вы сделали что-то не так или разработчик где-то облажался.</value>
     </data>
-    <data name="IP_added" xml:space="preserve">
-        <value>IP адрес {0} добавлен.</value>
-    </data>
 </root>

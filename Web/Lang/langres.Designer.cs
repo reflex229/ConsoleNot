@@ -164,11 +164,5 @@ namespace Web.Lang {
                 return ResourceManager.GetString("ErrorMessage_Usr", resourceCulture);
             }
         }
-        
-        internal static string IP_added {
-            get {
-                return ResourceManager.GetString("IP_added", resourceCulture);
-            }
-        }
     }
 }

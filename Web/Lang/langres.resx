@@ -81,7 +81,4 @@ More detailed instructions are available on http://consolenot.ru</value>
     <data name="ErrorMessage_Usr" xml:space="preserve">
         <value>Oops. Something gone wrong. Maybe you did something wrong or the developer failed somewhere.</value>
     </data>
-    <data name="IP_added" xml:space="preserve">
-        <value>IP address {0} added.</value>
-    </data>
 </root>
